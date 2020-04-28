@@ -1,0 +1,42 @@
+{% extends 'dating/base.html' %}
+{% load static from dating %}
+{% load i18n %}
+{% block title %}
+   {% trans "Новости" %}
+{% endblock title %}
+
+{% block content %}
+    <style>
+        #news-banner {
+            width: 255px;
+            position: fixed;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+    var PROFILE_CONFIG = {
+        id: {{user.profile.id}},
+        name: '{{user.profile.name}}',
+        sex: '{{user.profile.sex}}',
+        thumbnail: {% if user.profile.avatar %}'{{user.profile.thumbnail_url}}'{% else %}null{% endif %}
+    }
+    </script>
+    <div id="news-container" class="col-md-7">
+    </div>
+    <div class="col-md-5" style="position: relative">
+        <div id="news-banner">
+
+        </div>
+    </div>
+
+{% include "dateprofile/banners.html" %}
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static "compiled/js/commonChunk.js" %}"></script>
+    <script src="{% static 'lib/js/exif.min.js' %}"></script>
+    <script src="{% static 'compiled/js/news.js' %}?4" defer></script>
+    <script>
+        cycleBanners(document.getElementById('news-banner'));
+    </script>
+{% endblock scripts %}

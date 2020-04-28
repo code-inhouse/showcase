@@ -1,0 +1,38 @@
+.test__block {
+  width: 300px;
+  height: 350px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #e7eaec;
+  padding: 22px;
+}
+
+.test__title {
+  text-align: center;
+  font-size: 15px;
+  opacity: .7;
+}
+
+.test__content {
+  text-align: center;
+  font-size: 26px;
+  margin-top: 100px;
+  font-weight: 600;
+}
+
+.test__btns {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: absolute;
+  bottom: 25px;
+
+  .btn {
+    width: 140px;
+  }
+}
+

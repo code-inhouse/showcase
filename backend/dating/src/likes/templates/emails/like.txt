@@ -1,0 +1,2 @@
+{{profile.name}}, {{profile.age}} лет, {{profile_url}}
+{{unsubscribe_url}}

@@ -1,0 +1,216 @@
+{% extends 'dating/base.html' %}
+{% load static from dating %}
+{% load rules %}
+{% has_perm 'send_message' user as can_send_msg %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Найти пару" %}
+{% endblock title %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'lib/bower/emojionearea/dist/emojionearea.min.css' %}">
+    <link rel="stylesheet" href="{% static "lib/css/emojione.css" %}"/>
+  <style>
+    .mutual-like-avatar img {
+      border-radius: 50%;
+      display: block;
+      margin: auto;
+      width: 90px;
+      height: 90px;
+    }
+
+    .mutual-like-block .row {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .mutual-like-block .info {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .mutual-like-block .header {
+      margin: auto;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.03em;
+    }
+
+    .profile-link {
+      margin-top: 10px;
+      display: block;
+    }
+
+    .mutual-profile-link {
+      width: 100%;
+    }
+
+    #loader {
+      margin-top: 98px;
+      min-height: 500px;
+      background-color: white;
+    }
+
+    #loader .loader {
+      margin-top: 240px;
+      text-align: center;
+      width: 100%;
+    }
+
+    #game-over {
+      background-color: white;
+      margin-top: 98px;
+      min-height: 483px;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    #game-over p {
+      margin-top: 200px;
+    }
+  </style>
+{% endblock head %}
+
+{% block content %}
+{% has_perm 'send_message' user as has_premium %}
+<div class="wrapper wrapper-content">
+  <div class="match-page clearfix">
+    <div class="row">
+      <div class="match-page__info" id="info-popup">
+        {% trans 'Ставь <i class="fa fa-heart-o"></i> тем, кто тебе нравится. Если симпатия будет взаимной - вы узнаете об этом.<i class="fa fa-times" id="close-info-popup"></i>' %}
+      </div>
+    </div>
+    <div class="row">
+      <div id="loader" class="col-md-6">
+        <div class="loader">
+          <img src="{% static "images/loader.gif" %}" alt="">
+        </div>
+      </div>
+      <div id="game-over" class="col-md-6" hidden>
+        <p>{% trans "Кажется, это всё. Попробуйте перезагрузить страницу через пару минут, может быть мы найдём для вас новые совпадения!" %}</p>
+      </div>
+      <div class="match col-md-6" id="game" hidden>
+        <div class="match__header">
+          <ul class="match__options">
+            <li class="match__option match__option--cross">
+              <a>
+                <img src="{% static 'lib/img/a1.jpg' %}" alt="" id="prev-icon"/>
+              </a>
+              <i class="fa fa-times" id="prev-icon-foreground"></i>
+            </li>
+            <li class="match__option match__option--active">
+              <a>
+                <img src="{% static 'lib/img/a2.jpg' %}" alt="" id="cur-icon"/>
+              </a>
+            </li>
+            <li class="match__option">
+              <a>
+                <img src="{% static 'lib/img/a3.jpg' %}" alt="" id="next-icon-1"/>
+              </a>
+            </li>
+            <li class="match__option">
+              <a>
+                <img src="{% static 'lib/img/a4.jpg' %}" alt="" id="next-icon-2"/>
+              </a>
+            </li>
+            <li class="match__option">
+              <a>
+                <img src="{% static 'lib/img/a5.jpg' %}" alt="" id="next-icon-3"/>
+              </a>
+            </li>
+            <li class="match__option">
+              <a>
+                <img src="{% static 'lib/img/a6.jpg' %}" alt="" id="next-icon-4"/>
+              </a>
+            </li>
+            <li class="match__option">
+              <a>
+                <img src="{% static 'lib/img/a7.jpg' %}" alt="" id="next-icon-5"/>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="match__content">
+          <div class="match__user-info">
+            <p><span id="name"></span>, <span id="age"></span></p>
+            <p>{% trans "cовпадение" %} - <span id="match-probability"></span></p>
+          </div>
+          <button type="button" class="btn btn-w-m btn-primary btn-outline pull-right" id="send-msg-button" data-target="{% if can_send_msg %}#send-msg-modal{% else %}#get-premium-modal{% endif %}">{% trans "Написать сообщение" %}</button>
+          <div class="match__photo">
+            <div class="img-wrapper ava-status-sign ava-status-sign" id="status-sign">
+              <a id="profile-photo-link">
+                <img src="{% static 'lib/img/base-photo.jpg' %}" alt="" id="photo">
+              </a>
+            </div>
+          </div>
+          <div class="match__controls">
+            <button type="button" id="dislike-btn" class="btn btn-w-m btn-success test__btn">
+              <i class="fa fa-times"></i>
+            </button>
+            <button type="button" id="like-btn" class="btn btn-w-m btn-danger test__btn">
+              <i class="fa fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      {# {% if not has_premium %} #}
+      <div class="col-md-3 match-premium" id="mutual-like-loader">
+        <h1>{% trans "Загрузка" %}</h1>
+      </div>
+      <div id="second-banner" class="col-md-3 pull-right">
+
+      </div>
+      <div id="mutual-like-banner" class="col-md-3">
+      </div>
+      <div class="col-md-3 match-premium match-banner pull-right" id="mutual-like-block">
+        <h1 class="match-banner__title">{% trans "Поздравляем, у вас новое совпадение!" %}</h1>
+        <div class="match-banner__photo"><a class="mutual-profile-link"><i id="mutual-like-avatar"></i></a></div>
+        <div class="match-banner__name"><span id="mutual-like-name"></span>, <span id="mutual-like-age"></span></div>
+        <div class="match-banner__btns">
+          <button type="button" class="btn btn-w-m btn-primary btn-outline match-banner__btn-1" id="mutual-send-message">{% trans "Написать сообщение" %}</button>
+          <a type="button" class="btn btn-w-m btn-primary btn-outline match-banner__btn-2 mutual-profile-link">{% trans "Посмотреть профиль" %}</a>
+          <button type="button" class="btn btn-w-m btn-success btn-outline" id="mutual-next-btn">{% trans "Показать других" %}</button>
+        </div>
+      </div>
+      {# {% endif %} #}
+      <div class="match-vip">
+      </div>
+    </div>
+  </div>
+</div>
+  {% include "chats/send-message-modal.html" %}
+  {% include "dateprofile/banners.html" %}
+<div class="modal fade" id="get-premium-modal-likes">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body clear">
+        <p class="heading">{% trans "Ты можешь ставить 20 оценок в день" %}</p>
+        <p class="lock">
+          <i class="fa fa-lock"></i>
+        </p>
+        {% blocktrans %}
+          <p class="task">Стань <span>ПРЕМИУМ</span></p>
+        {% endblocktrans %}
+        <p class="result">{% trans "И знакомься без ограничений" %}</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="btn btn-green">{% trans "Стать ПРЕМИУМ!" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+      window.LIKES_PER_DAY = {{likes_per_day}};
+      window.LIKED = {{liked_today}};
+      {% has_perm 'no_likes_restriction' user as no_like_restriction%}
+      window.HAS_LIKE_RESTRICTION = {% if no_like_restriction %}false{% else %}true{% endif %};
+    </script>
+    <script src="{% static 'compiled/js/matches.js' %}?v=2" defer></script>
+    <script type="text/javascript" src="{% static 'lib/bower/emojionearea/dist/emojionearea.min.js' %}"></script>
+    <script src="{% static "lib/js/emojione.js" %}"></script>
+{% endblock scripts %}

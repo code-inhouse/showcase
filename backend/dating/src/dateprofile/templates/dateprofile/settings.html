@@ -1,0 +1,73 @@
+{% extends 'dating/base.html' %}
+{% load static from dating %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lib/css/nouislider/nouislider.min.css' %}">
+{% endblock head %}
+
+{% block content %}
+    <script>
+        window.profile = {
+            status: '{{user.profile.status}}',
+            id: {{user.profile.id}},
+            age: {{user.profile.age}},
+            sex: '{{user.profile.sex}}',
+            name: '{{user.profile.name|escapejs}}',
+            bodyType: '{{user.profile.build}}',
+            lookingFor: {
+                sex: '{{user.profile.looking_for}}',
+                age: {
+                    from: {{user.profile.lower_age_bound}},
+                    to: {{user.profile.upper_age_bound}}
+                }
+            },
+            purpose: '{{user.profile.purpose}}',
+            attitudes: {
+                smoking: '{{user.profile.smoking_attitude}}',
+                alcohol: '{{user.profile.alcohol_attitude}}'
+            },
+            thumbnail: '{{user.profile.thumbnail_url}}',
+            emailSubscribed: {% if user.profile.email_subscribed %}
+                true{% else %}false
+            {% endif %}
+        }
+
+    </script>
+    <div id="settings-root">
+    </div>
+    <script src="{% static 'lib/js/wNumb.js' %}"></script>
+    <script src="{% static 'lib/js/nouislider.min.js' %}"></script>
+    <script src="{% static 'compiled/js/settings.js' %}"></script>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+  $("#menu-item-info").click(function(){
+    $('.settings__menu-item, .settings__block').removeClass("active")
+    $(this).addClass("active")
+    $('.settings__info').addClass("active")
+  })
+  $("#menu-item-old").click(function(){
+    $('.settings__menu-item, .settings__block').removeClass("active")
+    $(this).addClass("active")
+    $('.settings__old').addClass("active")
+  })
+  $("#menu-item-akk").click(function(){
+    $('.settings__menu-item, .settings__block').removeClass("active")
+    $(this).addClass("active")
+    $('.settings__akk').addClass("active")
+  })
+  $("#menu-item-mails").click(function(){
+    $('.settings__menu-item, .settings__block').removeClass("active")
+    $(this).addClass("active")
+    $('.settings__mails').addClass("active")
+  })
+  $("#menu-item-money").click(function(){
+    $('.settings__menu-item, .settings__block').removeClass("active")
+    $(this).addClass("active")
+    $('.settings__money').addClass("active")
+  })
+</script>
+
+{% endblock scripts %}

@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  app:
+    image: gezer/app
+    environment:
+      - MIX_ENV=prod
+    build:
+      context: .
+    restart: unless-stopped
+    command: mix phx.server
+    ports:
+    - 4000:4000

@@ -1,0 +1,15 @@
+{% load static from dating %}
+
+<form action="{% url 'set_language' %}" class="registration__language registration__ru_lang" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="language" value="ru">
+    <input type="hidden" name="next" value="{{redirect_to}}">
+    <input type="image" src="{% static "images/russian_flag.png" %}" alt="Русский язык">
+</form>
+
+<form action="{% url 'set_language' %}" class="registration__language registration__en_lang" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="language" value="en">
+    <input type="hidden" name="next" value="{{redirect_to}}">
+    <input type="image" src="{% static "images/english_flag.png" %}" alt="English language">
+</form>

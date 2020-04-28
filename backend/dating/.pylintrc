@@ -1,0 +1,5 @@
+[Master]
+init-hook='sys.path = list(); sys.path.append("/home/eugene/.pyenv/versions/dating/lib/python3.5/site-packages")'
+
+[MESSAGES CONTROL]
+disable=C0111

@@ -1,0 +1,39 @@
+.load-photo__block{
+  width: 300px;
+  height: 350px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid #e7eaec;
+}
+
+.load-photo__photo {
+  background-image: url('#{$asset-path}/base-photo.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 200px;
+}
+
+.load-photo__content {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.load-photo__title {
+  text-align: center;
+  font-size: 18px;
+}
+
+.load-photo__text {
+  text-align: center;
+  font-size: 14px;
+}
+
+.load-photo__btn {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}

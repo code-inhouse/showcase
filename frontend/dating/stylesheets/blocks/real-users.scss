@@ -1,0 +1,92 @@
+.real-users-left {
+  position: fixed;
+  bottom: -5px;
+  margin: 0 auto;
+  left: 0;
+  z-index: 99;
+
+  .real-users__block--1 {
+    left: 0;
+  }
+
+  .real-users__block--2 {
+    left: 125px;
+    transform: translateY(70px);
+  }
+}
+
+.real-users-right {
+  position: fixed;
+  bottom: -5px;
+  margin: 0 auto;
+  right: 0;
+  z-index: 99;
+
+  .real-users__block--1 {
+    right: 125px;
+    transform: translateY(70px);
+  }
+
+  .real-users__block--2 {
+    right: 0;
+    z-index: 4;
+  }
+}
+
+.real-users__block {
+  border-radius: 5px;
+  width: 260px;
+  height: 193px;
+  display: inline-block;
+  transition: transform .2s linear;
+  z-index: 5;
+  position: absolute;
+  box-shadow: 0 0 25px -4px rgba(197, 66, 81, .5);
+  top: -150px;
+
+
+  &:hover {
+    transform: translateY(-50px);
+    z-index: 6;
+  }
+}
+
+.real-users__photo {
+  margin-right: 15px;
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.real-users__name {
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+.real-users__old {
+  font-size: 16px;
+}
+
+.real-users__quote {
+  margin-top: 50px;
+  margin-left: 31px;
+  position: relative;
+  font-size: 16px;
+
+  &:before {
+    background-image: url('#{$asset-path}/quotes.png');
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    content: "";
+    display: block;
+    left: -29px;
+    background-position: center;
+    background-size: cover;
+    top: -3px;
+  }
+}

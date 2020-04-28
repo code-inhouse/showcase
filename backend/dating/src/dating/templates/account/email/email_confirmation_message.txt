@@ -1,0 +1,7 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Привет!
+
+Вы только что зарегистрировались на сайте знакомств http://naidisebe.com
+
+Чтобы подтвердить регистрацию, пройдите по следующей ссылке - {{ activate_url }}
+Если вы ничего такого не делали - проигнорируйте письмо.
+{% endblocktrans %}{% endautoescape %}

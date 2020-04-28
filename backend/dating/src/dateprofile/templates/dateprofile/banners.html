@@ -1,0 +1,307 @@
+{% load static from dating %}
+{% load rules %}
+{% load i18n %}
+<script type="text/javascript" src="https://vk.com/js/api/share.js?93" charset="windows-1251"></script>
+<script src="https://connect.ok.ru/connect.js"></script>
+<link rel="stylesheet" href="{% static "stylesheets/fontello.css" %}">
+<link rel="stylesheet" href="{% static "stylesheets/fontello-codes.css" %}">
+<script>
+  // fb api
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '254399271651905',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+  {% has_perm 'no_vip_banner' user as do_not_show_vip %}
+  {% has_perm 'no_prem_banner' user as do_not_show_prem %}
+  {% has_perm 'no_lottery_banner' user as do_not_show_lottery %}
+  {% has_perm 'no_emul_banner' user as do_not_show_emul %}
+  var SHOW_VIP = {% if do_not_show_vip %}false{%else%}true{% endif %};
+  var SHOW_PREM = {% if do_not_show_prem %}false{%else%}true{% endif %};
+  var SHOW_LOTTERY = {% if do_not_show_lottery %}false{%else%}true{% endif %};
+  var SHOW_EMULATION = {% if do_not_show_emul %}false{%else%}true{% endif %};
+  var IS_VIP = {%if user.profile.status == 'vip'%}true{%else%}false{%endif%};
+  var IS_PREMIUM = {%if user.profile.status == 'premium'%}true{%else%}false{%endif%};
+  var CAN_EMULATE = {%if user.profile.can_emulate%}true{%else%}false{%endif%};
+  var SHOW
+  var PROFILE_SEX = '{{user.profile.sex}}';
+  function GET_BANNERS() {
+    return [
+      SHOW_PREM      ? plugPremium   : false,
+      SHOW_VIP       ? plugVip       : false,
+      SHOW_EMULATION ? plugEmulation : false,
+      SHOW_LOTTERY   ? plugLottery   : false,
+      // plugTopProfiles
+    ].filter(function(x){return x});
+  }
+  var WOMAN_IMGS = [
+    '/static/images/girl-banner-1.jpg',
+    '/static/images/girl-banner-2.jpg',
+    '/static/images/girl-banner-3.jpg',
+  ];
+  var MAN_IMGS = [
+    '/static/images/man-banner-1.jpg',
+    '/static/images/man-banner-2.jpg',
+    '/static/images/man-banner-3.jpg',
+  ]
+
+  var IMGS = PROFILE_SEX == 'male' ? WOMAN_IMGS : MAN_IMGS;
+
+  var bannerImageManager = {
+    images: IMGS,
+    index: 0,
+    next: function() {
+      this.index++;
+      if (this.index == this.images.length) {
+        this.index = 0;
+      }
+      return this.images[this.index];
+    }
+  }
+
+  function __plugBanner(container, id, image) {
+    image = image || bannerImageManager.next();
+    var banner = document.getElementById(id);
+    var cloned = banner.cloneNode(true);
+    cloned.removeAttribute('hidden');
+    container.innerHTML = '';
+    container.appendChild(cloned);
+    let top = container.querySelector('.nice-banner__top')
+    if (top) {
+      top.style.backgroundImage = 'url(' + image + ')';
+    }
+    return container;
+  }
+
+  function plugPremium(container) {
+    __plugBanner(container, 'premium-banner-plugin');
+  }
+
+  function plugVip(container) {
+    __plugBanner(container, 'vip-banner-plugin');
+  }
+
+  function plugEmulation(container, onclick) {
+    __plugBanner(container, 'emulation-banner-plugin');
+    if (!onclick) {
+      onclick = function() {};
+    }
+    $('.emulation-banner button').click(function() {
+      SHOW_EMULATION = false;
+      CAN_EMULATE = true;
+      $.post('/emulationsubscribe/', function() {
+        onclick(true);
+      })
+      .fail(function() {
+        onclick(false);
+      })
+    });
+  }
+
+  function plugTopProfiles(container) {
+    __plugBanner(container, 'top-profiles-plugin')
+  }
+
+  function plugLottery(container) {
+    var banner = __plugBanner(container,
+                 'lottery-banner-plugin',
+                 '/static/images/iphone.jpg');
+    if (banner) {
+      banner.querySelector('.share__vk').innerHTML = VK.Share.button('http://{{request.get_host}}{% url "dateprofile:account_signup" %}vk/',{
+          type: 'custom',
+          text: '<img class="share-img" src="/static/images/vk.png"/>'
+        });
+
+    }
+  }
+
+  function cycleBanners(container, interval) {
+    if (!interval) {
+      interval = 20000;
+    }
+    var cycle = function() {
+      var functions = GET_BANNERS();
+      var rand = functions[Math.floor(Math.random() * functions.length)];
+      if (rand) {
+        rand(container, cycle);
+      } else {
+        container.innerHTML = '';
+      }
+    }
+    cycle();
+    setInterval(cycle, interval);
+  }
+
+  function shareFb() {
+    FB.ui({
+      method: 'share',
+      href: 'http://{{request.get_host}}{% url "dateprofile:account_signup" %}fb/',
+    }, function(response){});
+  }
+</script>
+<style type="text/css">
+  #premium-banner-plugin .fa {
+    color: #7ae469;
+  }
+
+  #premium-banner-plugin h2 span {
+    color: #7ae469;
+  }
+
+  #premium-banner-plugin {
+    box-shadow: 0 0 25px -4px #7ae469;
+  }
+
+  #premium-banner-plugin .btn {
+    background-color: #7ae469;
+    border-color: #7ae469;
+  }
+
+  #premium-banner-plugin .btn:hover {
+    background-color: rgba(91, 197, 25, 0.84);
+  }
+
+  #vip-banner-plugin .fa {
+    color: #ff9502;
+  }
+
+  #vip-banner-plugin h2 span {
+    color: #ff9502;
+  }
+
+  #vip-banner-plugin {
+    box-shadow: 0 0 25px -4px #ff9502;
+  }
+
+  #vip-banner-plugin .btn {
+    background-color: #ff9502;
+    border-color: #ff9502;
+  }
+
+  #vip-banner-plugin .btn:hover {
+    background-color: #f2a232;
+  }
+
+  .nice-banner {
+    margin: auto;
+  }
+
+  .share-btn {
+    font-size: 40px;
+  }
+</style>
+
+<div class="match-premium nice-banner" id="premium-banner-plugin" hidden>
+  <div class="nice-banner__top">
+    <div class="nice-banner__top-gradient">
+      <h1>{% trans "Хочеш пойти на свидание уже сегодня?" %}</h1>
+      <div class="nice-banner__stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+      <h2>{% trans "<span>Премиум</span> статус увеличивает твои шансы" %}</h2>
+      <h3>{% trans "Ты получишь:" %}</h3>
+      <ul>
+        <li><i class="fa fa-heart-o"></i>{% trans '<i class="fa fa-heart-o"></i>безлимитные сообщения' %}</li>
+        <li>{% trans '<i class="fa fa-heart-o"></i>в 5 раз больше совпадений' %}</li>
+        <li>{% trans '<i class="fa fa-heart-o"></i>просмотр своих гостей' %}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="nice-banner__bottom">
+    <a class="btn btn-primary btn-lg" href="{% url 'payments:click' %}?button=premium&source=banner&page_url={{request.path}}">{% trans "Стать премиум!" %}</a>
+  </div>
+</div>
+
+<div class="match-premium nice-banner" id="vip-banner-plugin" hidden>
+  <div class="nice-banner__top">
+    <div class="nice-banner__top-gradient">
+      <h1>{% trans "Хочешь чтобы тебя заметили сегодня?" %}</h1>
+      <div class="nice-banner__stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+      <h2>{% trans "<span>VIP</span> статус выделит тебя среди других" %}</h2>
+      <h3>Ты получишь:</h3>
+      <ul>
+        <li>{% trans '<i class="fa fa-heart-o"></i>в 10 раз больше внимания' %}</li>
+        <li>{% trans '<i class="fa fa-heart-o"></i>спецдоставку твоих писем' %}</li>
+        <li>{% trans '<i class="fa fa-heart-o"></i>список твоих поклонников' %}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="nice-banner__bottom">
+    <a class="btn btn-primary btn-lg" href="{% url 'payments:click' %}?button=vip&source=banner&page_url={{request.path}}">{% trans "Стать VIP!" %}</a>
+  </div>
+</div>
+<div class="match-premium nice-banner emulation-banner" id="emulation-banner-plugin" hidden>
+  <div class="nice-banner__top">
+    <div class="nice-banner__top-gradient">
+      <h1>{% trans "Не хочешь писать " %}{% if user.profile.sex == 'male' %}
+        {% trans "первым" %} {% else %} {% trans "первой" %}
+      {% endif %}?</h1>
+      <div class="nice-banner__stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+      <h2>{% trans "Мы сделаем всё за тебя! <span>БЕСПЛАТНО!</span>" %}</h2>
+      <p>{% trans "Самые лучшие" %} {% if user.profile.sex == 'male' %}
+{% trans "девушки" %} {% else %} {% trans "парни" %}
+      {% endif %} {% trans "получат от тебя внимание и ответят тем же" %}!</p>
+    </div>
+  </div>
+  <div class="nice-banner__bottom">
+    <button class="btn btn-primary btn-lg">{% trans "Начать охоту!" %}</butotn>
+  </div>
+</div>
+
+{% include "achievements/top_profiles_banner.html" %}
+
+<div class="lottery-banner" id="lottery-banner-plugin" hidden>
+  <div class="lottery-banner__top">
+    <h1 class="">{% trans "Хочешь новый iPhone 7?" %}</h1>
+    <div class="lottery-banner__middle">
+      <p>{% trans "Пригласи людей из<br>своей любимой сети<br> и iPhone 7 твой!" %}</p>
+      <br>
+      <p>{% trans "Розыгрыш каждую" %}
+      <br>
+        {% trans "неделю!" %}</p>
+    </div>
+    <h2>{% trans "Жми сюда" %}</h1>
+    <i class="fa fa-arrow-down"></i>
+  </div>
+  <div class="lottery-banner__bottom">
+    <div class="row">
+      <div class="col-md-4 share-btn share__vk">
+      </div>
+      <div class="col-md-4 share-btn share__ok">
+        <a href="https://connect.ok.ru/offer?url=http://{{request.get_host}}/accounts/signup/ok/?title=%D0%97%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D1%8C%D1%81%D1%8F+%D1%81+%D0%BD%D0%BE%D0%B2%D1%8B%D0%BC%D0%B8+%D0%BB%D1%8E%D0%B4%D1%8C%D0%BC%D0%B8+%D0%B8+%D0%B2%D1%8B%D0%B8%D0%B3%D1%80%D1%8B%D0%B2%D0%B0%D0%B9+iPhone+7+%D0%BA%D0%B0%D0%B6%D0%B4%D1%83%D1%8E+%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E%21&description=%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D1%83%D0%B9%D1%81%D1%8F+%D0%BD%D0%B0+%D1%81%D0%B0%D0%B9%D1%82%D0%B5+NaidiSebe.com+-+%D1%83+%D0%BD%D0%B0%D1%81+%D1%82%D1%8B%D1%81%D1%8F%D1%87%D0%B8+%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9%2C+%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC+%D1%82%D1%8B+%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%B5%D0%BD"><img src="{% static "images/ok.png" %}" class="share-img"></a>
+      </div>
+      <div class="col-md-4 share-btn share__fb">
+        <a onclick="shareFb();"><img src="{% static "images/fb.png" %}" class="share-img"></a>
+      </div>
+    </div>
+  </div>
+</div>

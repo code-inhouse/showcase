@@ -1,0 +1,479 @@
+{% extends 'dating/base.html' %}
+{% load rules %}
+{% load static from dating %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block title %}
+  {% if own %}
+    {% trans "Моя страница" %}
+  {% else %}
+    {{profile.name|escape}}
+  {% endif %}
+{% endblock title %}
+{% block head %}
+    <link href="{% static 'lib/css/plugins/blueimp/css/blueimp-gallery.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'lib/css/nouislider/nouislider.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/bower/cropperjs/dist/cropper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/bower/emojionearea/dist/emojionearea.min.css' %}">
+    <link rel="stylesheet" href="{% static "lib/css/emojione.css" %}"/>
+    <style>
+        #age-search-slider {
+            margin: 50px 20px 25px 20px;
+        }
+
+        .logout-form button {
+            all: unset;
+            cursor: pointer;
+        }
+
+        .question-header > * {
+            display: inline-block;
+        }
+
+        #photo-2-large-msg {
+            color: red;
+        }
+
+        .set-avatar, .delete-photo {
+            position: absolute;
+            display: block;
+            translate: translateZ(0);
+        }
+
+        .set-avatar {
+            bottom: 50px;
+            right: 140px;
+        }
+
+        .delete-photo {
+            bottom: 50px;
+            right: 50px;
+        }
+
+        .deleted-photo {
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        }
+
+        #avatar {
+            cursor: pointer;
+        }
+
+        .error-message, .answer-error-msg {
+            color: red;
+        }
+
+        .new-avatar-container {
+            margin: auto;
+            max-width: 300px;
+            max-height: 400px;
+        }
+
+        .new-avatar-container img {
+            max-width: 100%; /* do not delete this */
+        }
+
+        body {
+            /* fixes bug with blueimp
+               when after avatar upload it was impossible to scroll*/
+            overflow-y: scroll !important;
+        }
+
+        .answer-input {
+            background-color: #f3f3f4;
+            resize: none;
+            margin: 12px 0;
+            padding: 15px;
+            font-size: 13px;
+        }
+
+        .cancel-editing-btn {
+            margin-left: 20px;
+        }
+
+        .faq-answer.unanswered {
+          color: #999;
+        }
+    </style>
+{% endblock head %}
+
+{% block preloader %}
+
+{% endblock preloader %}
+
+{% block content %}
+    {% get_current_language as LANGUAGE_CODE%}
+    <script>
+        var FETCH_ONLY_MY_POSTS = true;
+        var LIKED = {% if liked %} true {% else %} false {% endif %};
+        var OWN = {% if own %} true {% else %} false {% endif %};
+        var PROFILE_CONFIG = {
+            status: '{{profile.status}}',
+            id: {{profile.id}},
+            age: {{profile.age}},
+            sex: '{{profile.sex}}',
+            name: '{{profile.name|escapejs}}',
+            bodyType: '{{profile.build}}',
+            lookingFor: {
+                sex: '{{profile.looking_for}}',
+                age: {
+                    from: {{profile.lower_age_bound}},
+                    to: {{profile.upper_age_bound}}
+                }
+            },
+            purpose: '{{profile.purpose}}',
+            attitudes: {
+                smoking: '{{profile.smoking_attitude}}',
+                alcohol: '{{profile.alcohol_attitude}}'
+            },
+            thumbnail: '{{profile.thumbnail_url}}'
+        }
+        var PHOTOS = [
+        {% for photo in profile.photos.active|dictsortreversed:'created' %}
+            {
+                id: {{photo.id}},
+                url: '{{photo.image.url}}',
+                deleted: false,
+                isAvatar: {% if photo.is_avatar %}true{% else %}false{% endif %}
+            },
+        {% endfor %}
+        ]
+        {% if own %}
+        var ANSWERED_QUESTIONS = [
+            {% for answer in profile.answers.all %}
+            {
+                question: {
+                    text: '{{answer.question.text|escapejs}}',
+                    id: {{answer.question.pk}},
+                    textEn: '{{answer.question.text_en|escapejs}}',
+                },
+                holder: '{{answer.question.holder|escapejs}}',
+                holderEn: '{{answer.question.holder_en|escapejs}}',
+                answer: '{{answer.text|escapejs}}',
+            },
+            {% endfor %}
+        ]
+        var UNANSWERED_QUESTIONS = [
+            {% for question in questions %}
+            {
+                question: {
+                    text: '{{question.text|escapejs}}',
+                    textEn: '{{answer.question.text_en|escapejs}}',
+                    id: {{question.pk}}
+                },
+                holderEn: '{{answer.question.holder_en|escapejs}}',
+                holder: '{{question.holder|escapejs}}'
+            },
+            {% endfor %}
+        ]
+        {% endif %}
+        {% has_perm 'send_message_to' request.user profile as can_send_msg %}
+        window.CAN_SEND_MSG = {% if can_send_msg %}true{%else%}false;
+        {% endif %};
+        var CAN_SEE_BIG_PHOTOS = {% if can_see_big_photos or own %}true{% else %}false{% endif %};
+    </script>
+    <div class="wrapper wrapper-content">
+            <div class="row animated fadeInRight">
+                <div class="col-md-5">
+                    <div class="ibox float-e-margins">
+                        <div>
+                          {% if user.profile.status == 'moderator' %}
+                            <button id="delete-profile-btn">Снести профиль к ебеням</button>
+                          {% endif %}
+                            <div class="ibox-content border-left-right clearfix profile-main__header">
+                                <div class="profile-main__img pull-left ava-status-sign ava-status-sign__{{profile.status}}">
+                                {% if not profile.avatar %}
+                                  <img alt="image" class="img-responsive" id="avatar" src="{% static 'images/default_avatar.png' %}">
+                                {% else %}
+                                  <img src="{{profile.avatar.thumbnail_url}}" alt="Avatar" class="img-responsive " id="avatar">
+                                {% endif %}
+                                </div>
+                                <div class="profile-like">
+                                  <div class="name-block">
+                                    <h1 class="profile-like__name">{{profile.name}}</h1>
+                                    {% if own %}
+                                      {% has_perm 'change_name' user as can_change_name %}
+                                      {% if can_change_name %}
+                                        <i class="fa fa-edit change-name-control" id="trigger-name-change-btn"></i>
+                                      {% endif %}
+                                    {% endif %}
+                                  </div>
+                                  {% if own %}
+                                    <form class="change-name-form" hidden>
+                                      <input type="text" id="change-name-input" class="change-name-input">
+                                      <i class="fa fa-check change-name-control" id="confirm-name-change-btn"></i>
+                                      <i class="fa fa-times change-name change-name-control" id="cancel-name-change-btn"></i>
+                                    </form>
+                                  {% endif %}
+                                  <p class="profile-like__age" id="age"></p>
+                                  {% if own %}
+                                    {% has_perm 'set_invisibility' user as can_set_invisibility %}
+                                    {% if can_set_invisibility %}
+                                      <div>
+                                        <span>
+                                          <input type="checkbox" {% if profile.is_invisible %}checked{% endif %} id="change-invisibility">
+                                        {% trans "Инкогнито" %}</span>
+                                      </div>
+                                    {% endif %}
+                                  {% endif %}
+                                  {% if profile.is_admin %}
+                                     <p class="profile-like__age">{% trans "Администрация" %} <i class="fa fa-check"></i></p>
+                                  {% endif %}
+                                  {% if not own %}
+                                  <div class="profile-reting">
+                                    <div class="profile-reting__first-block">
+                                      <p class="rating-block__title">{% trans "Рейтинг" %}:</p>
+                                    </div>
+                                    <div class="profile-reting__second-block">
+                                      <p class="rating-block__rating">{{profile.rating}}%</p>
+                                      <p class="rating-block__rank">{{profile.rank}}</p>
+                                    </div>
+                                  </div>
+                                  <div class="user-button profile-like__btn">
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-primary btn-outline profile__btn-main btn-like" id="like-btn" data-state="{% if liked %}liked{% else %}notLiked{% endif %}"><i class="fa fa-heart"></i> <span>{% if liked %} {% trans "Убрать лайк" %} {% else %} {% trans "Поставить лайк" %}{% endif %}</span></button>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-success btn-outline profile__btn-main" data-toggle="modal" data-target="{% if can_send_msg %}#send-msg-modal{% else %}#get-premium-modal{% endif %}">{% trans "Отправить сообщение" %}</button>
+                                        </div>
+                                      </div>
+                                  </div>
+                                  {% else %}
+                                    <label for="add-photo" class="btn btn-primary btn-outline add-avatar-label profile__btn-main" id="add-avatar-label">{% trans "Изменить фото" %}</label>
+                                  {% endif %}
+                                </div>
+                            </div>
+                            <div class="ibox-content profile-content">
+                                <div class="profile-content__about">
+                                  <h5 class="profile-content__title">
+                                      {% trans "О себе" %}
+                                  </h5>
+                                  <p id="about-me"></p>
+                                  {% if own %}
+                                  <button class="btn edit-btn" role="btn" id="toggle-update-char-options"><i class="fa fa-edit"></i></button>
+                                  <form class="form-group" method="POST" action="{% url 'dateprofile:update_character' %}" hidden id="update-char-options">
+                                      {% csrf_token %}
+                                      <div class="form-group">
+                                          <label for="{{ char_form.alcohol_attitude.id_for_label }}">{% trans "Отношение к алкоголю" %}: </label>
+                                          {{ char_form.alcohol_attitude|add_class:'form-control' }}
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="{{ char_form.smoking_attitude.id_for_label }}">{% trans "Отношение к курению" %}</label>
+                                          {{ char_form.smoking_attitude|add_class:'form-control' }}
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="{{ char_form.build.id_for_label }}">{% trans "Телосложение" %}</label>
+                                          {{ char_form.build|add_class:'form-control' }}
+                                      </div>
+                                      <a class="btn btn-primary" role="button" id="update-character-button">{% trans "Сохранить" %}</a>
+                                  </form>
+                                  {% endif %}
+                                </div>
+                                <div class="profile-content__looking">
+                                  <h5 class="profile-content__title">
+                                      {% trans "Ищу" %}
+                                  </h5>
+                                  <p id="looking-for"></p>
+                                  {% if own %}
+                                  <button class="btn edit-btn" role="btn" id="toggle-update-search-options"><i class="fa fa-edit"></i></button>
+                                  <form class="form-group" method="POST" action="{% url 'dateprofile:update_search' %}" id="update-search-options" hidden>
+                                      {% csrf_token %}
+                                      <input type="text" id="lower-age-bound" name="{{looking_for_form.lower_age_bound.name}}" hidden value="{{looking_for_form.lower_age_bound.value}}">
+                                      <input type="text" id="upper-age-bound" name="{{looking_for_form.upper_age_bound.name}}" hidden value="{{looking_for_form.upper_age_bound.value}}">
+                                      <div class="form-group">
+                                          <p>{% trans "Ищу" %}</p>
+                                          <input type="radio" id="looking-for-male" name="{{looking_for_form.looking_for.name}}" value="male" {% if profile.looking_for == 'male' %} checked {% endif %}>
+                                              <label>{% trans "Мужчину" %}</label>
+                                          </input>
+                                          <input type="radio" id="looking-for-female" name="{{looking_for_form.looking_for.name}}" value="female" {% if profile.looking_for == 'female' %} checked {% endif %}>
+                                              <label>{% trans "Женщину" %}</label>
+                                          </input>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="purpose">{% trans "Цель знакомства" %}</label>
+                                          <select name="{{looking_for_form.purpose.name}}" id="purpose" class="form-control">
+                                              <option value="long_term" {% if profile.purpose == 'long_term' %}selected
+                                              {% endif %}> {% trans "Серьёзные отношения" %} </option>
+                                              <option value="short_term" {% if profile.purpose == 'short_term' %} selected
+
+                                              {% endif %}> {% trans "Быстрые отношения" %} </option>
+                                              <option value="new_friends" {% if profile.purpose == 'new_friends' %} selected
+
+                                              {% endif %}> {% trans "Новые знакомства" %}</option>
+                                          </select>
+                                      </div>
+                                      <p>{% trans "Возрастом" %}: </p>
+                                      <div id="age-search-slider"></div>
+                                      <a class="btn btn-primary" role="button" id="update-looking-for-button">{% trans "Сохранить" %}</a>
+                                  </form>
+                                  {% endif %}
+                              </div>
+                            </div>
+                            <div class="ibox-content profile-content profile-content__photo">
+                                <h5 class="profile-content__title profile-content__title--photo">{% trans "Мои фото" %}</h5>
+                                <div class="lightBoxGallery lightbox">
+                                {% with photos=profile.photos.active%}
+                                {% for photo in photos|dictsortreversed:'created' %}
+                                  {% if can_see_big_photos or own %}
+                                    <a class="lightbox__small-photo"data-gallery href="{{photo.image.url}}" title="{{forloop.counter}}/{{photos|length}}" {% if photo == profile.avatar %}id="avatar-gallery"{% endif %} {% if forloop.counter >= 6 %}hidden{% endif %}>
+                                      <img src="{{photo.image.url}}" alt="">
+                                    </a>
+                                  {% else %}
+                                    {% if forloop.counter < 6 %}
+                                    <span class="lightbox__small-photo">
+                                      <img src="{{photo.image.url}}" alt="">
+                                    </span>
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                                {%endwith%}
+                                {% if own %}
+                                <a id="lightbox-upload-photo" class="lightbox__small-photo lightbox__small-photo--upload btn btn-primary btn-outline"><p>{% trans "Загрузить" %}</p></a>
+                                <form id="add-photo-form" class="add-photo form-group" method="POST" enctype="multipart/form-data" action="{% url 'dateprofile:upload' %}">
+                                    {% csrf_token %}
+                                    {{ photo_form.is_avatar|attr:'hidden:true' }}
+                                    <label class="" for="add-photo" id="add-photo-label">{% trans "Добавить фото" %}<i class="fa-file-picture-o"></i></label>
+                                    <input id="add-photo" type="file" accept="image/jpeg, image/png" style="display: none;" name="{{ photo_form.image.name }}">
+                                    <p id="photo-too-large-msg" hidden>{% trans "Размер фото не должен превышать 5 мегабайт" %}</p>
+                                    <p id="photo-adding-msg" hidden>{% trans "Добавляем" %}</p>
+                                </form>
+                                {% endif %}
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                    </div>
+                {% if not profile.is_deleted %}
+
+                <div class="col-md-7 profile-question">
+                    <div class="ibox float-e-margins" id="{% if own %}preact-render-root{% endif %}">
+                        {% if not own %}
+                        <div class="ibox-content" id="questions-section">
+                            {% if profile.answers.all %}
+                            {% for answer in profile.answers.all %}
+                                <div class="answered-question">
+                                <div class="profile-question__item">
+                                    <div class="">
+                                        <div class="question-header">
+                                            <span class="faq-question">
+                                            {% if LANGUAGE_CODE != 'ru' %}
+                                              {{answer.question.text_en}}
+                                            {% else %}
+                                              {{answer.question.text}}
+                                            {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <form class="form-group answer-form" method="post" action="{% url 'dateprofile:answer_question' answer.question.pk %}" hidden>
+                                        {% csrf_token %}
+                                        <p class="error-message" hidden="">{% trans "Ответ не должен быть пустым и должен содержать не более 2000 символов" %}</p>
+                                        <textarea name="{{ answer_form.text.name }}" cols="30" rows="10" class="form-control" placeholder="{{answer.question.holder}}">{{ answer.text }}</textarea>
+                                        <a class="btn btn-primary answer-answered-question">{% trans "Ответить" %}</a>
+                                    </form>
+                                </div>
+                                <div class="answer-container">
+                                    <div class="">
+                                        <div class="faq-answer">
+                                            <p style="white-space: pre-wrap;">{{answer.text}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                              <div id="no-answers-no-encourage" {% if not encouraged %}hidden{% endif %}>
+                                <p>{% trans "Вы уже попросили пользователя ответить на вопросы, подождём, пока он это сделает." %}</p>
+                              </div>
+                              <div id="no-answers-encourage" {% if encouraged %}hidden{% endif %}>
+                                <p>{% trans "Пользователь ещё не ответил ни на один вопрос" %}</p>
+                                <button class="btn btn-primary btn-outline" id="encourage-btn">{% trans "Попросить ответить на вопрос" %}</button>
+                              </div>
+                            {% endif %}
+                        </div>
+                            {% endif %}
+                        <div id="preact-render-root"></div>
+                    </div>
+                </div>
+                {% else %}
+                  <div class="col-md-7 profile-question">
+                     <div class="ibox float-e-margins">
+                      <div class="ibox-content">
+                        <h2>Пользователь нашел свою любовь и покинул сайт</h2>
+                      </div>
+                     </div>
+                  </div>
+                {% endif %}
+            </div>
+           <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+                <div class="slides"></div>
+                <h3 class="title">Title</h3>
+                <a class="prev">‹</a>
+                <a class="next">›</a>
+                <a class="close">×</a>
+                {% if own %}
+                <a class="make-avatar" id="make-avatar-btn">{% trans "Сделать фотографией профиля" %}</a>
+                <a class="blueimp-gallery__delete-photo" id="delete-photo-btn">{% trans "Удалить фото" %}</a>
+                {% endif %}
+            </div>
+        </div>
+{% endblock content %}
+
+{% block afterwrap %}
+    <div class="modal fade" id="new-avatar-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="new-avatar-container">
+                <img src="" alt="Новый аватар">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Отменить" %}</button>
+            <button type="button" class="btn btn-primary" id="save-avatar-btn">{% trans "Сделать фотографией профиля" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="set-avatar-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="new-avatar-container">
+                <img src="" alt="Новый аватар">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Отменить" %}</button>
+            <button type="button" class="btn btn-primary" id="set-avatar-btn">{% trans "Сделать фотографией профиля" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="delete-profile-confirmation-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Точно удалить профиль?</h2>
+          </div>
+          <div class="modal-body">
+            <button class="btn btn-danger" id="confirm-profile-deletion-btn">Да</button>
+            <button class="btn" data-dismiss="modal">Пусть живет</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "chats/send-message-modal.html" %}
+    {% include "dateprofile/photos-modal.html" %}
+{% endblock afterwrap %}
+
+{% block scripts %}
+    <script src="{% static 'lib/js/wNumb.js' %}"></script>
+    <script src="{% static 'lib/js/nouislider.min.js' %}"></script>
+    <script src="{% static "compiled/js/commonChunk.js" %}?v=3"></script>
+    <script src="{% static 'compiled/js/profile.js' %}?v=7" defer></script>
+    <script src="{% static 'lib/bower/cropperjs/dist/cropper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'lib/bower/emojionearea/dist/emojionearea.min.js' %}"></script>
+    <script src="{% static "lib/js/emojione.js" %}"></script>
+    <script src="{% static 'lib/js/plugins/blueimp/jquery.blueimp-gallery.min.js' %}"></script>
+{% endblock scripts %}

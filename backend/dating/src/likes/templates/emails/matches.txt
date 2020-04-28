@@ -1,0 +1,6 @@
+{% for profile, link, avatar in profiles %}
+    {{profile.name}}, {{profile.age}} лет, {{link}}
+{% endfor %}
+{{matches_url}}
+{{unsubscribe_url}}
+

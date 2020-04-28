@@ -1,0 +1,85 @@
+{% load static from dating %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% trans "Вход" %}</title>
+
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'lib/css/nouislider/nouislider.min.css' %}">
+    <link href="{% static 'compiled/css/common.css' %}" rel="stylesheet">
+    {% include "dateprofile/vk_pixel_landing.html" %}
+</head>
+
+<body class="registration gray-bg">
+  <a href="/accounts/signup" class="btn btn-primary registration__login">{% trans "Регистрация" %}</a>
+  {% include "dateprofile/landing_lang_change.html" %}
+  <div class="registration__logo"></div>
+  <p class="landing-text">{% trans "Найди друзей, вторую половинку или любовь на всю жизнь!" %}</p>
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="ibox-content ibox-content--radius">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                                <p class="login-message">{{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <form class="m-t {% if form.has_errors %} has-error {% endif %}" role="form" method="POST" action="{% url 'account_login' %}">
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p class="login-error">{{error|escape}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% csrf_token %}
+                        <h3 class="signin__title">{% trans "Войти" %}</h3>
+                        <div class="form-group">
+                            {% trans "Почта" as email_trans %}
+                            <p>{{form.login.errors}}</p>
+                            {% render_field form.login class='form-control' required='' placeholder=email_trans%}
+                        </div>
+                        <div class="form-group">
+                            {% trans "Пароль" as password_trans %}
+                            <p>{{form.password.errors}}</p>
+                            {% render_field form.password class='form-control' required='' placeholder=password_trans%}
+                        </div>
+                        <div class="form-group" style="margin-bottom: 2px;">
+                            {% render_field form.remember class='' checked='' %}
+                            <label for="{{form.remember.id_for_label}}">{% trans "Запомнить меня" %}</label>
+                        </div>
+                        {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        {% endif %}
+                        <a href="{% url 'account_reset_password' %}" style="display: inline-block; margin-bottom: 5px;">{% trans "Забыли пароль?" %}</a>
+                        <button type="submit" class="btn btn-primary block full-width m-b">{% trans "Войти" %}</button>
+                        <div id="start-vk-auth">
+                            <p class="separator"><span>{% trans "или" %}</span></p>
+                            <a class="vk-button" href="{% provider_login_url 'vk' %}" alt="">{% trans "Войти через Вконтакте" %}</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var errs = document.querySelectorAll('.login-error');
+        for (var i = 0, err=errs[0]; i < errs.length; err=errs[++i]) {
+            if (err.textContent == 'E-mail адрес и/или пароль не верны.') {
+                err.textContent += ' Возможно вы регистрировались с помощью Вконтакте? Тогда нажмите на кнопку "Вконтакте"';
+            }
+        }
+    </script>
+</body>
+</html>

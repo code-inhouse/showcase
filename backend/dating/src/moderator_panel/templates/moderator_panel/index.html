@@ -1,0 +1,12 @@
+{% extends "moderator_panel/base.html" %}
+
+{% block content %}
+    <div class="card">
+        <ul>
+            <li><a href="{% url 'moderator:feedbacks_page' %}">Отзывы</a></li>
+            <li><a href="{% url 'moderator:photos_page' %}">Фото</a></li>
+        </ul>
+    </div>
+
+
+{% endblock content %}

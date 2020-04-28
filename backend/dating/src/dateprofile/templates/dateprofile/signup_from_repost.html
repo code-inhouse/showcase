@@ -1,0 +1,9 @@
+{% extends "dateprofile/signup.html" %}
+
+{% block additional_scripts %}
+    <script defer>
+        $.post(window.location.href, function(data) {
+            console.log(data)
+        });
+    </script>
+{% endblock additional_scripts %}

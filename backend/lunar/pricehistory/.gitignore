@@ -1,0 +1,8 @@
+node_modules/
+clients.txt
+banned.txt
+admin.txt
+persistence.json
+data/*
+.DS_Store
+.vscode

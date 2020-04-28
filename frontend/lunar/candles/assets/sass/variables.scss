@@ -1,0 +1,70 @@
+$green: #43A047;
+$red: #F44336;
+$blue: #2196F3;
+$orange: #fbc02d;
+$dark: #171b29;
+$pink: #E91E63;
+$purple: #3e2161;
+$white: #ffffff;
+
+$easeOutExpo: cubic-bezier(0.005, 1.000, 0.220, 1.000);
+$easeElastic: cubic-bezier(0, 1.4, 1, 1);
+
+$candles-icon-bitcoin: \e900;
+$candles-icon-btc: \e901;
+$candles-icon-dollar: \e902;
+$candles-icon-down: \e903;
+$candles-icon-eth: \e904;
+$candles-icon-euro: \e905;
+$candles-icon-info: \e906;
+$candles-icon-monero: \e907;
+$candles-icon-pound: \e908;
+$candles-icon-up: \e90a;
+$candles-icon-warning: \e90b;
+$candles-icon-yen: \e90c;
+$candles-icon-cog: \e90d;
+$candles-icon-check: \e90e;
+$candles-icon-coin: \e90f;
+$candles-icon-history: \e910;
+$candles-icon-play: \e911;
+$candles-icon-info-circle: \e912;
+$candles-icon-bear: \e913;
+$candles-icon-bull: \e914;
+$candles-icon-external-link: \e915;
+$candles-icon-night: \e916;
+$candles-icon-day: \e917;
+$candles-icon-cross: \e918;
+$candles-icon-expand: \e909;
+$candles-icon-balance: \e919;
+$candles-icon-magic: \e91a;
+$candles-icon-numbers: \e91b;
+$candles-icon-skull: \e91e;
+$candles-icon-edit: \e91f;
+$candles-icon-add: \e920;
+$candles-icon-rip: \e921;
+$candles-icon-eye: \e922;
+$candles-icon-eye-crossed: \e923;
+$candles-icon-stopwatch: \e91c;
+$candles-icon-power-on: \e91d;
+$candles-icon-power-off: \e924;
+$candles-icon-volume: \e925;
+$candles-icon-volume-muted: \e926;
+$candles-icon-axis: \e927;
+$candles-icon-locked: \e928;
+$candles-icon-unlocked: \e929;
+$candles-icon-line-chart: \e92a;
+$candles-icon-candlestick-chart: \e92b;
+$candles-icon-xrp: \e92c;
+$candles-icon-ada: \e92d;
+$candles-icon-trx: \e92e;
+$candles-icon-neo: \e92f;
+$candles-icon-ltc: \e930;
+$candles-icon-xmr: \e931;
+$candles-icon-iota: \e932;
+$candles-icon-eos: \e933;
+
+$exchanges: bitmex binance bitfinex okex huobi bitstamp gdax hitbtc poloniex liquid coinex kraken deribit;
+
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}

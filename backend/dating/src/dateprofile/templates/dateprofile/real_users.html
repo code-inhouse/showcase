@@ -1,0 +1,54 @@
+{% load static from dating %}
+{% load i18n %}
+<div class="real-users-left">
+  <div class="real-users__block real-users__block--1 ibox-content">
+    <div class="real-users__photo pull-left">
+      <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/user-1.jpg' %}">
+    </div>
+    <div>
+      <h3 class="real-users__name">{% trans "Танюшка" %}</h3>
+      <p class="real-users__old">33 {% trans "лет" %}</p>
+    </div>
+    <p class="real-users__quote">
+      {% trans "оооооо.... <br>на работе завал, <br>просто спасите" %}
+    </p>
+  </div>
+  <div class="real-users__block real-users__block--2 ibox-content">
+    <div class="real-users__photo pull-left">
+      <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/user-4.jpg' %}">
+    </div>
+    <div>
+      <h3 class="real-users__name">{% trans "Ваня" %}</h3>
+      <p class="real-users__old">26 {% trans "лет" %}</p>
+    </div>
+    <p class="real-users__quote">
+      {% trans "что, романтики уже <br>никому не нужны? :)<br>" %}
+    </p>
+  </div>
+</div>
+<div class="real-users-right">
+  <div class="real-users__block real-users__block--1 ibox-content">
+    <div class="real-users__photo pull-left">
+      <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/user-3.jpg' %}">
+    </div>
+    <div>
+      <h3 class="real-users__name">{% trans "Николь" %}</h3>
+      <p class="real-users__old">27 {% trans "лет" %}</p>
+    </div>
+    <p class="real-users__quote">
+        {% trans "пиши мне если готов <br>к серьёзным отношениям<br>" %}
+    </p>
+  </div>
+  <div class="real-users__block real-users__block--2 ibox-content">
+    <div class="real-users__photo pull-left">
+      <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/user-2.jpg' %}">
+    </div>
+    <div>
+      <h3 class="real-users__name">{% trans "Анечка" %}</h3>
+      <p class="real-users__old">25 {% trans "лет" %}</p>
+    </div>
+    <p class="real-users__quote">
+        {% trans "Ищу хорошего парня,<br> мажоры и папики, <br>проходим мимо" %}
+    </p>
+  </div>
+</div>

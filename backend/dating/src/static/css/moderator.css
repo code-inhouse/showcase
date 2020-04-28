@@ -1,0 +1,77 @@
+body {
+    background: #159957; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #159957 , #155799); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #159957 , #155799); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#render-root {
+    margin: 30px auto;
+    max-width: 500px;
+}
+
+.loader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile {
+    display: flex;
+}
+
+.avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 3px;
+    display: block;
+    flex-grow: 2;
+}
+
+.card {
+    background-color: white;
+    padding: 10px 20px;
+    max-width: 450px;
+    margin-top: 30px;
+    margin-bottom: 30;
+    border-radius: 3px;
+    border: 2px solid #eee;
+    box-shadow: 0 0 5px #38293a;
+}
+
+.card-metadata {
+    flex-grow: 10;
+    margin-left: 10px;
+    display: block;
+}
+
+.profile-name {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.profile-name a:hover {
+    color: #2784ab;
+}
+
+.profile-name a {
+    color: #274eab;
+    text-decoration: none;
+}
+
+.card-type {
+    margin-top: 3px;
+    font-size: 0.7em;
+    color: grey;
+}
+
+.profile-name .id {
+    margin-left: 6px;
+    color: grey;
+    font-size: 0.7em;
+}
+
+.moderated-photo {
+    max-width: 350px;
+    display: block;
+    margin: 20px auto 30px auto;
+}

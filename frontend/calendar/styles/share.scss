@@ -1,0 +1,57 @@
+.share-pane {
+    position: fixed;
+    background: white;
+    overflow: scroll;
+    top: 56px;
+    right: 0;
+    width: 400px;
+    z-index: 11;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 600px) {
+      bottom: 0;
+      width: 100vw;
+      top: auto;
+      height: 280px;
+    }
+
+    @media (max-height: 414px) {
+      bottom: 0;
+    }
+}
+
+.share-pane__wrapper {
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #00000057;
+}
+
+.share-pane__tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.share-pane__tab {
+    padding-top: 16px;
+}
+
+.share-pane__tab {
+  .ant-alert {
+    height: 79px;
+  }
+}
+
+.share-pane__link {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+
+.ant-input.share-pane__link__input {
+    margin-right: 8px;
+}

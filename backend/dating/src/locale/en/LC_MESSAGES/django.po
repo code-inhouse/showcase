@@ -1,0 +1,1352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-02 14:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/achievements/models.py:55
+msgid "Загрузить аватар"
+msgstr "Upload avatar"
+
+#: src/achievements/models.py:60
+msgid ""
+"Ай-яй-яй, у тебя нет фотографии! Вряд ли кто-то захочет общаться с "
+"незнакомцем. Нажми “Изменить фото” на своей странице и загрузи своё любимое "
+"фото"
+msgstr ""
+"Wow, you don't have a photo yet! Nobody would like to chat with a stranger. "
+"Press 'Change photo' on your page and upload your best photo"
+
+#: src/achievements/models.py:69
+msgid ""
+"Загрузите свою фотографию Для этого нажмите “Изменить фото” на своей странице"
+msgstr "Upload your photo To do this press 'Change photo' on your page"
+
+#: src/achievements/models.py:81
+msgid "Перейти на чужую страницу"
+msgstr "Visit another page"
+
+#: src/achievements/models.py:86
+msgid ""
+"Кто-то ходит в гости по утрам, а мы в любое время. На нашем сайте можно "
+"зайти в гости к любому человеку, просто нажав на его фото. Вы увидите его "
+"страницу, фотографии и заметки. Попробуйте!"
+msgstr ""
+"Somebody visits friends only during morning, but we do it anytime. On our "
+"website you can visit anyone just by pressing on his photo. You will his "
+"page, photos & posts. Try it!"
+
+#: src/achievements/models.py:96
+msgid ""
+"Зайдите на страницу другого человека Для этого нажмите на его/её фотографию"
+msgstr "Visit another user To do this click on his/her photo"
+
+#: src/achievements/models.py:114
+msgid "Лайкнуть 10 человек"
+msgstr "Like 10 people"
+
+#: src/achievements/models.py:119
+msgid ""
+"Пора начать охоту! Поставь лайк (“нравится”) 10 людям, которые тебе "
+"нравятся. Для этого нажимайте на кнопку с сердцем под фотографией человека в "
+"разделе “Найти пару”"
+msgstr ""
+"Time to find your love! Like 10 people, whom you find interesting. To do "
+"this click on the heart icon under user's photo on 'Find matches' page"
+
+#: src/achievements/models.py:129
+msgid "Поставь лайк 10 людям Для этого жми кнопку с сердечком в “Найти пару”"
+msgstr "Like 10 people To do this click the heart button in 'Find mathches'"
+
+#: src/achievements/models.py:156
+msgid "Ответить на 3 вопроса в профиле"
+msgstr "Answer 3 questions in your profile"
+
+#: src/achievements/models.py:161
+msgid ""
+"Люди хотят знать больше о вас, расскажите! Для этого на своей странице "
+"справа нажмите “Показать больше вопросов” и ответьте на 3 любых вопроса"
+msgstr ""
+"People would like to know more about you, so tell them! To do so click 'Show "
+"more questions' on your page and answer any 3 questions you like"
+
+#: src/achievements/models.py:170
+msgid "Расскажите больше о себе Ответьте на 3 вопроса на своей странице"
+msgstr "Tell more about yourself Answer any 3 questions on your page"
+
+#: src/achievements/models.py:198
+msgid "Загрузить 2 дополнительных фото в альбом"
+msgstr "Upload 2 additional photos into the album"
+
+#: src/achievements/models.py:203
+msgid ""
+"Больше фото - больше шанс понравиться другим. Можешь загрузить сколько "
+"угодно фотографий в альбом на своей странице. Можно начать с двух фото."
+msgstr ""
+"More photos - bigger the chance to be found. You can upload any amount of "
+"photos in the album on your page. You may start with two photos."
+
+#: src/achievements/models.py:212
+msgid ""
+"Загрузи ещё 2 своих фото в альбом Для этого нажми “Загрузить” в разделе “Мои "
+"фото” на своей странице"
+msgstr ""
+"Upload 2 more photos into the album To do so press 'Upload' in 'My photos' "
+"section on your page"
+
+#: src/achievements/models.py:243
+msgid "Посмотреть страницу новостей"
+msgstr "Visit newsfeed page"
+
+#: src/achievements/models.py:248
+msgid ""
+"На нашем сайте много людей, они все тоже что-то рассказывают о себе. Зайди в "
+"раздел “Новости”, посмотри. Так же противоположный пол видит твои обновления."
+msgstr ""
+"There are many people on our website, all of them are telling something "
+"about themselves. Go to 'Newsweed' page, have a look. Another people can "
+"also see your updates."
+
+#: src/achievements/models.py:257
+msgid ""
+"Узнай, что нового у подходящих тебе людей Для этого нажми “Новости” в меню "
+"слева "
+msgstr ""
+"Find out what's up with people who match you To do so click 'Newsfeed' in "
+"the left menu"
+
+#: src/achievements/models.py:265
+msgid "Сделать пост с текстом и фото"
+msgstr "Create post with text and photo"
+
+#: src/achievements/models.py:270
+msgid ""
+"Пришло время и нам рассказать о своей жизни. Создай заметку с текстом и "
+"фотографией, пускай увидят все! Для этого введи текст на своей странице, где "
+"написано “Что нового?” и прикрепи к тексту фото"
+msgstr ""
+"Not it's time to tell about your life. Create a post with text and photo, "
+"let others to see it! To do so enter text on your page, under the 'What's "
+"up?' and add photo to the text"
+
+#: src/achievements/models.py:280
+msgid ""
+"Поделись своими новостями с другими На своей странице напиши свои мысли под "
+"надписью “Что нового?” и прикрепи подходящее фото"
+msgstr ""
+"Share your news with others On your page write your thoughts under the "
+"'What's up?' title and add appropriate photo"
+
+#: src/achievements/models.py:307
+msgid "Написать 5 сообщений разным людям"
+msgstr "Send messages to 5 different people"
+
+#: src/achievements/models.py:312
+msgid ""
+"Теперь твоя страница готова, можно смело писать другим людям. Начни разговор "
+"с 5 новыми людьми, которые тебе нравятся. Начни с  чего-то интереснее, чем "
+"просто “привет” ;)"
+msgstr ""
+"Now your page is ready, it's time to chat with others. Start conversation "
+"with 5 new people, whom you like. Start with something slightly more "
+"interesting than just 'hi' ;)"
+
+#: src/achievements/models.py:322
+msgid ""
+"Напиши 5 новым людям Для этого жми “Отправить сообщение” рядом с фото "
+"человека"
+msgstr ""
+"Send messages to 5 new people To do so click 'Send message' by the user's "
+"photo"
+
+#: src/achievements/models.py:352
+msgid "Написать отзыв/предложение в Поддержку"
+msgstr "Write feedback"
+
+#: src/achievements/models.py:357
+msgid ""
+"Мы надеемся, что тебе нравится наш сайт. Тогда подскажи, как нам сделать его "
+"ещё лучше. Для этого нажми в правом верхнем углу кнопку “Помощь” и напиши "
+"свои пожелания и предложения"
+msgstr ""
+"We hope, that you like our website. Then tell us, how can we improve it. To "
+"do so click 'Help' in right uppper corner and tell us what you think"
+
+#: src/achievements/models.py:366
+msgid ""
+"Помоги нам сделать сайт лучше Для это напиши свои предложения, нажав кнопку "
+"“Помощь” в верхнем углу"
+msgstr ""
+"Help to improve our website To do so write us some feedback, you can click "
+"button 'Help' in upper right corner"
+
+#: src/achievements/models.py:385
+msgid "Провести на сайте 5 дней"
+msgstr "Spend 5 days on our website"
+
+#: src/achievements/models.py:390
+msgid ""
+"Спасибо за отзыв, мы обязательно его учтем и станем лучше! Последнее задание "
+"самое легкое. Продолжай заходить на наш сайт, общаться и через 5 дней ты "
+"получишь 100% рейтинг. Желаем удачи и много новых знакомств! P.S. скоро "
+"будут новые задания ;)"
+msgstr ""
+"Thanks for the feedback, we will take it in the consideration and become "
+"better! The last task is the easiest. Continue to visit our website, chat "
+"with others and in 5 days you will receive 100% rating. We wish you good "
+"luck and many new friend! P. S. soon there will be new tasks ;)"
+
+#: src/achievements/models.py:401
+msgid ""
+"Наслаждайся общением и знакомствами каждый день. Через 5 дней твой рейтинг "
+"станет 100%"
+msgstr ""
+"Enjoy chatting with others and new people every day. In 5 days your rating "
+"will be 100%"
+
+#: src/achievements/models.py:409
+msgid "Посмотреть страницу симпатий"
+msgstr "Visit sympathies page"
+
+#: src/achievements/models.py:414
+msgid ""
+"У нас есть раздел Симпатии. Тут мы сохраняем тех, кто тебе нравится. Также "
+"тут можно увидеть и своих поклонников."
+msgstr ""
+"We have Sympathies page. There we save those, whom you like. Also there you "
+"will be able to see those who like you."
+
+#: src/achievements/models.py:422
+msgid ""
+"Посмотри своих любимчиков и поклонников! Для этого нажми “Симпатии” в меню "
+"слева"
+msgstr ""
+"Go see your fans and the ones you like! To do this click on 'Sympathies' on "
+"the left menu"
+
+#: src/achievements/templates/achievements/top_profiles_banner.html:7
+msgid "ТОП-пользователи"
+msgstr "TOP Users"
+
+#: src/achievements/templates/achievements/top_profiles_banner.html:12
+#: src/achievements/templates/achievements/top_profiles_banner.html:22
+#: src/achievements/templates/achievements/top_profiles_banner.html:32
+#: src/dateprofile/templates/dateprofile/profile.html:222
+#: src/dating/templates/dating/base.html:92
+msgid "Рейтинг"
+msgstr "Rating"
+
+#: src/achievements/templates/achievements/top_profiles_banner.html:41
+msgid "Как попасть сюда?"
+msgstr "How to become one?"
+
+#: src/chats/templates/chats/send-message-modal.html:7
+msgid "Новое сообщение"
+msgstr "New message"
+
+#: src/chats/templates/chats/send-message-modal.html:8
+msgid "Перейти в чат с пользователем"
+msgstr "Go to chat page"
+
+#: src/chats/templates/chats/send-message-modal.html:14
+#: src/dating/templates/dating/base.html:277
+msgid "Введите текст сообщения"
+msgstr "Enter message text"
+
+#: src/chats/templates/chats/send-message-modal.html:18
+#: src/dateprofile/templates/dateprofile/profile.html:235
+#: src/dating/templates/dating/base.html:281
+msgid "Отправить сообщение"
+msgstr "Send message"
+
+#: src/chats/templates/chats/send-message-modal.html:27
+msgid "Хочешь отправить сообщение?"
+msgstr "Do you want to send a message?"
+
+#: src/chats/templates/chats/send-message-modal.html:31
+msgid ""
+"\n"
+"          <p>Стань <strong>ПРЕМИУМ</strong> пользователем и знакомся без "
+"ограничений</p>\n"
+"        "
+msgstr ""
+"\n"
+"<p>Beeome <strong>PREMIUM</strong> and you will be able to do much more </"
+"p>\n"
+" "
+
+#: src/chats/templates/chats/send-message-modal.html:36
+#: src/likes/templates/likes/matches.html:199
+msgid "Стать ПРЕМИУМ!"
+msgstr "BECOME PREMIUM"
+
+#: src/chats/views.py:61 src/dating/templates/dating/base.html:124
+msgid "Сообщения"
+msgstr "Messages"
+
+#: src/dateprofile/models/dateprofile/constants.py:4
+#: src/dateprofile/templates/dateprofile/signup.html:54
+#: src/dateprofile/templates/dateprofile/signup.html:154
+msgid "Мужчина"
+msgstr "Man"
+
+#: src/dateprofile/models/dateprofile/constants.py:5
+#: src/dateprofile/templates/dateprofile/signup.html:55
+#: src/dateprofile/templates/dateprofile/signup.html:155
+msgid "Женщина"
+msgstr "Woman"
+
+#: src/dateprofile/models/dateprofile/constants.py:9
+#: src/dateprofile/templates/dateprofile/profile.html:284
+#: src/dateprofile/templates/dateprofile/signup.html:60
+#: src/dateprofile/templates/dateprofile/signup.html:167
+msgid "Мужчину"
+msgstr "Man"
+
+#: src/dateprofile/models/dateprofile/constants.py:10
+#: src/dateprofile/templates/dateprofile/profile.html:287
+#: src/dateprofile/templates/dateprofile/signup.html:61
+#: src/dateprofile/templates/dateprofile/signup.html:168
+msgid "Женщину"
+msgstr "Woman"
+
+#: src/dateprofile/models/dateprofile/constants.py:17
+#: src/dateprofile/templates/dateprofile/profile.html:294
+msgid "Серьёзные отношения"
+msgstr "Serious relationship"
+
+#: src/dateprofile/models/dateprofile/constants.py:18
+#: src/dateprofile/templates/dateprofile/profile.html:297
+#: src/dateprofile/templates/dateprofile/signup.html:252
+msgid "Быстрые отношения"
+msgstr "Fast relationships"
+
+#: src/dateprofile/models/dateprofile/constants.py:19
+#: src/dateprofile/templates/dateprofile/profile.html:300
+#: src/dateprofile/templates/dateprofile/signup.html:253
+msgid "Новые знакомства"
+msgstr "New friends"
+
+#: src/dateprofile/models/dateprofile/constants.py:26
+#: src/dateprofile/templates/dateprofile/signup.html:260
+msgid "Худощавое"
+msgstr "Thin"
+
+#: src/dateprofile/models/dateprofile/constants.py:27
+#: src/dateprofile/templates/dateprofile/signup.html:261
+msgid "Среднее"
+msgstr "Average"
+
+#: src/dateprofile/models/dateprofile/constants.py:28
+#: src/dateprofile/templates/dateprofile/signup.html:262
+msgid "Спортивное"
+msgstr "Athletic"
+
+#: src/dateprofile/models/dateprofile/constants.py:29
+#: src/dateprofile/templates/dateprofile/signup.html:263
+msgid "Полноватое"
+msgstr "Plump"
+
+#: src/dateprofile/models/dateprofile/constants.py:33
+#: src/dateprofile/templates/dateprofile/signup.html:269
+msgid "Не употребляю"
+msgstr "Don't drink"
+
+#: src/dateprofile/models/dateprofile/constants.py:34
+#: src/dateprofile/templates/dateprofile/signup.html:270
+msgid "Только в компании"
+msgstr "Only in company"
+
+#: src/dateprofile/models/dateprofile/constants.py:35
+#: src/dateprofile/templates/dateprofile/signup.html:271
+msgid "Изредка пью"
+msgstr "Drink rarely"
+
+#: src/dateprofile/models/dateprofile/constants.py:36
+#: src/dateprofile/templates/dateprofile/signup.html:272
+msgid "Пью часто"
+msgstr "Drink often"
+
+#: src/dateprofile/models/dateprofile/constants.py:40
+msgid "Негативное"
+msgstr "Negative"
+
+#: src/dateprofile/models/dateprofile/constants.py:41
+#: src/dateprofile/templates/dateprofile/signup.html:279
+msgid "Курю редко"
+msgstr "Smoke rarely"
+
+#: src/dateprofile/models/dateprofile/constants.py:42
+#: src/dateprofile/templates/dateprofile/signup.html:280
+msgid "Курю часто"
+msgstr "Smoke often"
+
+#: src/dateprofile/models/dateprofile/model.py:408
+msgid "Незнакомец"
+msgstr "Stranger"
+
+#: src/dateprofile/models/dateprofile/model.py:410
+msgid "Новичок"
+msgstr "Newbie"
+
+#: src/dateprofile/models/dateprofile/model.py:412
+msgid "Гость"
+msgstr "Guest"
+
+#: src/dateprofile/models/dateprofile/model.py:414
+msgid "Местный"
+msgstr "Local"
+
+#: src/dateprofile/models/dateprofile/model.py:416
+msgid "Ученик"
+msgstr "Student"
+
+#: src/dateprofile/models/dateprofile/model.py:418
+msgid "Опытный"
+msgstr "Experienced"
+
+#: src/dateprofile/models/dateprofile/model.py:420
+msgid "Знаток"
+msgstr "Adept"
+
+#: src/dateprofile/models/dateprofile/model.py:422
+msgid "Советник"
+msgstr "Advisor"
+
+#: src/dateprofile/models/dateprofile/model.py:424
+msgid "Мастер"
+msgstr "Master"
+
+#: src/dateprofile/models/dateprofile/model.py:425
+msgid "Элита"
+msgstr "Elite"
+
+#: src/dateprofile/templates/dateprofile/banners.html:210
+msgid "Хочеш пойти на свидание уже сегодня?"
+msgstr "Do you want to have a date just now?"
+
+#: src/dateprofile/templates/dateprofile/banners.html:218
+msgid "<span>Премиум</span> статус увеличивает твои шансы"
+msgstr "<span>Premium</span> status increases your chances"
+
+#: src/dateprofile/templates/dateprofile/banners.html:219
+msgid "Ты получишь:"
+msgstr "What you'll get:"
+
+#: src/dateprofile/templates/dateprofile/banners.html:221
+msgid "<i class=\"fa fa-heart-o\"></i>безлимитные сообщения"
+msgstr "<i class=\"fa fa-heart-o\"></i>unlimited messages"
+
+#: src/dateprofile/templates/dateprofile/banners.html:222
+msgid "<i class=\"fa fa-heart-o\"></i>в 5 раз больше совпадений"
+msgstr "<i class=\"fa fa-heart-o\"></i>в 5 times more matches"
+
+#: src/dateprofile/templates/dateprofile/banners.html:223
+msgid "<i class=\"fa fa-heart-o\"></i>просмотр своих гостей"
+msgstr "<i class=\"fa fa-heart-o\"></i>ability to view guests"
+
+#: src/dateprofile/templates/dateprofile/banners.html:228
+msgid "Стать премиум!"
+msgstr "Become premium!"
+
+#: src/dateprofile/templates/dateprofile/banners.html:235
+msgid "Хочешь чтобы тебя заметили сегодня?"
+msgstr "Do you want to be noticed today?"
+
+#: src/dateprofile/templates/dateprofile/banners.html:243
+msgid "<span>VIP</span> статус выделит тебя среди других"
+msgstr "<span>VIP</span> status will stand you out among others"
+
+#: src/dateprofile/templates/dateprofile/banners.html:246
+msgid "<i class=\"fa fa-heart-o\"></i>в 10 раз больше внимания"
+msgstr "<i class=\"fa fa-heart-o\"></i>в 10 times more attention"
+
+#: src/dateprofile/templates/dateprofile/banners.html:247
+msgid "<i class=\"fa fa-heart-o\"></i>спецдоставку твоих писем"
+msgstr "<i class=\"fa fa-heart-o\"></i>special delivery of your messages"
+
+#: src/dateprofile/templates/dateprofile/banners.html:248
+msgid "<i class=\"fa fa-heart-o\"></i>список твоих поклонников"
+msgstr "<i class=\"fa fa-heart-o\"></i>list of your fans"
+
+#: src/dateprofile/templates/dateprofile/banners.html:253
+msgid "Стать VIP!"
+msgstr "Become VIP!"
+
+#: src/dateprofile/templates/dateprofile/banners.html:259
+msgid "Не хочешь писать "
+msgstr "Dont want to write "
+
+#: src/dateprofile/templates/dateprofile/banners.html:260
+msgid "первым"
+msgstr "first"
+
+#: src/dateprofile/templates/dateprofile/banners.html:260
+msgid "первой"
+msgstr "first"
+
+#: src/dateprofile/templates/dateprofile/banners.html:269
+msgid "Мы сделаем всё за тебя! <span>БЕСПЛАТНО!</span>"
+msgstr "We will do it for you for <span>FREE!</span>"
+
+#: src/dateprofile/templates/dateprofile/banners.html:270
+msgid "Самые лучшие"
+msgstr "Best"
+
+#: src/dateprofile/templates/dateprofile/banners.html:271
+msgid "девушки"
+msgstr "girls"
+
+#: src/dateprofile/templates/dateprofile/banners.html:271
+msgid "парни"
+msgstr "guys"
+
+#: src/dateprofile/templates/dateprofile/banners.html:272
+msgid "получат от тебя внимание и ответят тем же"
+msgstr "will receive attention from you and will respond you with same"
+
+#: src/dateprofile/templates/dateprofile/banners.html:276
+msgid "Начать охоту!"
+msgstr "Start looking!"
+
+#: src/dateprofile/templates/dateprofile/banners.html:284
+msgid "Хочешь новый iPhone 7?"
+msgstr "Do you want new iPhone 7?"
+
+#: src/dateprofile/templates/dateprofile/banners.html:286
+msgid "Пригласи людей из<br>своей любимой сети<br> и iPhone 7 твой!"
+msgstr ""
+"Invite friends from <br> your favourite network<br> and iPhone 7 will be "
+"yours!"
+
+#: src/dateprofile/templates/dateprofile/banners.html:288
+msgid "Розыгрыш каждую"
+msgstr "Lottery each"
+
+#: src/dateprofile/templates/dateprofile/banners.html:290
+msgid "неделю!"
+msgstr "week!"
+
+#: src/dateprofile/templates/dateprofile/banners.html:292
+msgid "Жми сюда"
+msgstr "Press here"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:13
+msgid "Подтверждение регистрации"
+msgstr "Registration confirmation"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:31
+msgid "Подтверждение"
+msgstr "Confiming"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:32
+msgid "Мы отправили на вашу почту письмо со ссылкой на ваш личный профиль"
+msgstr "We have sent you a letter with a link to your proile"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:33
+msgid ""
+"Для завершения регистрации кликните по ссылке, которую мы прислали в этом "
+"письме"
+msgstr "In order to finish registration, follow the link in the letter"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:34
+msgid "Вы указали почту:"
+msgstr "You have entered email:"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:37
+msgid "Ошиблись? Укажите верный адрес:"
+msgstr "Made a mistake? Enter valid address:"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:40
+#: src/dateprofile/templates/dateprofile/signup.html:192
+#: src/dating/templates/account/login.html:49
+#: src/dating/templates/account/password_reset.html:46
+msgid "Почта"
+msgstr "Email"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:43
+msgid "Отправить письмо еще раз"
+msgstr "Send letter once more"
+
+#: src/dateprofile/templates/dateprofile/email_confirmation.html:44
+#: src/dating/templates/account/password_reset_from_key.html:63
+msgid "*Проверьте вкладку \"Спам\", письмо могло попасть в нее"
+msgstr "*Check spam tab, letter might got into it"
+
+#: src/dateprofile/templates/dateprofile/photos-modal.html:6
+msgid "Хочешь увидеть всю фотографию?"
+msgstr "Do you want to see a bigger photo?"
+
+#: src/dateprofile/templates/dateprofile/photos-modal.html:10
+msgid ""
+"\n"
+"          <p>Стань <strong>ПРЕМИУМ</strong> и ты сможешь намного больше!</"
+"p>\n"
+"        "
+msgstr ""
+"\n"
+"<p>Beeome <strong>PREMIUM</strong> and you will be able to do much more </"
+"p>\n"
+" "
+
+#: src/dateprofile/templates/dateprofile/photos-modal.html:15
+msgid "Стать премиум"
+msgstr "Become premium!"
+
+#: src/dateprofile/templates/dateprofile/photos-modal.html:17
+msgid "Мне и маленьких картинок хватает"
+msgstr "I'm okay with small ones"
+
+#: src/dateprofile/templates/dateprofile/profile.html:8
+#: src/dateprofile/views.py:263 src/dating/templates/dating/base.html:117
+msgid "Моя страница"
+msgstr "My page"
+
+#: src/dateprofile/templates/dateprofile/profile.html:212
+msgid "Инкогнито"
+msgstr "Incognito"
+
+#: src/dateprofile/templates/dateprofile/profile.html:217
+msgid "Администрация"
+msgstr "Admin"
+
+#: src/dateprofile/templates/dateprofile/profile.html:232
+msgid "Убрать лайк"
+msgstr "Remove like"
+
+#: src/dateprofile/templates/dateprofile/profile.html:232
+msgid "Поставить лайк"
+msgstr "Like"
+
+#: src/dateprofile/templates/dateprofile/profile.html:240
+msgid "Изменить фото"
+msgstr "Change photo"
+
+#: src/dateprofile/templates/dateprofile/profile.html:247
+msgid "О себе"
+msgstr "About me"
+
+#: src/dateprofile/templates/dateprofile/profile.html:255
+#: src/dateprofile/templates/dateprofile/signup.html:267
+msgid "Отношение к алкоголю"
+msgstr "Alcohol attitude"
+
+#: src/dateprofile/templates/dateprofile/profile.html:259
+#: src/dateprofile/templates/dateprofile/signup.html:276
+msgid "Отношение к курению"
+msgstr "Smoking attitude"
+
+#: src/dateprofile/templates/dateprofile/profile.html:263
+msgid "Телосложение"
+msgstr "Build"
+
+#: src/dateprofile/templates/dateprofile/profile.html:266
+#: src/dateprofile/templates/dateprofile/profile.html:305
+msgid "Сохранить"
+msgstr "Save"
+
+#: src/dateprofile/templates/dateprofile/profile.html:272
+#: src/dateprofile/templates/dateprofile/profile.html:282
+#: src/dateprofile/templates/dateprofile/signup.html:160
+msgid "Ищу"
+msgstr "Look"
+
+#: src/dateprofile/templates/dateprofile/profile.html:291
+#: src/dateprofile/templates/dateprofile/signup.html:249
+msgid "Цель знакомства"
+msgstr "Purpose"
+
+#: src/dateprofile/templates/dateprofile/profile.html:303
+msgid "Возрастом"
+msgstr "Age"
+
+#: src/dateprofile/templates/dateprofile/profile.html:311
+msgid "Мои фото"
+msgstr "My photos"
+
+#: src/dateprofile/templates/dateprofile/profile.html:329
+msgid "Загрузить"
+msgstr "Upload"
+
+#: src/dateprofile/templates/dateprofile/profile.html:333
+msgid "Добавить фото"
+msgstr "Add photo"
+
+#: src/dateprofile/templates/dateprofile/profile.html:335
+#: src/dateprofile/templates/dateprofile/signup.html:357
+msgid "Размер фото не должен превышать 5 мегабайт"
+msgstr "Photo size must not exceed 5 Mb"
+
+#: src/dateprofile/templates/dateprofile/profile.html:336
+msgid "Добавляем"
+msgstr "Adding"
+
+#: src/dateprofile/templates/dateprofile/profile.html:365
+msgid "Ответ не должен быть пустым и должен содержать не более 2000 символов"
+msgstr "Answer must not be empty and must not contain more than 2000 symbols"
+
+#: src/dateprofile/templates/dateprofile/profile.html:367
+msgid "Ответить"
+msgstr "Answer"
+
+#: src/dateprofile/templates/dateprofile/profile.html:381
+msgid ""
+"Вы уже попросили пользователя ответить на вопросы, подождём, пока он это "
+"сделает."
+msgstr ""
+"You have already asked user to answer questions, let's wait till he does that"
+
+#: src/dateprofile/templates/dateprofile/profile.html:384
+msgid "Пользователь ещё не ответил ни на один вопрос"
+msgstr "User has not answered any question yet"
+
+#: src/dateprofile/templates/dateprofile/profile.html:385
+msgid "Попросить ответить на вопрос"
+msgstr "Ask to answer questions"
+
+#: src/dateprofile/templates/dateprofile/profile.html:401
+#: src/dateprofile/templates/dateprofile/profile.html:419
+#: src/dateprofile/templates/dateprofile/profile.html:434
+msgid "Сделать фотографией профиля"
+msgstr "Set as avatar"
+
+#: src/dateprofile/templates/dateprofile/profile.html:402
+msgid "Удалить фото"
+msgstr "Delete photo"
+
+#: src/dateprofile/templates/dateprofile/profile.html:418
+#: src/dateprofile/templates/dateprofile/profile.html:433
+msgid "Отменить"
+msgstr "Cancel"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:9
+msgid "Танюшка"
+msgstr "Tanya"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:10
+#: src/dateprofile/templates/dateprofile/real_users.html:22
+#: src/dateprofile/templates/dateprofile/real_users.html:36
+#: src/dateprofile/templates/dateprofile/real_users.html:48
+#: src/likes/templates/likes/info.html:58
+#: src/likes/templates/likes/info.html:113
+#: src/likes/templates/likes/info.html:168
+msgid "лет"
+msgstr "years old"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:13
+msgid "оооооо.... <br>на работе завал, <br>просто спасите"
+msgstr "oohhhh.... <br>so much work, <br>please, save me"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:21
+msgid "Ваня"
+msgstr "Ivan"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:25
+msgid "что, романтики уже <br>никому не нужны? :)<br>"
+msgstr "doesn't this world need <br>more romantics? :)<br>"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:35
+msgid "Николь"
+msgstr "Nicole"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:39
+msgid "пиши мне если готов <br>к серьёзным отношениям<br>"
+msgstr "message me if you are ready <br>for serious relationship"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:47
+msgid "Анечка"
+msgstr "Anna"
+
+#: src/dateprofile/templates/dateprofile/real_users.html:51
+msgid "Ищу хорошего парня,<br> мажоры и папики, <br>проходим мимо"
+msgstr "Looking for a good guy,<br> rich boys, just<br>pass by"
+
+#: src/dateprofile/templates/dateprofile/signup.html:19
+#: src/dateprofile/templates/dateprofile/signup.html:146
+#: src/dateprofile/templates/dateprofile/signup.html:188
+#: src/dateprofile/templates/dateprofile/signup.html:226
+#: src/dateprofile/templates/dateprofile/signup.html:348
+#: src/dating/templates/account/login.html:25
+msgid "Регистрация"
+msgstr "Sign up"
+
+#: src/dateprofile/templates/dateprofile/signup.html:41
+#: src/dating/templates/account/login.html:28
+msgid "Найди друзей, вторую половинку или любовь на всю жизнь!"
+msgstr "Find friend or love of your life!"
+
+#: src/dateprofile/templates/dateprofile/signup.html:47
+#: src/dateprofile/templates/dateprofile/signup.html:198
+#: src/dating/templates/account/login.html:54
+#: src/dating/templates/account/password_reset_from_key.html:57
+msgid "Пароль"
+msgstr "Password"
+
+#: src/dateprofile/templates/dateprofile/signup.html:49
+msgid "Пароль (еще раз)"
+msgstr "Password (once more)"
+
+#: src/dateprofile/templates/dateprofile/signup.html:139
+#: src/dating/templates/account/login.html:47
+#: src/dating/templates/account/login.html:66
+#: src/dating/templates/account/password_reset_done.html:31
+msgid "Войти"
+msgstr "Sign in"
+
+#: src/dateprofile/templates/dateprofile/signup.html:148
+#: src/dating/templates/account/login.html:69
+msgid "Войти через Вконтакте"
+msgstr "Sign in using VK"
+
+#: src/dateprofile/templates/dateprofile/signup.html:149
+msgid "или зарегистрироваться"
+msgstr "or sign up"
+
+#: src/dateprofile/templates/dateprofile/signup.html:152
+msgid "Я"
+msgstr "Me"
+
+#: src/dateprofile/templates/dateprofile/signup.html:157
+#: src/dateprofile/templates/dateprofile/signup.html:170
+msgid "Выберите, пожалуйста, одну из опций"
+msgstr "Please, choose one of the options"
+
+#: src/dateprofile/templates/dateprofile/signup.html:174
+msgid "Имя"
+msgstr "Name"
+
+#: src/dateprofile/templates/dateprofile/signup.html:176
+msgid "Имя должно быть не короче двух символов"
+msgstr "Name must not be shorter than two symbols"
+
+#: src/dateprofile/templates/dateprofile/signup.html:178
+#: src/dateprofile/templates/dateprofile/signup.html:209
+#: src/dateprofile/templates/dateprofile/signup.html:285
+#: src/dateprofile/templates/dateprofile/signup.html:358
+msgid "Продолжить"
+msgstr "Continue"
+
+#: src/dateprofile/templates/dateprofile/signup.html:191
+msgid "Пожалуйста, введите действительный почтовый адрес"
+msgstr "Please, enter valid email"
+
+#: src/dateprofile/templates/dateprofile/signup.html:204
+msgid "Еще раз пароль"
+msgstr "Password once more"
+
+#: src/dateprofile/templates/dateprofile/signup.html:216
+#: src/dateprofile/templates/dateprofile/signup.html:290
+#: src/dateprofile/templates/dateprofile/signup.html:339
+msgid "шаг"
+msgstr "step"
+
+#: src/dateprofile/templates/dateprofile/signup.html:218
+#: src/dateprofile/templates/dateprofile/signup.html:291
+#: src/dateprofile/templates/dateprofile/signup.html:298
+#: src/dateprofile/templates/dateprofile/signup.html:307
+#: src/dateprofile/templates/dateprofile/signup.html:316
+#: src/dateprofile/templates/dateprofile/signup.html:325
+#: src/dateprofile/templates/dateprofile/signup.html:341
+msgid "из"
+msgstr "of"
+
+#: src/dateprofile/templates/dateprofile/signup.html:229
+msgid "День рождения"
+msgstr "Birthday"
+
+#: src/dateprofile/templates/dateprofile/signup.html:232
+msgid "Вы должны быть старше 18 лет,чтобы зарегистрироваться"
+msgstr "You have to be older than 18 years old in order to sign up"
+
+#: src/dateprofile/templates/dateprofile/signup.html:233
+msgid " Введите настоящий день"
+msgstr " Enter valid day"
+
+#: src/dateprofile/templates/dateprofile/signup.html:234
+msgid "Введите настоящий месяц"
+msgstr "Enter valid month"
+
+#: src/dateprofile/templates/dateprofile/signup.html:235
+msgid "Введите настоящий год"
+msgstr "Enter valid year"
+
+#: src/dateprofile/templates/dateprofile/signup.html:237
+msgid "День"
+msgstr "Day"
+
+#: src/dateprofile/templates/dateprofile/signup.html:238
+msgid "Месяц"
+msgstr "Month"
+
+#: src/dateprofile/templates/dateprofile/signup.html:240
+msgid "Год"
+msgstr "Year"
+
+#: src/dateprofile/templates/dateprofile/signup.html:244
+msgid "Ищу человека возрастом"
+msgstr "Looking for person with age"
+
+#: src/dateprofile/templates/dateprofile/signup.html:248
+#: src/dateprofile/templates/dateprofile/signup.html:258
+msgid "Выберите одну из опций"
+msgstr "Choose one of options"
+
+#: src/dateprofile/templates/dateprofile/signup.html:251
+msgid "Серьзные отношения"
+msgstr "Serious relationship"
+
+#: src/dateprofile/templates/dateprofile/signup.html:257
+msgid "Телосоложение"
+msgstr "Build"
+
+#: src/dateprofile/templates/dateprofile/signup.html:278
+msgid "Негативно"
+msgstr "Negative"
+
+#: src/dateprofile/templates/dateprofile/signup.html:298
+#: src/dateprofile/templates/dateprofile/signup.html:307
+#: src/dateprofile/templates/dateprofile/signup.html:316
+#: src/dateprofile/templates/dateprofile/signup.html:325
+msgid "Вопрос"
+msgstr "Question"
+
+#: src/dateprofile/templates/dateprofile/signup.html:299
+#: src/dateprofile/templates/dateprofile/signup.html:308
+msgid "Могли бы вы встречаться с кем-то неряшливым?"
+msgstr "Could you date someone sloppy?"
+
+#: src/dateprofile/templates/dateprofile/signup.html:302
+#: src/dateprofile/templates/dateprofile/signup.html:311
+#: src/dateprofile/templates/dateprofile/signup.html:320
+#: src/dateprofile/templates/dateprofile/signup.html:329
+msgid "Пропустить"
+msgstr "Skip"
+
+#: src/dateprofile/templates/dateprofile/signup.html:317
+msgid "Вам нравятся фильмы ужасов?"
+msgstr "Do you like horror movies?"
+
+#: src/dateprofile/templates/dateprofile/signup.html:326
+msgid "Курение отвратительно?"
+msgstr "Is smoking disgusting?"
+
+#: src/dateprofile/templates/dateprofile/signup.html:333
+msgid "нет"
+msgstr "no"
+
+#: src/dateprofile/templates/dateprofile/signup.html:334
+msgid "да"
+msgstr "yes"
+
+#: src/dateprofile/templates/dateprofile/signup.html:356
+msgid "Загрузить фото"
+msgstr "Upload photo"
+
+#: src/dateprofile/templates/dateprofile/signup.html:409
+#: src/dating/templates/dating/base.html:132
+msgid "О сайте"
+msgstr "About"
+
+#: src/dateprofile/templates/dateprofile/signup.html:410
+#: src/dating/templates/dating/base.html:133
+msgid "Контакты"
+msgstr "Contacts"
+
+#: src/dateprofile/templates/dateprofile/signup.html:414
+#: src/dating/templates/dating/base.html:134
+msgid "Пользовательское соглашение"
+msgstr "Terms & Conditions"
+
+#: src/dateprofile/templates/dateprofile/signup.html:415
+#: src/dating/templates/dating/base.html:135
+msgid "Политика конфиденциальности"
+msgstr "Privacy policy"
+
+#: src/dating/settings/base.py:262
+msgid "English"
+msgstr "English"
+
+#: src/dating/settings/base.py:263
+msgid "Russian"
+msgstr "Russian"
+
+#: src/dating/templates/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Привет!\n"
+"\n"
+"Вы только что зарегистрировались на сайте знакомств http://naidisebe.com\n"
+"\n"
+"Чтобы подтвердить регистрацию, пройдите по следующей ссылке - "
+"%(activate_url)s\n"
+"Если вы ничего такого не делали - проигнорируйте письмо.\n"
+msgstr ""
+
+#: src/dating/templates/account/email_confirm.html:6
+msgid "Подтверждаем"
+msgstr "Confiming"
+
+#: src/dating/templates/account/email_confirm.html:9
+msgid "Confirm"
+msgstr "Confirm"
+
+#: src/dating/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: src/dating/templates/account/login.html:13
+msgid "Вход"
+msgstr "Sign in"
+
+#: src/dating/templates/account/login.html:60
+msgid "Запомнить меня"
+msgstr "Remember me"
+
+#: src/dating/templates/account/login.html:65
+msgid "Забыли пароль?"
+msgstr "Forgot password?"
+
+#: src/dating/templates/account/login.html:68
+msgid "или"
+msgstr "or"
+
+#: src/dating/templates/account/password_reset.html:13
+#: src/dating/templates/account/password_reset_done.html:13
+#: src/dating/templates/account/password_reset_from_key.html:13
+msgid "Восстановление пароля"
+msgstr "Password reset"
+
+#: src/dating/templates/account/password_reset.html:45
+msgid "Введите свой email, мы вышлем на него инструкцию по смене пароля:"
+msgstr "Enter your email, we will send you instruction on password change"
+
+#: src/dating/templates/account/password_reset.html:49
+#: src/dating/templates/account/password_reset_from_key.html:62
+msgid "Восстановить пароль"
+msgstr "Reset password"
+
+#: src/dating/templates/account/password_reset.html:50
+msgid "*Проверьте вкладку \"Спам\", письмо могло попасть в неe"
+msgstr "*Check spam tab, letter might got into it"
+
+#: src/dating/templates/account/password_reset_done.html:30
+msgid ""
+"Мы отправили вам письмо, перейдите по ссылке в нём, чтобы изменить свой "
+"пароль"
+msgstr ""
+"We have sent you a letter, follow the link in the letter to change password"
+
+#: src/dating/templates/account/password_reset_from_key.html:37
+msgid "Bad Token"
+msgstr ""
+
+#: src/dating/templates/account/password_reset_from_key.html:39
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: src/dating/templates/account/password_reset_from_key.html:56
+msgid "Новый пароль:"
+msgstr "New password:"
+
+#: src/dating/templates/account/password_reset_from_key.html:58
+msgid "Повторите пароль:"
+msgstr "Password once more:"
+
+#: src/dating/templates/account/password_reset_from_key.html:59
+msgid "Повторите пароль"
+msgstr "Password once more"
+
+#: src/dating/templates/dating/base.html:22
+msgid "Найди себе пару!"
+msgstr "Find your love!"
+
+#: src/dating/templates/dating/base.html:109
+msgid "Стать Премиум"
+msgstr "Become Premium!"
+
+#: src/dating/templates/dating/base.html:111
+msgid "Стать ВИП"
+msgstr "Become VIP!"
+
+#: src/dating/templates/dating/base.html:120
+#: src/likes/templates/likes/matches.html:8 src/likes/views.py:134
+msgid "Найти пару"
+msgstr "Find match"
+
+#: src/dating/templates/dating/base.html:127
+#: src/likes/templates/likes/info.html:7 src/likes/views.py:168
+msgid "Симпатии"
+msgstr "Sympathies"
+
+#: src/dating/templates/dating/base.html:136
+msgid "Выйти"
+msgstr "Logout"
+
+#: src/dating/templates/dating/base.html:158
+msgid "Увеличь свой рейтинг до"
+msgstr "Increase your rating to"
+
+#: src/dating/templates/dating/base.html:208
+msgid "Открыть все сообщения"
+msgstr "View all messages"
+
+#: src/dating/templates/dating/base.html:254
+msgid "Помощь"
+msgstr "Help"
+
+#: src/dating/templates/dating/base.html:271
+msgid "Опишите ваш вопрос или предложение."
+msgstr "Describe your question or proposal"
+
+#: src/dating/templates/dating/base.html:276
+msgid "Мы обязательно свяжемся с вами, спасибо!"
+msgstr "We will answer you soon, thank you!"
+
+#: src/likes/templates/emails/matches.html:261
+msgid "У тебя новые совпадения"
+msgstr "You have new match"
+
+#: src/likes/templates/likes/info.html:36
+msgid "Кто мне нравится"
+msgstr "Whom do I like"
+
+#: src/likes/templates/likes/info.html:59
+#: src/likes/templates/likes/info.html:114
+#: src/likes/templates/likes/info.html:169
+msgid "Написать"
+msgstr "Send message"
+
+#: src/likes/templates/likes/info.html:66
+msgid "Вы пока никому не поставили лайк"
+msgstr "You haven't liked anyone yet"
+
+#: src/likes/templates/likes/info.html:75
+msgid "Кому я нравлюсь"
+msgstr "Who likes me"
+
+#: src/likes/templates/likes/info.html:83
+msgid ""
+"\n"
+"\n"
+"                        <h1>Стань <span class=\"likes__prem\">премиум</"
+"span></h1>\n"
+"                        <p>чтобы увидеть своих поклонников</p>\n"
+"                        "
+msgstr ""
+"\n"
+"<h1>Become <span class=\"likes__prem\"> premium</span></h1><p>to see people "
+"who like you</p>\n"
+" "
+
+#: src/likes/templates/likes/info.html:91
+msgid "СТАНЬ ПРЕМИУМ"
+msgstr "BECOME PREMIUM"
+
+#: src/likes/templates/likes/info.html:121
+msgid "Пока никому"
+msgstr "Nobody"
+
+#: src/likes/templates/likes/info.html:131
+msgid "Кто заходил ко мне"
+msgstr "Who visited me"
+
+#: src/likes/templates/likes/info.html:139
+msgid ""
+"\n"
+"                              <h1>Стань <span class=\"likes__vip\">VIP</"
+"span></h1>\n"
+"                          <p>чтобы увидеть своих гостей</p>\n"
+"                          "
+msgstr ""
+"\n"
+"<h1>Become <span class=\"likes__vip\">VIP</span></h1><p>to see your guests</"
+"p>"
+
+#: src/likes/templates/likes/info.html:146
+msgid "СТАНЬ VIP"
+msgstr "BECOME VIP"
+
+#: src/likes/templates/likes/info.html:176
+msgid "У вас пока нету гостей"
+msgstr "You don't have guests yet"
+
+#: src/likes/templates/likes/matches.html:82
+msgid ""
+"Ставь <i class=\"fa fa-heart-o\"></i> тем, кто тебе нравится. Если симпатия "
+"будет взаимной - вы узнаете об этом.<i class=\"fa fa-times\" id=\"close-info-"
+"popup\"></i>"
+msgstr ""
+"<i class=\"fa fa-heart-o\"></i> those whom you like. If there will be a "
+"match - we will notify you.<i class=\"fa fa-times\" id=\"close-info-popup"
+"\"></i>"
+
+#: src/likes/templates/likes/matches.html:92
+msgid ""
+"Кажется, это всё. Попробуйте перезагрузить страницу через пару минут, может "
+"быть мы найдём для вас новые совпадения!"
+msgstr ""
+"Looks like, that's all. Try to reload a page after few minutes, maybe we "
+"will find new matches for you!"
+
+#: src/likes/templates/likes/matches.html:138
+msgid "cовпадение"
+msgstr "match"
+
+#: src/likes/templates/likes/matches.html:140
+#: src/likes/templates/likes/matches.html:172
+msgid "Написать сообщение"
+msgstr "Send message"
+
+#: src/likes/templates/likes/matches.html:160
+msgid "Загрузка"
+msgstr "Loading"
+
+#: src/likes/templates/likes/matches.html:168
+msgid "Поздравляем, у вас новое совпадение!"
+msgstr "Congratulations, you have new match!"
+
+#: src/likes/templates/likes/matches.html:173
+msgid "Посмотреть профиль"
+msgstr "Visit profile"
+
+#: src/likes/templates/likes/matches.html:174
+msgid "Показать других"
+msgstr "Show others"
+
+#: src/likes/templates/likes/matches.html:189
+msgid "Ты можешь ставить 20 оценок в день"
+msgstr "You can only like 20 people per day"
+
+#: src/likes/templates/likes/matches.html:193
+msgid ""
+"\n"
+"          <p class=\"task\">Стань <span>ПРЕМИУМ</span></p>\n"
+"        "
+msgstr ""
+"\n"
+"<p class=\"task\">Become <span>PREMIUM</span></p>\n"
+" "
+
+#: src/likes/templates/likes/matches.html:196
+msgid "И знакомься без ограничений"
+msgstr "And have no restrictions"
+
+#: src/news/templates/news/index.html:5 src/news/views.py:33
+msgid "Новости"
+msgstr "Newsfeed"
+
+#: src/payments/templates/payments/purchase.html:6
+msgid "Купить премиум"
+msgstr "Buy premium"
+
+#~ msgid "*Проверьте вкладку "
+#~ msgstr "*Check tab "
+
+#~ msgid "ПРЕМИУМ"
+#~ msgstr "PREMIUM"
+
+#~ msgid "VIP"
+#~ msgstr "VIP"
+
+#~ msgid "Узнай, кому ты нравишься"
+#~ msgstr "See people who like you"
+
+#~ msgid ""
+#~ "В разделе Симпатии ты увидишь всех людей, которым ты нравишься. А не "
+#~ "только тех, с кем взаимная симпатия."
+#~ msgstr ""
+#~ "On Sympathies page you will see everybody who like you. And not only "
+#~ "those you have a match with."
+
+#~ msgid "Поменяй своё имя"
+#~ msgstr "Change your name"
+
+#~ msgid ""
+#~ "Может, ты не хочешь подписываться как “%%username%%”? Меняй имя когда "
+#~ "захочется, не создавая новую страницу"
+#~ msgstr ""
+#~ "Maybe, you don't want to be signed as '%%username%%'? Change your name "
+#~ "when you want to, without creating new profile"
+
+#~ msgid "Смотри чужие страницы незаметно"
+#~ msgstr "Visit other peoples' profiles incognito"
+
+#~ msgid ""
+#~ "Стань невидимкой! Никто не увидит, что ты заходил на чью-то страницу, "
+#~ "пока ты сам этого не захочешь"
+#~ msgstr ""
+#~ "Become invisible! Nobody will see that you have visited them until you "
+#~ "tell them."
+
+#~ msgid "Все увидят твой статус"
+#~ msgstr "Everybody will see your status"
+
+#~ msgid ""
+#~ "На твоей аватарке будет добавлен значок “Премиум”. Покажи всем, что у "
+#~ "тебя серьёзные намерения!"
+#~ msgstr ""
+#~ "There will be a 'Premium' sign added to your avatar. Show everybody, that "
+#~ "you are here not just for fun."
+
+#~ msgid "Узнай, кто заходит на твою страницу"
+#~ msgstr "Find out who has visited you"
+
+#~ msgid ""
+#~ "В разделе Симпатии ты увидишь всех людей, которые заходили к тебе на "
+#~ "страницу. Даже если они не поставили сердечко."
+#~ msgstr ""
+#~ "On Sympathies page you will see everybody who has visited your profile. "
+#~ "Even if they didn't send you a like."
+
+#~ msgid "Будь первым в списке"
+#~ msgstr "Be the first one on the list"
+
+#~ msgid ""
+#~ "В разделе Найти пару твою фотографию увидят одной из первых. В разделе "
+#~ "Новости твои записи и фотографии будут показываться в самом верху."
+#~ msgstr ""
+#~ "On matches page everybody will see your photo first in the list. On News "
+#~ "page your posts and photos would be shown in the top."
+
+#~ msgid "Спецдоставка писем"
+#~ msgstr "Messages special delivery"
+
+#~ msgid ""
+#~ "Получатель увидит твои сообщения в самом верху списка. Гарантируем, что "
+#~ "она/он их прочитает."
+#~ msgstr ""
+#~ "Receiver will see your messages in the top of the list. We guarantee that "
+#~ "he/she will read them."
+
+#~ msgid ""
+#~ "На твоей аватарке будет добавлен значок “VIP”. Покажи всем, что у тебя "
+#~ "серьёзные намерения."
+#~ msgstr ""
+#~ "VIP sign would be added to your avatar. Show everybody that you are here "
+#~ "not just for fun."
+
+#~ msgid "Регистрации"
+#~ msgstr "Sign up"
+
+#~ msgid "Рейтинг:"
+#~ msgstr "Rating:"

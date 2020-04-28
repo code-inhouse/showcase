@@ -1,0 +1,37 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Plural-Forms: nplurals=3\n"
+
+#, elixir-format
+#: lib/core_web/templates/page/landing.html.eex:7
+msgid "Gezer. When lonely."
+msgstr "Gezer. Когда одиноко."
+
+#, elixir-format
+#: lib/core_web/templates/page/landing.html.eex:17
+msgid "Nobody to hang out with?"
+msgstr "Не с кем потусить?"
+
+#, elixir-format
+#: lib/core_web/templates/page/landing.html.eex:23
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#, elixir-format
+#: lib/core_web/templates/page/landing.html.eex:20
+msgid "Sign up for our app beta"
+msgstr "Зарегистрируйся на бета-версию нашего приложения"
+
+#, elixir-format
+#: lib/core_web/templates/page/index.html.eex:2
+msgid "Welcome to %{name}!"
+msgstr ""

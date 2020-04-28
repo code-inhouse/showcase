@@ -1,0 +1,47 @@
+{% load rules %}
+{% load i18n %}
+<div class="modal fade" id="send-msg-modal">
+  <div class="modal-dialog modal-messages" role="document">
+    <div class="modal-content">
+      <div class="modal-messages__top">
+        <span class="modal-messages__title">{% trans "Новое сообщение" %}</span>
+        <a href="/chats/?selected={{profile.id}}" class="modal-messages__link send-msg-modal-chat-link">{% trans "Перейти в чат с пользователем" %}</a>
+        <i class="fa fa-times" data-dismiss="modal"></i>
+      </div>
+      <div class="modal-body">
+        <div class="send-msg-container">
+            <textarea id="send-msg-input" cols="30" rows="10" placeholder="Введите ваше сообщение"></textarea>
+            <p class="error-message">{% trans "Введите текст сообщения" %}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="send-msg-btn">{% trans "Отправить сообщение" %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal send-messages-popup fade" id="get-premium-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">{% trans "Хочешь отправить сообщение?" %}</h2>
+      </div>
+      <div class="modal-body clear">
+        <i></i>
+        {% blocktrans %}
+          <p>Стань <strong>ПРЕМИУМ</strong> пользователем и знакомся без ограничений</p>
+        {% endblocktrans %}
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'payments:click' %}?source=send_message_poup&button=premium&page_url={{request.path}}" class="btn btn-green">{% trans "Стать ПРЕМИУМ!" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  {% has_perm 'send_message' user as can_send_msg %}
+  if (!window.CAN_SEND_MSG) {
+    window.CAN_SEND_MSG = {% if can_send_msg %}true{%else%}false{%endif%};
+
+  }
+</script>

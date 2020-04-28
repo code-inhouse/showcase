@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load account %}
+{% load static from dating %}
+
+{% if confirmation %}
+<p>{% trans "Подтверждаем" %}...</p>
+<form method="post" action="{% url 'account_confirm_email' confirmation.key %}" id="confirmation-form" hidden>
+    {% csrf_token %}
+    <button type="submit">{% trans 'Confirm' %}</button>
+</form>
+<script src="{% static 'compiled/js/confirmation.js' %}" defer></script>
+{% else %}
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+
+{% endif %}
