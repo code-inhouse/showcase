@@ -1,0 +1,41 @@
+{% load staticfiles %}
+{% load account %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Контакты</title>
+
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+
+    <link href="{% static 'lib/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'compiled/css/common.css' %}" rel="stylesheet">
+
+    <style>
+        .info {
+            max-width: 500px;
+            margin: 30px auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body class="registration grey-bg">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="ibox-content info">
+                <h1>Контакты</h1>
+                <p>При возникновении любых вопросов или предложений Вы можете обратиться к администрации сайта, отправив письмо по адресу - <a href="mailto:support@naidisebe.com">support@naidisebe.com</a></p>
+                <p>Сервис предоставляется компанией International Real Estate Services Inc., расположенной по адресу New Horizon Building, Ground Floor, 3 1/2 Miles Phillip S.W. Goldson Highway, P.O. Box 1922, Belize City, Belize, телефон +44 203 868 31 72</p>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

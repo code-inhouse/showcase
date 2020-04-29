@@ -1,0 +1,24 @@
+image: node:10
+
+before_script:
+  - apt-get update -qq
+  - apt-get install -y build-essential
+  - wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-218.0.0-linux-x86.tar.gz
+  - tar -xzf  google-cloud-sdk-218.0.0-linux-x86.tar.gz
+  - ./google-cloud-sdk/install.sh
+
+
+deploy:stage:
+  when: manual
+  script:
+    - echo $STAGE_GCE_KEY_FILE > gce_auth.json
+    - ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file gce_auth.json
+    - ./google-cloud-sdk/bin/gcloud components install beta
+    - ./google-cloud-sdk/bin/gcloud components update
+    - ./google-cloud-sdk/bin/gcloud config set run/platform managed
+    - ./google-cloud-sdk/bin/gcloud config set run/region us-central1
+    - yarn install --frozen-lockfile
+    - NODE_ENV=production yarn run build
+    - ./google-cloud-sdk/bin/gcloud --project ramen-223509 builds submit --tag gcr.io/ramen-223509/lunar:latest
+    - ./google-cloud-sdk/bin/gcloud --project ramen-223509 beta run deploy lunar --image gcr.io/ramen-223509/lunar:latest --platform managed
+    - curl https://calendar.inhouse.band/run_migrations/

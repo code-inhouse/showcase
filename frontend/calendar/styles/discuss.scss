@@ -1,0 +1,42 @@
+.discuss-pane {
+    position: fixed;
+    background: white;
+    overflow: scroll;
+    top: 56px;
+    bottom: 0;
+    right: 0;
+    width: 500px;
+    z-index: 10;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 600px) {
+        top: auto;
+        left: 0;
+        width: 100%;
+        height: 300px;
+        border-left: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+.discuss--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discuss--close-btn {
+    border: none;
+    outline: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+}
+
+.discuss--title {
+    font-weight: 500;
+    font-size: 1.2em;
+    margin: 0;
+}

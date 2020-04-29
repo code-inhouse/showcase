@@ -1,0 +1,428 @@
+.icon {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#photo {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.match {
+
+}
+
+.match-page {
+  .nice-banner {
+    margin-top: 98px;
+  }
+
+  .lottery-banner {
+    margin-top: 98px;
+  }
+}
+
+.match__content {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.match__options {
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.match-page__info {
+  position: relative;
+  background: white;
+  text-align: center;
+  padding: 18px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 10px;
+
+  i {
+    color: $color1;
+  }
+
+  .fa-heart {
+    margin: 0 4px;
+  }
+
+  .fa-times {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+  }
+}
+
+.match__option {
+  display: inline-block;
+  list-style: none;
+  height: 58px;
+  width: 58px;
+
+  a {
+    position: relative;
+    overflow: hidden;
+    width: 58px;
+    height: 58px;
+    border-radius: 100%;
+    display: block;
+  }
+
+  img {
+    height: auto;
+    opacity: .5;
+    width: 62px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+  }
+}
+
+.match__option--active {
+  a {
+    border: 3px solid #23c6c8;
+  }
+
+  img {
+    opacity: 1;
+  }
+}
+
+.match__option--cross {
+  position: relative;
+
+  i {
+    position: absolute;
+    color: white;
+    top: 15px;
+    left: 0;
+    font-size: 26px;
+    right: 0;
+    margin: auto;
+    width: 20px;
+  }
+}
+
+.match__photo {
+  height: 300px;
+  width: auto;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 5px;
+
+  .img-wrapper {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  img {
+    height: 300px;
+    width: auto;
+    border-radius: 5px;
+  }
+}
+
+.match__controls {
+  text-align: center;
+  margin-top: 15px;
+
+  .btn {
+    padding: 3px;
+    font-size: 36px;
+    width: 134px;
+    text-align: center;
+  }
+
+  .btn-danger {
+    margin-left: 20px;
+  }
+}
+
+.match__message {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.match__user-info {
+  display: inline-block;
+  margin-bottom: 15px;
+
+  p {
+    margin: 0;
+    font-size: 16px;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.match-premium {
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+  height: 483px;
+
+  h1 {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    line-height: 22px;
+    margin-bottom: 21px;
+  }
+
+  h2 {
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 500;
+
+    span {
+      font-weight: 700;
+      color: $color1;
+    }
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+
+    i {
+      color: $color1;
+      margin-right: 10px;
+    }
+  }
+
+  button {
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+
+.match-banner {
+  padding: 20px;
+
+  .match-banner__photo {
+    height: 180px;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 180px;
+    margin: 0 auto;
+
+    i {
+      background-image: url('#{$asset-path}/brick.jpg');
+      display: block;
+      height: 180px;
+      background-size: cover;
+    }
+  }
+
+  .match-banner__name {
+    margin-top: 7px;
+    text-align: center;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .match-banner__btns {
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  button {
+    margin-top: 12px;
+  }
+
+  .match-banner__btn-1 {
+    margin-top: -120px;
+  }
+
+  .match-banner__btn-2 {
+    margin-top: -72px;
+  }
+
+}
+
+@mixin banner {
+  padding: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 25px -4px rgb(197, 66, 81);
+  -moz-box-shadow: 0 0 25px -4px rgb(197, 66, 81);
+  box-shadow: 0 0 25px -4px rgb(197, 66, 81);
+}
+
+.nice-banner {
+  @include banner;
+
+  .nice-banner__top {
+    position: relative;
+    padding: 20px;
+    background-image: url('#{$asset-path}/girl-banner-3.jpg');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 383px;
+    color: white;
+
+   .nice-banner__top-gradient {
+     background-color: rgba(33, 34, 51, .5);
+     position: absolute;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     top: 0;
+     padding: 20px;
+   }
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      line-height: 23px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 5px;
+      margin-bottom: 45px;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 15px;
+      margin-top: 29px;
+    }
+  }
+
+  .nice-banner__bottom {
+    padding: 20px;
+
+    .btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+
+  .nice-banner__stars {
+    text-align: center;
+    margin-top: 45px;
+    font-size: 20px;
+    color: $color1;
+  }
+
+  .share-btn {
+    text-align: center;
+  }
+
+}
+
+
+.lottery-banner {
+  @include banner;
+  height: 483px;
+  text-align: center;
+
+  .lottery-banner__top {
+    background-image: url('#{$asset-path}/iphone.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 383px;
+    color: white;
+    padding: 20px;
+    position: relative;
+
+    h1 {
+      font-weight: 600;
+      margin-bottom: 21px;
+      font-size: 20px;
+      margin: 0;
+      line-height: 23px;
+      color: white;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 5px;
+      font-weight: 600;
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+      color: $color1;
+     }
+
+     .fa-arrow-down {
+       font-size: 24px;
+       position: absolute;
+       bottom: 15px;
+       color: $color1;
+       left: 0;
+       right: 0;
+     }
+  }
+
+  .lottery-banner__middle {
+    font-size: 18px;
+    position: absolute;
+    font-weight: 500;
+    top: 130px;
+    left: 0;
+    right: 0;
+
+    p {
+      margin: 0 auto;
+    }
+
+    p:last-child {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+
+  .lottery-banner__bottom {
+    padding: 20px;
+
+    .share-img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .share__vk {
+      text-align: right;
+      img {
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    .share__ok  {
+      text-align: center;
+
+      img {
+        width: 62px;
+        height: 62px;
+      }
+
+    }
+  }
+}

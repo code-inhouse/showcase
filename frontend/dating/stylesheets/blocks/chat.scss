@@ -1,0 +1,111 @@
+.chat.selected {
+    background-color: green;
+}
+
+.message.own {
+    background-color: yellow;
+}
+
+.message:not(.own) {
+    background-color: white;
+}
+
+.chat-message-form--fieldset {
+  position: relative;
+  padding: 10px 15px 0 78px;
+  border-top: 1px solid #e5e6e7;
+}
+
+.chat-message-form--fieldset::after {
+  display: block;
+  content: "";
+  background-image: attr(data-avatar-url url);
+  position: absolute;
+  height: 58px;
+  width: 58px;
+  border: 1px solid #e7eaec;
+  border-radius: 4px;
+  margin-top: 1px;
+  background-size: 100%;
+  top: 10px;
+  left: 10px;
+}
+
+.chat-message-form--fieldset button {
+  margin-top: 10px;
+}
+
+.btn-chat {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.chat-user {
+  cursor: pointer;
+}
+
+.chat-users {
+  height: 560px;
+}
+
+.chat-user.selected {
+  background-color: #7293b6;
+  color: white;
+}
+
+.chat-view {
+  border-radius: 5px;
+  overflow: hidden;
+
+  .ibox-content {
+    border-top: 0;
+  }
+}
+
+.message-unread {
+  background-color: #edf0f5 !important;
+}
+
+.chat-message--unread {
+  background-color: #edf0f5 !important;
+}
+
+.message-avatar {
+  margin-top: 0;
+  border: 0;
+}
+
+.chat-discussion {
+  padding: 10px;
+  height: 395px;
+}
+
+.chat-message {
+  padding: 10px;
+}
+
+.message {
+  padding: 0 10px;
+}
+
+.chat-premium-text {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+}
+
+.chat-label {
+  display: block !important;
+  color: white;
+}
+
+.label-vip {
+  background-color: #f8ac59;
+}
+
+.label-premium {
+  background-color: #5cb85c;
+}

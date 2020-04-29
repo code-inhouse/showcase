@@ -1,0 +1,9 @@
+{
+    "REDIS_MSG_CHANNEL": "messages",
+    "DATABASE": {
+        "NAME": "dating",
+        "USER": "datingadmin",
+        "PASSWORD": "3m0eqhbtru",
+        "HOST": "127.0.0.1"
+    }
+}

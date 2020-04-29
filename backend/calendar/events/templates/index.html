@@ -1,0 +1,46 @@
+{% load render_bundle from webpack_loader %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Itinerio: Rapid Trip Planning Tool Built for Easy Collaboration</title>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KTLHH3N');</script>
+        <!-- End Google Tag Manager -->
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTLHH3N"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        {% verbatim %}
+        <div id="app">
+        </div>
+        {% endverbatim %}
+        <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+        {% render_bundle 'main' %}
+        <script type="text/javascript">
+            var _iub = _iub || [];
+            _iub.csConfiguration = {"lang":"en","siteId":1599508,"cookiePolicyId":37332083, "banner":{ "position":"bottom","textColor":"black","backgroundColor":"white" }};
+        </script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+        <!-- Feedback -->
+       <script type="text/javascript">
+           window.doorbellOptions = {
+               id: '10371',
+               appKey: 'M0MXamVbpGXkhBDbsGkadyMQ64QHvAUzpFdBcyGkYBdmjyV5XdHdC7IkHqYaVCvy'
+           };
+           (function(w, d, t) {
+               var hasLoaded = false;
+               function l() { if (hasLoaded) { return; } hasLoaded = true; window.doorbellOptions.windowLoaded = true; var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://embed.doorbell.io/button/'+window.doorbellOptions['id']+'?t='+(new Date().getTime());(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g); }
+               if (w.attachEvent) { w.attachEvent('onload', l); } else if (w.addEventListener) { w.addEventListener('load', l, false); } else { l(); }
+               if (d.readyState == 'complete') { l(); }
+           }(window, document, 'script'));
+       </script>
+    </body>
+</html>

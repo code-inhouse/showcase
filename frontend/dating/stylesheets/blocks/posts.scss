@@ -1,0 +1,258 @@
+.new-post-form {
+    margin-top: 15px;
+    position: relative;
+    background-color: white;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+    position: relative;
+    border: 0;
+}
+
+.new-post-form textarea {
+  height: 24px;
+  margin-bottom: 0;
+  padding-right: 40px;
+  resize: none;
+  padding: 0;
+  border: 0;
+  max-height: 140px;
+  overflow-y: scroll;
+  border-bottom: 1px solid rgba(247, 85, 104, 0.3);
+
+  &:focus {
+    border-bottom: 1px solid rgba(247, 85, 104, 0.6);
+  }
+}
+
+.new-post-form h1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.new-post-form .btn {
+  margin-top: 10px;
+}
+
+.new-post-form .add-photo-btn {
+    margin-top: 0;
+    position: absolute;
+    right: 7px;
+    bottom: 22px;
+    font-size: 28px;
+    color: $color1;
+
+    &:hover {
+      color: $color1-hover;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+}
+
+.new-post-form.active .add-photo-btn {
+  bottom: 23px;
+}
+
+
+
+.added-photos {
+    margin: auto;
+    margin-top: 7px;
+    margin-left: 5px;
+}
+
+.photo-control {
+    position: relative;
+    margin-bottom: 5px;
+    height: 70px;
+}
+
+.delete-added-photo {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+}
+
+.added-photo img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.new-post-form .error {
+    color: red;
+    font-weight: bold;
+}
+
+.post {
+    position: relative;
+    margin-top: 15px;
+    background-color: white;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0;
+    border: 0;
+
+    p {
+      margin: 0;
+    }
+
+    & > p {
+      margin-bottom: 10px;
+    }
+
+    .btn-remove-post {
+      &:hover, &:active {
+        box-shadow: none;
+
+        .fa-times {
+          color: $color1-hover;
+        }
+      }
+      .fa-times {
+        color: $color1;
+      }
+    }
+}
+
+.post__top {
+  display: table;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.post__photo {
+  margin-right: 15px;
+  float: left;
+}
+
+.post__text {
+  margin: 0;
+}
+
+.post__details {
+  padding-top: 10px;
+
+  p {
+    margin-bottom: -2px;
+  }
+
+  a {
+    color: $color4;
+    font-weight: 600;
+    font-size: 16px;
+    opacity: .8;
+
+    &:hover, &:active {
+      opacity: 1;
+    }
+  }
+}
+
+.post .avatar {
+    border-radius: 50%;
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.post-info {
+    margin-bottom: 10px;
+}
+
+.post-info p {
+    margin-bottom: 3px;
+}
+
+.post .photo-frame {
+  overflow: hidden;
+}
+
+.post .photos img {
+  margin: 0 auto;
+  display: block;
+}
+
+.photos-1 img {
+  height: auto;
+  width: 100%;
+  width: auto;
+  margin: 0 auto;
+  max-height: 600px;
+  max-width: 100%;
+  margin-left: 0!important;
+}
+
+.photos-2, .photos-3 {
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+
+  img {
+    height: 160px;
+  }
+}
+
+.photos-2 {
+  .photo-frame {
+    max-width: 48%;
+  }
+}
+
+.photos-3 {
+  .photo-frame {
+    max-width: 32%;
+  }
+}
+
+.row-photos {
+  height: 330px;
+
+  .photos-2:first-child {
+    margin-bottom: 10px;
+  }
+
+  .photos-2, .photos-3{
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+
+    img {
+      height: 160px;
+    }
+  }
+}
+
+.post .photos img:hover {
+    cursor: pointer;
+}
+
+.post-info .name {
+    font-weight: bold;
+}
+
+.post .error {
+    color: red;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ril-toolbar__item .close {
+    margin-top: 6px;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIj48cGF0aCBkPSJtIDEsMyAxLjI1LC0xLjI1IDcuNSw3LjUgNy41LC03LjUgMS4yNSwxLjI1IC03LjUsNy41IDcuNSw3LjUgLTEuMjUsMS4yNSAtNy41LC03LjUgLTcuNSw3LjUgLTEuMjUsLTEuMjUgNy41LC03LjUgLTcuNSwtNy41IHoiIGZpbGw9IiNGRkYiLz48L3N2Zz4=") no-repeat 50% !important;
+}
+
+#news-container {
+  padding-bottom: 40px;
+}

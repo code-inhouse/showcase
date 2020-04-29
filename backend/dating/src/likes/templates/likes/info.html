@@ -1,0 +1,195 @@
+{% extends 'dating/base.html' %}
+{% load static from dating %}
+{% load rules %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Симпатии" %}
+{% endblock title %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'lib/bower/emojionearea/dist/emojionearea.min.css' %}">
+  <link rel="stylesheet" href="{% static "lib/css/emojione.css" %}"/>
+  <style>
+    .contact-box {
+      position: relative;
+    }
+
+    .delete-info {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      cursor: pointer;
+    }
+  </style>
+{% endblock head %}
+{% block preloader %}
+
+{% endblock preloader %}
+{% block content %}
+   {% has_perm 'send_message' user as can_send_msg %}
+   {% has_perm 'see_likes' user as can_see_likes %}
+   {% has_perm 'see_visits' user as can_see_visits%}
+   <div class="likes wrapper-content row">
+    <div class="col-md-4 likes__col ">
+      <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h1 class="likes__title">{% trans "Кто мне нравится" %}</h1>
+          </div>
+            <div>
+              <div class="ibox-content">
+                {% if sympathies %}
+                  {% for sympathy in sympathies %}
+                      <div class="contact-box" data-id="{{sympathy.id}}">
+                          <span class="delete-info" data-id="{{sympathy.id}}" data-type="sympathy"><i class="fa fa-close"></i></span>
+                          <span class="profile-id" hidden="true">{{sympathy.liked.pk}}</span>
+                          <div class="col-sm-4 no-padding">
+                              <div class="text-center">
+                                <a href="{% url 'dateprofile:profile' sympathy.liked.pk %}">
+                                  {% if sympathy.liked.avatar %}
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="{{sympathy.liked.avatar.thumbnail_url}}">
+                                  {% else %}
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/default_avatar.png' %}">
+                                  {% endif %}
+                                </a>
+                              </div>
+                          </div>
+                          <div class="col-sm-8">
+                              <h3><strong>{{sympathy.liked.name}}</strong></h3>
+                              <p>{{sympathy.liked.age}} {% trans "лет" %}</p>
+                              <button type="button" class="btn btn-primary btn-sm btn-block" data-target="{% if can_send_msg %}#send-msg-modal{% else %}#get-premium-modal{% endif %}" data-toggle="modal" ><i class="fa fa-envelope"></i> {% trans "Написать" %}</button>
+                          </div>
+                          <div class="clearfix"></div>
+                        </a>
+                      </div>
+                  {% endfor %}
+                {% else %}
+                  <p>{% trans "Вы пока никому не поставили лайк" %}</p>
+                {% endif %}
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 likes__col">
+      <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h1 class="likes__title">{% trans "Кому я нравлюсь" %}</h1>
+          </div>
+            <div>
+                <div class="profile-content {% if not can_see_likes %}likes__block--unavailable{% endif %}">
+                <div class="likes__banner likes__banner--2">
+                    <div class="likes__banner-top">
+                      <div class="likes__banner-gradient">
+                        <i class="fa fa-lock"></i>
+                        {% blocktrans %}
+
+                        <h1>Стань <span class="likes__prem">премиум</span></h1>
+                        <p>чтобы увидеть своих поклонников</p>
+                        {% endblocktrans %}
+                      </div>
+                    </div>
+                    <div class="likes__banner-bottom">
+                      <a class="btn btn__prem btn-lg" href="{% url 'payments:click' %}?button=premium&source=likes_info_banner&page_url={{request.path}}">{% trans "СТАНЬ ПРЕМИУМ" %}</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                {% if liked_me %}
+                  {% for like in liked_me %}
+                    <div class="contact-box" data-id="{{like.id}}">
+                      <span class="delete-info" data-id="{{like.id}}" data-type="like"><i class="fa fa-close"></i></span>
+                      <span class="profile-id" hidden="true">{{like.liker.pk}}</span>
+                        <div class="col-sm-4 no-padding">
+                            <div class="text-center">
+                                  <a href="{% url 'dateprofile:profile' like.liker.pk %}">
+                                    {% if like.liker.avatar %}
+                                      <img alt="image" class="img-circle m-t-xs img-responsive" src="{{like.liker.avatar.thumbnail_url}}">
+                                    {% else %}
+                                      <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/default_avatar.png' %}">
+                                    {% endif %}
+                                  </a>
+                                </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h3><strong>{{like.liker.name}}</strong> </h3>
+                            <p>{{like.liker.age}} {% trans "лет" %}</p>
+                            <button type="button" class="btn btn-primary btn-sm btn-block" data-target="{% if can_send_msg %}#send-msg-modal{% else %}#get-premium-modal{% endif %}" data-toggle="modal"><i class="fa fa-envelope"></i> {% trans "Написать" %}</button>
+                        </div>
+                        <div class="clearfix"></div>
+                      </a>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                    <p>{% trans "Пока никому" %}</p>
+                {% endif %}
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 likes__col">
+      <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h1 class="likes__title">{% trans "Кто заходил ко мне" %}</h1>
+          </div>
+            <div>
+                <div class="profile-content {% if not can_see_visits %}likes__block--unavailable{% endif %}">
+                  <div class="likes__banner likes__banner--1">
+                      <div class="likes__banner-top">
+                        <div class="likes__banner-gradient">
+                          <i class="fa fa-lock"></i>
+                          {% blocktrans %}
+                              <h1>Стань <span class="likes__vip">VIP</span></h1>
+                          <p>чтобы увидеть своих гостей</p>
+                          {% endblocktrans %}
+                        </div>
+                      </div>
+                      <div class="likes__banner-bottom">
+                        <a class="btn btn__vip btn-lg" href="{% url 'payments:click' %}?button=vip&source=likes_info_banner&page_url={{request.path}}">{% trans "СТАНЬ VIP" %}</a>
+                      </div>
+                    </div>
+                  <div class="ibox-content">
+                  {% if visits %}
+                    {% for visit in visits %}
+                      <div class="contact-box" data-id="{{visit.id}}">
+                        <span class="delete-info" data-id="{{visit.id}}" data-type="visit"><i class="fa fa-close"></i></span>
+                        <span class="profile-id" hidden="true">{{visit.visitor.pk}}</span>
+                          <div class="col-sm-4 no-padding">
+                              <div class="text-center">
+                                  <a href="{% url 'dateprofile:profile' visit.visitor.pk %}">
+                                    {% if visit.visitor.avatar %}
+                                      <img alt="image" class="img-circle m-t-xs img-responsive" src="{{visit.visitor.avatar.thumbnail_url}}">
+                                    {% else %}
+                                      <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images/default_avatar.png' %}">
+                                    {% endif %}
+                                  </a>
+                                </div>
+                          </div>
+                          <div class="col-sm-8">
+                              <h3><strong>{{visit.visitor.name}}</strong> </h3>
+                              <p>{{visit.visitor.age}} {% trans "лет" %}</p>
+                              <button type="button" class="btn btn-primary btn-sm btn-block" data-target="{% if can_send_msg %}#send-msg-modal{% else %}#get-premium-modal{% endif %}" data-toggle="modal"><i class="fa fa-envelope"></i> {% trans "Написать" %}</button>
+                          </div>
+                          <div class="clearfix"></div>
+                        </a>
+                      </div>
+                    {% endfor %}
+                  {% else %}
+                    <p>{% trans "У вас пока нету гостей" %}</p>
+                  {% endif %}
+                  </div>
+              </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}
+
+{% block afterwrap %}
+  {% include 'chats/send-message-modal.html' %}
+{% endblock afterwrap %}
+
+{% block scripts %}
+  <script type="text/javascript" src="{% static 'lib/bower/emojionearea/dist/emojionearea.min.js' %}"></script>
+  <script src="{% static "lib/js/emojione.js" %}"></script>
+  <script src="{% static 'compiled/js/sympathies.js' %}?v=2" defer></script>
+{% endblock scripts %}

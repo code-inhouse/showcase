@@ -1,0 +1,30 @@
+.datetimepicker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.datetimepicker__date {
+    width: 125px !important;
+}
+
+.datetimepicker__hour {
+    width: 75px !important;
+
+    .ant-select-selection__rendered {
+      margin: 0;
+    }
+}
+
+.date-label--date-time-picker {
+  display: flex;
+  justify-content: space-between;
+
+  .date-label__start-date {
+    width: 125px;
+  }
+
+  .date-label__start-time, .date-label__end-time {
+    width: 75px;
+    margin: 0!important;
+  }
+}

@@ -1,0 +1,356 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/ico" />
+    <title>Lunar Labs | Crypto Tools</title>
+    <!-- CSS -->
+    <!-- Bootstrap -->
+    <link href="{% static 'assets/plugins/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Simple line icons -->
+    <link href="{% static 'assets/css/simple-line-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- Custom Style -->
+    <link href="{% static 'assets/fonts/cryptocoins.css' %}" rel="stylesheet">
+	<link href="{% static 'assets/css/night-mode.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/media.css' %}" rel="stylesheet">
+    <link id="ui-current-skin" href="{% static 'assets/css/skin-colors/skin-blue.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/trumbowyg/trumbowyg.min.css' %}" rel="stylesheet">
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  </head>
+  <body class="nav-md preloader developer-mode pace-done night-mood-background">
+    <div class="pace-cover"></div>
+    <div id="st-container" class="st-container st-effect">
+      <!-- MAIN PAGE CONTAINER -->
+      <div class="container body">
+        <div class="main_container">
+          <!-- LEFT PRIMARY NAVIGATION -->
+          <div class="col-md-3 left_col">
+            <div class="scroll-view">
+              <div class="navbar nav_title">
+                <h1 class="logo_wrapper">
+                  <a href="index.html" class="site_logo">
+                    <img class="logo" src="{% static 'assets/images/lunar-labs-logo.png' %}" alt="Lunar Crypto Labs">
+                  </a>
+                </h1>
+              </div>
+              <div class="clearfix"></div>
+              <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                  <h3>Market Overview</h3>
+                  <div class="clearfix"></div>
+                  <ul class="nav side-menu">
+                    <li class="active">
+                      <a><i class="icon-home icons"></i> <span>Home</span><span class="fa fa-angle-up"></span></a>
+                      <ul class="nav child_menu" style="display:block">
+                        <li><a href="index.html"><span>Dashboard Default</span></a></li>
+                      </ul>
+                    </li>
+
+                    <li><a><i class="icon-layers icons"></i> <span>Charts</span><span class="fa fa-angle-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="mining-pool-shares.html"><span>Donnut Chart</span></a></li>
+                        <li><a href="candlestick-charts.html"><span>Candlestick Charts</span></a></li>
+                        <li><a href="chart-depth-chart.html"><span>Depth Chart</span></a></li>
+                        <li><a href="ricksaw-chart-realtime.html"><span>Realtime Charts</span></a></li>
+                        <li><a href="chartjs-bar-chart-vertical.html"><span>Bar Charts</span></a></li>
+                        <li><a href="chartjs-line-chart.html"><span>Line Charts</span></a></li>
+                        <li><a href="chartjs-line-point-sizes.html"><span>Line Point Sizes</span></a></li>
+                        <li><a href="chartjs-line-styles-chart.html"><span>Line Styles Chart</span></a></li>
+                      </ul>
+                    </li>
+                    <li><a><i class="icon-calendar icons"></i> <span>Events</span><span class="fa fa-angle-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="events-calendar.html"><span>Events Calendar</span></a></li>
+                        <li><a href="event-create.html"><span>Add Event</span></a></li>
+                      </ul>
+                    </li>
+
+                    <li><a><i class="icon-screen-desktop icons"></i> <span>Market Compare</span><span class="fa fa-angle-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="market-compare.html"><span>Market Compare v1</span></a></li>
+                        <li><a href="market-compare-v2.html"><span>Market Compare v2</span></a></li>
+                        <li><a href="market-compare-v3.html"><span>Market Compare v3</span></a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </div>
+
+
+
+              </div>
+              <!-- /sidebar menu -->
+              <!-- /menu footer buttons -->
+              <div class="sidebar-footer hidden-small">
+                <a data-toggle="tooltip" data-placement="top" title="Settings">
+                  <span class="icon-settings icons" aria-hidden="true"></span>
+                </a>
+                <a data-toggle="tooltip" id="btnFullscreen" data-placement="top" title="FullScreen">
+                  <span class="icon-size-fullscreen icons" aria-hidden="true"></span>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Lock">
+                  <span class="icon-eye icons" aria-hidden="true"></span>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                  <span class="icon-power icons" aria-hidden="true"></span>
+                </a>
+              </div>
+              <!-- /menu footer buttons -->
+            </div>
+          </div>
+          <!-- TOP SECONDARY NAVIGATION -->
+          <div class="top_nav">
+            <div class="nav_menu">
+              <ul class="nav navbar-nav navbar-left">
+
+                <li class="megamenu-li">
+                  <!-- megamenu -->
+                  <div class="megamenu-dropdown-wrapper">
+                    <a class="megamenu-dropdown-trigger megamenu-trigger" href="#0">
+                      <i class="icon-wallet icons"></i>
+                      <span> The Wallet </span>
+                      <span class="fa fa-angle-down"></span>
+                    </a>
+                    <nav class="megamenu-dropdown">
+                      <a href="#0" class="megamenu-close">Close</a>
+                      <ul class="megamenu-dropdown-content">
+                        <li class="has-children">
+                          <a href="#"><i class="cc mmt-icon BTC" title="BTC"></i> Bitcoin</a>
+                          <ul class="megamenu-dropdown-icons is-hidden">
+                            <li>
+                              <a class="megamenu-dropdown-item item-1" href="search.html">
+                                <h3><i class="cc mmt-icon BTC" title="BTC"></i> All Transactions (BTC)</h3>
+                                <div>View Sent/Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-2" href="search.html">
+                                <h3><i class="cc mmt-icon BTC" title="BTC"></i> Sent BTC (Transactions)</h3>
+                                <div>In-dept Check Sent Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-3" href="search.html">
+                                <h3><i class="cc mmt-icon BTC" title="BTC"></i> Received BTC (Transactions)</h3>
+                                <div>In-dept Check Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-4" href="search.html">
+                                <h3><i class="cc mmt-icon BTC" title="BTC"></i> Exchanged BTC (Transactions)</h3>
+                                <div>View Sent/Received Exchanges</div>
+                              </a>
+                            </li>
+                          </ul> <!-- .megamenu-dropdown-icons -->
+                        </li> <!-- .has-children -->
+                        <li class="has-children">
+                          <a href="#"><i class="cc mmt-icon LTC" title="LTC"></i> Litecoin</a>
+                          <ul class="megamenu-dropdown-icons is-hidden">
+                            <li>
+                              <a class="megamenu-dropdown-item item-1" href="search.html">
+                                <h3><i class="cc mmt-icon LTC" title="LTC"></i> All Transactions (LTC)</h3>
+                                <div>View Sent/Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-2" href="search.html">
+                                <h3><i class="cc mmt-icon LTC" title="LTC"></i> Sent LTC (Transactions)</h3>
+                                <div>In-dept Check Sent Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-3" href="search.html">
+                                <h3><i class="cc mmt-icon LTC" title="LTC"></i> Received LTC (Transactions)</h3>
+                                <div>In-dept Check Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-4" href="search.html">
+                                <h3><i class="cc mmt-icon LTC" title="LTC"></i> Exchanged LTC (Transactions)</h3>
+                                <div>View Sent/Received Exchanges</div>
+                              </a>
+                            </li>
+                          </ul> <!-- .megamenu-dropdown-icons -->
+                        </li> <!-- .has-children -->
+                        <li class="has-children">
+                          <a href="#"><i class="cc mmt-icon ETH" title="ETH"></i> Ethereum</a>
+                          <ul class="megamenu-dropdown-icons is-hidden">
+                            <li>
+                              <a class="megamenu-dropdown-item item-1" href="search.html">
+                                <h3><i class="cc mmt-icon ETH" title="ETH"></i> All Transactions (ETH)</h3>
+                                <div>View Sent/Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-2" href="search.html">
+                                <h3><i class="cc mmt-icon ETH" title="ETH"></i> Sent ETH (Transactions)</h3>
+                                <div>In-dept Check Sent Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-3" href="search.html">
+                                <h3><i class="cc mmt-icon ETH" title="ETH"></i> Received ETH (Transactions)</h3>
+                                <div>In-dept Check Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-4" href="search.html">
+                                <h3><i class="cc mmt-icon ETH" title="ETH"></i> Exchanged ETH (Transactions)</h3>
+                                <div>View Sent/Received Exchanges</div>
+                              </a>
+                            </li>
+                          </ul> <!-- .megamenu-dropdown-icons -->
+                        </li> <!-- .has-children -->
+                        <li class="has-children">
+                          <a href="#"><i class="cc mmt-icon DASH" title="DASH"></i> DASH</a>
+                          <ul class="megamenu-dropdown-icons is-hidden">
+                            <li>
+                              <a class="megamenu-dropdown-item item-1" href="search.html">
+                                <h3><i class="cc mmt-icon DASH" title="DASH"></i> All Transactions (DASH)</h3>
+                                <div>View Sent/Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-2" href="search.html">
+                                <h3><i class="cc mmt-icon DASH" title="DASH"></i> Sent DASH (Transactions)</h3>
+                                <div>In-dept Check Sent Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-3" href="search.html">
+                                <h3><i class="cc mmt-icon DASH" title="DASH"></i> Received DASH (Transactions)</h3>
+                                <div>In-dept Check Received Transactions</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="megamenu-dropdown-item item-4" href="search.html">
+                                <h3><i class="cc mmt-icon DASH" title="DASH"></i> Exchanged DASH (Transactions)</h3>
+                                <div>View Sent/Received Exchanges</div>
+                              </a>
+                            </li>
+                          </ul> <!-- .megamenu-dropdown-icons -->
+                        </li> <!-- .has-children -->
+                        <li>
+                          <a href="#"><i class="icon-wallet icons cc"></i> Add New Wallet</a>
+                        </li>
+                      </ul> <!-- .megamenu-dropdown-content -->
+                    </nav> <!-- .megamenu-dropdown -->
+                  </div> <!-- .megamenu-dropdown-wrapper -->
+                  <!-- megamenu -->
+                </li>
+                <li class="dropdown-menu-1-li">
+                  <div class="dropdown-menu-1 dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-feed icons"></i> Reports
+                    <span class="fa fa-angle-down"></span></a>
+                    <ul class="dropdown-menu archive">
+                      <li><a href="crypto_address.html"><span class="pull-left">...8b0133 (0.01 BTC)</span> <span class="label label-success pull-right">Success</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...9c3286 (0.07 BTC)</span> <span class="label label-success pull-right">Success</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...4a3432 (0.44 LTC)</span> <span class="label label-danger pull-right">Canceled</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...1e8437 (0.91 BTC)</span> <span class="label label-warning pull-right">Pending</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...8b0133 (3.51 LTC)</span> <span class="label label-success pull-right">Success</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...9c3286 (0.07 ETH)</span> <span class="label label-warning pull-right">Pending</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...8b0133 (0.01 BTC)</span> <span class="label label-success pull-right">Success</span></a></li>
+                      <li><a href="crypto_address.html"><span class="pull-left">...9c3286 (0.07 BTC)</span> <span class="label label-success pull-right">Success</span></a></li>
+                    </ul>
+                  </div>
+                </li>
+
+              </ul> <!-- top menu ul -->
+              <ul class="nav navbar-nav navbar-right">
+
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static 'assets/images/profile-pic.jpg' %}" alt=""> <span style="display:inline;margin-left:10px;">My Profile</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li class="language">
+                  <a href="javascript:;" class="lang-swich dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static 'assets/images/united-kingdom.svg' %}" alt="uk" style="display:inline;"><span style="display:inline;margin-left:10px;">English</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"><img src="assets/images/france.svg" alt="fr"><span>France</span></a></li>
+                    <li><a href="javascript:;"><img src="assets/images/germany.svg" alt="de"><span>Germany</span></a></li>
+                    <li><a href="javascript:;"><img src="assets/images/italy.svg" alt="it"><span>Italy</span></a></li>
+                    <li><a href="javascript:;"><img src="assets/images/spain.svg" alt="es"><span>Spain</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PAGE CONTENT -->
+          <div class="right_col" role="main">
+            <div class="clearfix"></div>
+            <div class="header-title-breadcrumb element-box-shadow">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-7 col-sm-6 col-xs-12 text-left">
+                        <h3>Starter</h3>
+                      </div>
+                      <div class="col-md-5 col-sm-6 col-xs-12 hide-on-tablet">
+                          <ol class="breadcrumb text-right">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Starter</li>
+                          </ol>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+          <!-- PAGE FOOTER -->
+          <footer>
+
+            <div class="clearfix"></div>
+			             <div class="tickers-black-sm crypto-ticker">
+              <ul id="webticker-dark-icons">
+                <li data-update="item1"><i class="cc BTC"></i> BTC <span class="coin-value"> $11.039232</span></li>
+                <li data-update="item2"><i class="cc ETH"></i> ETH <span class="coin-value"> $1.2792</span></li>
+                <li data-update="item3"><i class="cc GAME"></i> GAME <span class="coin-value"> $11.039232</span></li>
+                <li data-update="item4"><i class="cc LBC"></i> LBC <span class="coin-value"> $0.588418</span></li>
+                <li data-update="item5"><i class="cc NEO"></i> NEO <span class="coin-value"> $161.511</span></li>
+                <li data-update="item6"><i class="cc STEEM"></i> STE <span class="coin-value"> $0.551955</span></li>
+                <li data-update="item7"><i class="cc LTC"></i> LIT <span class="coin-value"> $177.80</span></li>
+                <li data-update="item8"><i class="cc NOTE"></i> NOTE <span class="coin-value"> $13.399</span></li>
+                <li data-update="item9"><i class="cc MINT"></i> MINT <span class="coin-value"> $0.880694</span></li>
+                <li data-update="item10"><i class="cc IOTA"></i> IOT <span class="coin-value"> $2.555</span></li>
+                <li data-update="item11"><i class="cc DASH"></i> DAS <span class="coin-value"> $769.22</span></li>
+              </ul>
+            </div>
+          </footer>
+       </div>
+        <!-- RIGHT SIDE SIDEBAR NAVIGATION -->
+
+      <!-- RIGHT SIDE: SEARCH FORM -->
+
+      <!-- JS SCRIPTS -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.scrollbar.min.js"></script>
+      <script src="assets/plugins/modernizr/modernizr.custom.js"></script>
+      <script src="assets/plugins/classie/classie.js"></script>
+      <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+	  <script src="assets/plugins/webticker/jquery.webticker.min.js"></script>
+      <!-- Custom Theme Scripts -->
+      <script src="assets/js/custom.min.js"></script>
+      <script src="assets/js/preloader.min.js"></script>
+    </div>
+  </body>
+</html>

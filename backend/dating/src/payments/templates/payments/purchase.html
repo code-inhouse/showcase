@@ -1,0 +1,26 @@
+{% extends "dating/base.html" %}
+{% load i18n %}
+{% load static from dating %}
+
+{% block title %}
+    {% trans "Купить премиум" %}
+{% endblock title %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static "lib/css/rodal.css" %}">
+{% endblock head %}
+
+{% block content %}
+<div id="main_content" class="page-section">
+  <div id="splash" class="upgrade"></div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+  <script>
+  window.COUNTRY = '{{request.user.profile.country}}' || 'Russia';
+  window.USER_STATUS = '{{request.user.profile.status}}';
+  window.USER_NAME = '{{request.user.profile.name}}';
+  </script>
+  <script src="{% static "/compiled/js/payments.js" %}?4" defer></script>
+{% endblock scripts %}

@@ -1,0 +1,421 @@
+{% load static from dating %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.yaCounter42711874 = {
+            reachGoal: function() {}
+        };
+    </script>
+    {% include "dateprofile/vk_pixel_landing.html" %}
+
+    <title>{% trans "Регистрация" %}</title>
+
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'lib/css/nouislider/nouislider.min.css' %}">
+    <link href="{% static 'compiled/css/common.css' %}?1" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'lib/bower/cropperjs/dist/cropper.min.css' %}">
+    <meta property="og:title" content="Знакомься с новыми людьми и выигрывай iPhone 7 каждую неделю" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://{{request.get_host}}{{request.get_full_path}}" />
+    <meta property="og:image" content="http://{{ request.get_host }}{% static "images/big_logo.png" %}" />
+    <meta property="og:description" content="Регистрируйся на сайте NaidiSebe.com - у нас тысячи людей, которым ты интересен">
+    <script>
+    var VK_DATA = '{% autoescape off %}{{VK_DATA}}{%endautoescape%}'; // DO NOT CHANGE QUOTES
+    </script>
+</head>
+
+<body class="registration gray-bg">
+  <div class="page-wrap">
+  <div class="registration__logo"></div>
+  <p class="landing-text">{% trans "Найди друзей, вторую половинку или любовь на всю жизнь!" %}</p>
+    <form method="post" hidden id="form-for-submission" enctype="multipart/form-data">
+    {% csrf_token %}
+
+        <input id="id_email" name="email" placeholder="E-mail адрес" type="email" required />
+
+        <input id="id_password1" name="password1" placeholder="{% trans 'Пароль' %}" type="password" required />
+
+        <input id="id_password2" name="password2" placeholder="{% trans 'Пароль (еще раз)' %}" type="password" required />
+
+
+        <select id="id_sex" name="sex" required>
+<option value="" selected="selected">---------</option>
+<option value="male">{% trans "Мужчина" %}</option>
+<option value="female">{% trans "Женщина" %}</option>
+</select>
+
+        <select id="id_looking_for" name="looking_for" required>
+<option value="" selected="selected">---------</option>
+<option value="male">{% trans "Мужчину" %}</option>
+<option value="female">{% trans "Женщину" %}</option>
+</select>
+
+        <input id="id_name" maxlength="50" name="name" type="text" required />
+
+        <input id="id_birthday" name="birthday" type="text" required />
+
+        <input id="id_lower_age_bound" name="lower_age_bound" type="number" required />
+
+        <input id="id_upper_age_bound" name="upper_age_bound" type="number" required />
+
+        <select id="id_purpose" name="purpose" required>
+<option value="" selected="selected">---------</option>
+<option value="long_term">Серьёзные отношения</option>
+<option value="short_term">Быстрые отношения</option>
+<option value="new_friends">Новые знакомства</option>
+</select>
+
+        <input id="id_height" name="height" type="number" />
+
+        <select id="id_build" name="build" required>
+<option value="" selected="selected">---------</option>
+<option value="thin">Худощавое</option>
+<option value="average">Среднее</option>
+<option value="sport">Спортивное</option>
+<option value="fat">Полноватое</option>
+</select>
+
+        <select id="id_alcohol_attitude" name="alcohol_attitude" required>
+<option value="" selected="selected">---------</option>
+<option value="no_drink">Не употребляю</option>
+<option value="company">Только в компании</option>
+<option value="rarely">Изредка пью</option>
+<option value="often">Пью часто</option>
+</select>
+
+        <select id="id_smoking_attitude" name="smoking_attitude" required>
+<option value="" selected="selected">---------</option>
+<option value="negative">Негативное</option>
+<option value="rarely">Курю редко</option>
+<option value="often">Курю часто</option>
+</select>
+
+
+        <input accept="image/jpeg, image/png" id="id_rel_top" name="rel_top" step="any" type="number" required />
+
+        <input accept="image/jpeg, image/png" id="id_rel_left" name="rel_left" step="any" type="number" required />
+
+        <input accept="image/jpeg, image/png" id="id_rel_width" name="rel_width" step="any" type="number" required />
+
+        <input accept="image/jpeg, image/png" id="id_rel_height" name="rel_height" step="any" type="number" required />
+
+        <input accept="image/jpeg, image/png" id="id_image" name="image" type="file" />
+
+        <input accept="image/jpeg, image/png" id="id_image_url" name="image_url" type="url" />
+
+
+    <input type="hidden" name="form-dummy-question-1">
+    <input type="hidden" name="form-dummy-question-2">
+    <input type="hidden" name="form-dummy-question-3">
+    <input type="hidden" name="form-dummy-question-4">
+    <input type="hidden" name="form-dummy-question-5">
+    <input type="hidden" name="form-dummy-question-6">
+    <input type="hidden" name="form-dummy-question-7">
+    <input type="hidden" name="form-dummy-question-8">
+    <input type="hidden" name="form-dummy-question-9">
+    <input type="hidden" name="form-dummy-question-10">
+    <input type="hidden" name="form-dummy-question-answer-1">
+    <input type="hidden" name="form-dummy-question-answer-2">
+    <input type="hidden" name="form-dummy-question-answer-3">
+    <input type="hidden" name="form-dummy-question-answer-4">
+    <input type="hidden" name="form-dummy-question-answer-5">
+    <input type="hidden" name="form-dummy-question-answer-6">
+    <input type="hidden" name="form-dummy-question-answer-7">
+    <input type="hidden" name="form-dummy-question-answer-8">
+    <input type="hidden" name="form-dummy-question-answer-9">
+    <input type="hidden" name="form-dummy-question-answer-10">
+  </form>
+  <a href="/accounts/login/" class="btn btn-primary registration__login">{% trans "Войти" %}</a>
+  {% include "dateprofile/landing_lang_change.html" %}
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="ibox-content ibox-content--radius" id="first-step-container">
+                    <div class="m-t" role="form">
+                    <h3 class="signin__title">{% trans "Регистрация" %}</h3>
+                        <div class="registration-vk-auth" id="start-vk-auth">
+                            <a class="vk-button" href="{% provider_login_url 'vk' %}" alt="">{% trans "Войти через Вконтакте" %}</a>
+                            <p class="separator"><span>{% trans "или зарегистрироваться" %}</span></p>
+                        </div>
+                        <div class="form-group" id="sex-control">
+                            <label for="">{% trans "Я" %}</label>
+                            <div class="signup__btns">
+                              <button type="button" class="btn btn-w-m btn-success btn-outline btn-man" id="sex-male-btn">{% trans "Мужчина" %}</button>
+                              <button type="button" class="btn btn-w-m btn-danger btn-outline" id="sex-female-btn">{% trans "Женщина" %}</button>
+                            </div>
+                            <p class="error-message">{% trans "Выберите, пожалуйста, одну из опций" %}</p>
+                        </div>
+                        <div class="form-group" id="looking-for-control">
+                            <label for="">{% trans "Ищу" %}
+                            {% if LANGUAGE_CODE == 'en' %}
+
+                                <br>for
+                            {% endif %}
+                            </label>
+                            <div class="signup__btns">
+                              <button type="button" class="btn btn-w-m btn-success btn-outline btn-man" id="looking-for-male-btn">{% trans "Мужчину" %}</button>
+                              <button type="button" class="btn btn-w-m btn-danger btn-outline" id="looking-for-female-btn">{% trans "Женщину" %}</button>
+                            </div>
+                            <p class="error-message">{% trans "Выберите, пожалуйста, одну из опций" %}</p>
+                        </div>
+                        <div class="form-group" id="name-control">
+                            <div>
+                              <input type="text" class="form-control" placeholder="{% trans 'Имя' %}" required="" id="name-input">
+                            </div>
+                            <p class="error-message">{% trans "Имя должно быть не короче двух символов" %}</p>
+                        </div>
+                        <a role="button" class="btn btn-primary block full-width m-b" id="finish-general-step">{% trans "Продолжить" %}</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="ibox-content ibox-content--radius" id="auth-data-step" hidden>
+                    <div class="m-t" role="form">
+                        <h3 class="signup__title">{% trans "Регистрация" %}</h3>
+                        <div class="form-group" id="email-control">
+                          <div>
+                            <p class="error-message">{% trans "Пожалуйста, введите действительный почтовый адрес" %}</p>
+                            <input type="email" class="form-control" placeholder="{% trans "Почта" %}" required="" id="email-input">
+                          </div>
+                        </div>
+                        <div class="form-group" id="password-control">
+                          <div>
+                            <p id="password-err-message" class="error-message"></p>
+                            <input type="password" class="form-control" placeholder="{% trans "Пароль" %}" required="" id="password-input">
+                          </div>
+                        </div>
+                        <div class="form-group" id="password-rep-control">
+                            <div>
+                              <p id="password-rep-err-message" class="error-message"></p>
+                              <input type="password" class="form-control" placeholder="{% trans "Еще раз пароль" %}" required="" id="password-rep-input">
+                            </div>
+                        </div>
+                        <div class="btn-group back-or-next">
+                            <a class="btn back-btn btn-default">&lt;</a>
+                            <a role="button" class="btn btn-primary block m-b next-btn" id="finish-auth-data-step">{% trans "Продолжить" %}</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="registration-progress registration-progress--2">
+              <div>
+                <p>{% trans "шаг" %} 2</p>
+              </div>
+              <p>{% trans "из" %} 5</p>
+            </div>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="ibox-content ibox-content--radius" id="questionnaire-step" hidden>
+                    <div class="m-t" role="form">
+                        <h3 class="signin__title">{% trans "Регистрация" %}</h3>
+                        <div class="form-group" id="bday">
+                            <p class="error-message"></p>
+                            <label for="bday-input">{% trans "День рождения" %}</label>
+                            <div class="form-inline date-input birthday">
+                                <div class="errors">
+                                    <p class="error-message-color date-error" hidden>{% trans "Вы должны быть старше 18 лет,чтобы зарегистрироваться" %}</p>
+                                    <p class="error-message-color day-error"hidden> {% trans " Введите настоящий день" %}</p>
+                                    <p class="error-message-color month-error"hidden> {% trans "Введите настоящий месяц" %} </p>
+                                    <p class="error-message-color year-error" hidden> {% trans "Введите настоящий год" %}</p>
+                                </div>
+                                <input type="number" min="1" max="31" class="form-control day" id="bdate-day-input" placeholder="{% trans "День" %}">
+                                <input type="number" min="1" max="12" class="form-control month" placeholder="{% trans "Месяц" %}" id="bdate-month-input">
+                                <input type="number" min="1930" max="2016" class="form-control year"
+                                placeholder="{% trans "Год" %}" id="bdate-year-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age-search-input">{% trans "Ищу человека возрастом" %}</label>
+                            <div id="age-search-input"></div>
+                        </div>
+                        <div class="form-group" id="purpose-control">
+                            <p class="error-message">{% trans "Выберите одну из опций" %}</p>
+                            <label for="purpose-input">{% trans "Цель знакомства" %}</label>
+                            <select id="purpose-input" class="form-control">
+                                <option value="long_term">{% trans "Серьзные отношения" %}</option>
+                                <option value="short_term">{% trans "Быстрые отношения" %}</option>
+                                <option value="new_friends">{% trans "Новые знакомства" %}</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="body-type-control">
+                            <label for="body-type-input">{% trans "Телосоложение" %}</label>
+                            <p class="error-message">{% trans "Выберите одну из опций" %}</p>
+                            <select id="body-type-input" class="form-control">
+                                <option value="thin">{% trans "Худощавое" %}</option>
+                                <option value="average">{% trans "Среднее" %}</option>
+                                <option value="sport">{% trans "Спортивное" %}</option>
+                                <option value="fat">{% trans "Полноватое" %}</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="alcohol-control">
+                            <label for="alcohol-input">{% trans "Отношение к алкоголю" %}</label>
+                            <select id="alcohol-input" class="form-control">
+                                <option value="no_drink">{% trans "Не употребляю" %}</option>
+                                <option value="company">{% trans "Только в компании" %}</option>
+                                <option value="rarely">{% trans "Изредка пью" %}</option>
+                                <option value="often">{% trans "Пью часто" %}</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="smoking-control">
+                            <label for="smoking-input">{% trans "Отношение к курению" %}</label>
+                            <select id="smoking-input" class="form-control">
+                                <option value="negative">{% trans "Негативно" %}</option>
+                                <option value="rarely">{% trans "Курю редко" %}</option>
+                                <option value="often">{% trans "Курю часто" %}</option>
+                            </select>
+                        </div>
+                        <div class="btn-group back-or-next">
+                            <a class="btn back-btn btn-default">&lt;</a>
+                            <a role="button" class="btn btn-primary block m-b next-btn" id="finish-questionnaire-step">{% trans "Продолжить" %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="registration-progress registration-progress--3">
+                  <div><p>{% trans "шаг" %} 3</p></div>
+                  <p>{% trans "из" %} 5</p>
+                </div>
+            </div>
+        </div>
+        <div class="test-question" id="dummy-questions" hidden>
+            <div class="test-question__item question-current">
+                <div class="" role="form">
+                    <h3 class="test__title">{% trans "Вопрос" %} 1 {% trans "из" %} 7</h3>
+                    <p class="test__content">{% trans "Могли бы вы встречаться с кем-то неряшливым?" %}</p>
+                </div>
+                <div class="">
+                    <small class="btn btn-default skip-question">{% trans "Пропустить" %}</small>
+                </div>
+            </div>
+            <div class="test-question__item question-second-to-first">
+                <div class="" role="form">
+                    <h3 class="test__title">{% trans "Вопрос" %} 1 {% trans "из" %} 7</h3>
+                    <p class="test__content">{% trans "Могли бы вы встречаться с кем-то неряшливым?" %}</p>
+                </div>
+                <div class="">
+                    <small class="btn btn-default skip-question">{% trans "Пропустить" %}</small>
+                </div>
+            </div>
+            <div class="test-question__item question-third-to-second">
+                <div class="" role="form">
+                    <h3 class="test__title">{% trans "Вопрос" %} 2 {% trans "из" %} 7</h3>
+                    <p class="test__content">{% trans "Вам нравятся фильмы ужасов?" %}</p>
+                </div>
+                <div class="">
+                    <small class="btn btn-default skip-question">{% trans "Пропустить" %}</small>
+                </div>
+            </div>
+            <div class="test-question__item question-delete-yes">
+              <div class="" role="form">
+                  <h3 class="test__title">{% trans "Вопрос" %} 3 {% trans "из" %} 7</h3>
+                  <p class="test__content">{% trans "Курение отвратительно?" %}</p>
+              </div>
+              <div class="">
+                  <small class="btn btn-default skip-question">{% trans "Пропустить" %}</small>
+              </div>
+            </div>
+            <div class="test__btns">
+                <button type="button" class="btn btn-w-m btn-lg btn-primary  test__btn test__btn--first">{% trans "нет" %}</button>
+                <button type="button" class="btn btn-w-m btn-lg btn-danger test__btn test__btn--second">{% trans "да" %}</button>
+            </div>
+        </div>
+        <div class="registration-progress registration-progress--4">
+          <div>
+            <p>{% trans "шаг" %} 4</p>
+          </div>
+          <p>{% trans "из" %} 5</p>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="ibox-content ibox-content--radius" id="photo-control" hidden>
+                    <div class="m-t" role="form">
+                        <h3 class="signin__title">{% trans "Регистрация" %}</h3>
+                        <div class="form-group">
+                            <label for="id_image" class="image_label">
+                                <div>
+                                    <img src="http://buira.org/assets/images/shared/default-profile.png" alt="Profile image" class="avatar">
+                                </div>
+                            </label>
+                        </div>
+                        <label class="btn block photo-upload" for="id_image">{% trans "Загрузить фото" %}</label>
+                        <p id="photo-size-error" hidden>{% trans "Размер фото не должен превышать 5 мегабайт" %}</p>
+                        <a role="button" class="btn btn-primary block m-b" id="finish-photo-step">{% trans "Продолжить" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    {% include "dateprofile/real_users.html" %}
+  </div>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    {% if not USE_ANALYTICS %}
+      window.yaCounter42711874 = {
+        reachGoal: function() {}
+      };
+    {% else %}
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter42711874 = new Ya.Metrika({
+                      id:42711874,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true,
+                      webvisor:true
+                  });
+              } catch(e) { }
+          });
+
+          var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks");
+    {% endif %}
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/42711874" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script src="{% static "compiled/js/polyfill.js" %}"></script>
+    <script src="{% static 'lib/bower/cropperjs/dist/cropper.min.js' %}"></script>
+    <script src="{% static 'compiled/js/registration.js' %}?1" defer></script>
+    <script src="{% static 'lib/js/wNumb.js' %}"></script>
+    <script src="{% static 'lib/js/nouislider.min.js' %}"></script>
+     <div class="about-links">
+                <div class="row">
+                    <p class="col-xs-6" style="text-align: right;"><a target="_blank" style="color: white; font-weight: bold;" href="{% url 'dateprofile:about' %}">{% trans "О сайте" %}</a></p>
+                    <p class="col-xs-6"><a target="_blank" style="color: white; font-weight: bold;" href="{% url 'dateprofile:contacts' %}">{% trans "Контакты" %}</a></p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <p class="col-xs-6" style="text-align: right;"><a target="_blank" style="color: white; font-weight: bold;" href="{% url 'dateprofile:terms' %}">{% trans "Пользовательское соглашение" %}</a></p>
+                    <p class="col-xs-6"><a target="_blank" style="color: white; font-weight: bold;" href="{% url 'dateprofile:conf_policy' %}">{% trans "Политика конфиденциальности" %}</a></p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+</div>
+</body>
+</html>

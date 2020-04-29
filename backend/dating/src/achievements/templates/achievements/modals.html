@@ -1,0 +1,56 @@
+<div class="modal fade" id="finish-current-task">
+    <div class="modal-dialog modal-achievements modal-achievements-1" role="document">
+        <div class="modal-achievements__header">ЗАДАНИЕ ВЫПОЛНЕНО!</div>
+        <div class="modal-content clear">
+            <div class="modal-achievements__first-block">
+              <p class="modal-achievements__title">Теперь ваш рейтинг</p>
+              <p class="new-rating"></p>
+              <a class="finish-btn btn btn-outline btn-primary btn-block">Продолжить<i class="ola"></i></a>
+            </div>
+            <i class="modal-achievements__image"></i>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="next-task-info">
+    <div class="modal-dialog modal-achievements modal-achievements-1" role="document">
+        <div class="modal-achievements__header">СЛЕДУЮЩЕЕ ЗАДАНИЕ</div>
+        <div class="modal-content clear">
+          <div class="modal-achievements__first-block">
+            <p class="modal-achievements__title">Награда:</p>
+            <p class="new-rating"></p>
+            <a class="finish-btn btn btn-outline btn-primary btn-block">Продолжить</a>
+          </div>
+          <p class="task-info"></p>
+        </div>
+    </div>
+</div>
+<script>
+    (function init() {
+        var $finishCurTask = $('#finish-current-task');
+        var $nextTask = $('#next-task-info');
+        window.completeTask = function completeTask(newRating, newTask) {
+            window.NEW_TASK = newTask;
+            $finishCurTask.find('.new-rating').text(newRating + '%');
+            if (newTask) {
+                $nextTask.find('.new-rating').text(newRating + newTask.award + '%');
+            }
+            $nextTask.find('.task-info').text(newTask.longDescription)
+            $finishCurTask.modal('show')
+        }
+        $finishCurTask.find('.finish-btn').click(function() {
+            $finishCurTask.modal('hide')
+            if (window.NEW_TASK) {
+                $nextTask.modal('show')
+            }
+        })
+        $nextTask.find('.finish-btn').click(function() {
+            $nextTask.modal('hide')
+        })
+        $(document).ready(function() {
+            if (window.DID_COMPLETE_TASK) {
+                window.completeTask(window.TASK.userRating,
+                                    window.TASK);
+            }
+        });
+    })();
+</script>

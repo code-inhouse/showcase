@@ -1,0 +1,184 @@
+.likes {
+  .ibox-title {
+    margin-top: 0;
+    border: 0;
+  }
+
+  .ibox {
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
+
+.likes__title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.likes__banner {
+  display: none;
+
+  .likes__prem {
+    color: #27ae60;
+    font-weight: 700;
+  }
+
+  .likes__vip {
+    color: #FFD05B;
+    font-weight: 700;
+  }
+
+  .btn {
+    color: white;
+    font-weight: bold;
+  }
+
+  .btn__prem {
+    background-color: #27ae60;
+
+    &:hover {
+      background-color: #38d67b;
+    }
+  }
+
+  .btn__vip {
+    background-color: #FFD05B;
+
+    &:hover {
+      background-color: #ffda7d;
+    }
+  }
+}
+
+.likes__block--unavailable {
+  .ibox-content {
+    display: none;
+  }
+
+  .likes__banner {
+    display: block;
+  }
+}
+
+.likes__banner--1 {
+  .likes__banner-top {
+    background-image: url('#{$asset-path}/girl-banner-1.jpg');
+  }
+}
+
+.likes__banner--2 {
+  .likes__banner-top {
+    background-image: url('#{$asset-path}/girl-banner-2.jpg');
+  }
+}
+
+.likes__banner-top {
+  position: relative;
+  padding: 20px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 383px;
+  color: white;
+  text-align: center;
+
+  .fa {
+    font-size: 150px;
+    margin-top: 60px;
+    opacity: .7;
+  }
+
+  h1 {
+    font-weight: 600;
+    margin-top: 0;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.likes__banner-bottom {
+  padding: 20px;
+  background: white;
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.likes__banner-gradient {
+  background-color: rgba(33, 34, 51, 0.7);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 20px;
+}
+
+#mutual-like-banner {
+  float: right;
+  max-width: 260px;
+}
+
+#second-banner {
+  max-width: 260px;
+}
+
+#banner {
+  max-width: 260px;
+}
+
+.match-banner {
+  margin-top: 98px;
+}
+
+#get-premium-modal-likes .modal-dialog {
+  width: 350px;
+  height: 400px;
+
+  p {
+    text-align: center;
+  }
+
+  .modal-content {
+    font-size: 16px;
+    color: white;
+  }
+
+  .modal-body {
+    width:100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/static/images/girl-banner-2.jpg);
+    background-position:center top;
+    height: 350px;
+  }
+
+  .heading {
+    margin-top: 10px;
+  }
+
+  .lock {
+    text-align: center;
+    font-size: 120px;
+    opacity: 0.7;
+  }
+
+  .task {
+    font-weight: bold;
+    font-size: 30px;
+
+    span {
+      color: #38d67b;
+    }
+  }
+
+  .modal-footer {
+    text-align: center;
+
+    a {
+      font-weight: bold !important;
+      width: 100% !important;
+    }
+  }
+}

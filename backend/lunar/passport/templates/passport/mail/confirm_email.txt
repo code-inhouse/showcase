@@ -1,0 +1,1 @@
+Please confirm your email by following this link: {{ email_link }}

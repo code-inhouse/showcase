@@ -1,0 +1,54 @@
+{% load staticfiles %}
+{% load account %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>О сайте</title>
+
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+
+    <link href="{% static 'lib/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'compiled/css/common.css' %}" rel="stylesheet">
+
+    <style>
+        .info {
+            max-width: 500px;
+            margin: 30px auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body class="registration grey-bg">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="ibox-content info">
+                <h1>О сайте</h1>
+                <p>Мы рады видеть Вас на NaidiSebe.com! Мы сделали сайт чтобы Вы могли легко найти вторую половинку для серьезных отношений или просто новых друзей.
+Не знаете с чего начать? Это просто - на нашем сайте мы можете использовать разделы:
+
+<p>"Моя страница" - так Вас видят другие пользователи сайта. Добавляйте больше фотографий, расскажите о себе и ответьте на вопросы - смелее, это увеличит интерес противоположного пола! Также тут можно поменять цель знакомства или возраст партнера, который Вы указывали при регистрации
+
+<p>"Найти пару" - оценивайте людей по фотографии, нажимая кнопку нравится или не нравится. Люди узнают только о хорошей оценке. Если симпатия взаимная - вы оба узнаете об этом! Тогда смело начинайте разговор, вас уже ждут :)
+
+<p>"Сообщения" - здесь удобно переписываться с другими людьми. Тут же хранится переписка на сайте.
+
+<p>"Новости" - узнайте, что произошло нового у людей, которые вам интересны. Напишите свою новость и её прочитают другие гости сайта.
+
+<p>"Симпатии" - тут сохраняются странички людей, которым Вы поставили "Мне нравится". Смотрите, кто оценивал вас и заходил на вашу страницу.
+
+<p>Будьте активнее и смелее, ведь здесь все ищут любовь и новые знакомства. По любым вопросам обращайтесь по адресу - <a href="mailto:support@naidisebe.com">support@naidisebe.com</a>
+
+            </div>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% load static from dating %}
+{% load account %}
+{% load widget_tweaks %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% trans "Подтверждение регистрации" %}</title>
+
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+
+    <link href="{% static 'lib/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'compiled/css/common.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="registration gray-bg registration--step-6">
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="ibox-content">
+                    <form class="m-t" role="form" method="POST" action="{% url 'dateprofile:change_email' %}">
+                        {% csrf_token %}
+                        <h3 class="signup__title">{% trans "Подтверждение" %}</h3>
+                        <p>{% trans "Мы отправили на вашу почту письмо со ссылкой на ваш личный профиль" %}</p>
+                        <p>{% trans "Для завершения регистрации кликните по ссылке, которую мы прислали в этом письме" %}</p>
+                        <p>{% trans "Вы указали почту:"%} <a href="#"> {{ email }}</a></p>
+                        <div class="form-group">
+                          <div>
+                            <label for="">{% trans "Ошиблись? Укажите верный адрес:" %}</label>
+                            {{ form.secret|attr:'hidden:true' }}
+                            {{ form.user|attr:'hidden:true' }}
+                            <input type="email" class="form-control" placeholder="{% trans "Почта" %}" required="" name="{{form.new_email.html_name}}">
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary block full-width m-b">{% trans "Отправить письмо еще раз" %}</button>
+                        <p><small>{% trans '*Проверьте вкладку "Спам", письмо могло попасть в нее' %}</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "dateprofile/real_users.html" %}
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+    {% if not USE_ANALYTICS %}
+      window.yaCounter42711874 = {
+        reachGoal: function() {}
+      };
+    {% else %}
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter42711874 = new Ya.Metrika({
+                      id:42711874,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true,
+                      webvisor:true
+                  });
+              } catch(e) { }
+          });
+
+          var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks");
+    {% endif %}
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/42711874" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script>window.onload=function(){yaCounter42711874.reachGoal('Registration Step 6');}</script>
+</body>
+</html>

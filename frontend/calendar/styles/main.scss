@@ -1,0 +1,1322 @@
+@import "./discuss.scss";
+@import "./share.scss";
+@import "./panes.scss";
+@import "./datetime.scss";
+
+html,
+body {
+  position: fixed;
+  overflow: hidden;
+}
+
+.main {
+  height: 100%;
+
+  & > div {
+    height: 100%;
+  }
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100%;
+
+  h1 {
+    font-weight: 500;
+    margin-bottom: 28px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    width: 420px;
+    text-align: center;
+    line-height: 32px;
+    margin: 0 auto 50px;
+  }
+
+  .disabled-message {
+    margin-top: 8px;
+  }
+
+  .ant-btn-lg {
+    padding: 0 20px;
+    font-size: 20px;
+    border-radius: 4px;
+    height: 40px;
+  }
+
+  footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding-left: 0;
+
+      a {
+        color: rgba(0, 0, 0, 0.65);
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.content {
+  padding-bottom: 80px;
+  padding-top: 60px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.calendar-wrapper.viewer {
+  .new-event-button {
+    display: none!important;
+  }
+}
+
+.discuss-open {
+ .calendar__viewport {
+   width: calc(100vw - 499px)
+ }
+}
+
+.event-open {
+ .calendar__viewport {
+   width: calc(100vw - 499px)
+ }
+}
+
+.calendar {
+  overflow: visible;
+  white-space: nowrap;
+  position: relative;
+  height: calc(100vh - 56px);
+  width: 100vw;
+}
+
+.calendar-header {
+  padding: 20px;
+  position: relative;
+  background: rgb(72, 128, 141);
+}
+
+.calendar-header__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-header__details {
+  display: flex;
+  align-items: center;
+  color: white;
+
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 900px;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.calendar-header__destination {
+  margin-bottom: 0;
+}
+
+.calendar-header__right {
+  display: flex;
+  align-items: center;
+  color: white;
+
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.calendar-header__buttons {
+  margin-left: 30px;
+
+  button {
+    margin-right: 10px;
+    background-color: #48808d;
+    border-color: #48808d;
+    border: 1px solid #396d79;
+
+    &:hover, &:active, &:focus {
+      background-color: #396d79;
+      border-color: #396d79;
+    }
+  }
+}
+
+.calendar-header__buttons--clone {
+  margin: 15px auto 0;
+  text-align: center;
+}
+
+#doorbell-button {
+  line-height: 1.499;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 0 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  height: 32px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  position: absolute;
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fff;
+  border-color: #d9d9d9;
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  margin-right: 10px;
+  background-color: #48808d;
+  border-color: #48808d;
+  border: 1px solid #396d79;
+  -webkit-appearance: button;
+  top: 12px;
+  right: 9px;
+  outline: none;
+  opacity: 0;
+  display: none;
+}
+
+.add-new-event {
+  position: fixed;
+  width: 500px;
+  right: 0;
+  top: 56px;
+  bottom: 0;
+  padding: 30px;
+  z-index: 10000;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  .anticon-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .anticon-delete {
+    font-size: 22px;
+    opacity: .8;
+    cursor: pointer;
+
+    &:hover, &:active {
+      opacity: 1;
+    }
+  }
+
+  .ant-form-inline, .ant-form-item {
+    margin-bottom: 10px;
+  }
+
+  .add-new-event__buttons {
+    margin-top: 10px;
+  }
+
+  .ant-calendar-range-picker-input {
+    text-align: left;
+  }
+
+  .ant-calendar-range-picker-separator {
+    display: none;
+  }
+
+  .ant-col-offset-8 {
+    margin: 0;
+  }
+
+  .ant-form-item-children {
+    display: block;
+  }
+}
+
+.add-new-event__name {
+  margin-top: -20px!important;
+  width: 90%;
+
+  input {
+    border: none;
+    padding-left: 0;
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.vuecal__no-event {
+  display: none;
+}
+
+.event-popup-view {
+  h2 {
+    margin-top: -20px;
+  }
+}
+
+.event-popup-view__date {
+  margin-top: -10px;
+
+  span {
+    font-weight: 700;
+    margin: 0 8px;
+  }
+}
+
+.event-popup-view__description {
+  font-style: italic;
+  white-space: pre-line;
+}
+
+.add-new-event__buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .color-dropdown {
+    display: flex;
+  }
+}
+
+.new-event-button {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  border: none;
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  cursor: pointer;
+  z-index: 1;
+  outline: none;
+  display: none;
+}
+
+.vuecal__cell:hover {
+  .new-event-button {
+    display: block;
+  }
+}
+
+.new-event-button--active {
+  display: block;
+}
+
+.vuecal__event {
+  cursor: pointer;
+  border: 1px solid #dcdada;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  text-align: left;
+
+  .vuecal__event-time {
+    display: none;
+  }
+}
+
+.new-event-popup {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  z-index: 999;
+}
+
+.new-event-popup__input-block {
+
+}
+
+.plan-popup, .share-popup {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #0000008c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  .ant-select-selection__rendered {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.plan-popup__name-label {
+  label::before {
+    display: none;
+  }
+}
+
+.plan-popup {
+  .plan-popup__save-btn-desktop-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      margin: 0!important;
+    }
+  }
+
+  .plan-popup__save-btn-wrapper {
+    justify-content: space-between;
+    button {
+      margin: 0!important;
+    }
+  }
+
+  .plan-popup__save-btn-wrapper {
+
+  }
+}
+
+.plan-popup .ant-select-open .ant-select-selection {
+  box-shadow: none;
+}
+
+.plan-popup {
+  .ant-form-item {
+    margin-bottom: 24px;
+  }
+}
+
+.plan-popup__content .plan-popup__duration-input .ant-form-item-control-wrapper {
+  width: auto;
+}
+
+.plan-popup, .add-new-event {
+  .date-label__start {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .date-label__start-date {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .date-label__start-time {
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 110px;
+  }
+
+  .date-label__end-time {
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 66px;
+  }
+}
+
+.share-popup__content {
+  width: 383px;
+  background: white;
+  border-radius: 5px;
+  padding: 25px 30px 20px;
+
+  label {
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+
+  input {
+    margin-bottom: 10px;
+  }
+}
+
+.plan-popup__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #48808d;
+  justify-content: center;
+}
+
+.plan-popup__edit-btn {
+  border: none !important;
+
+  &:hover {
+    border: none !important;
+  }
+}
+
+.plan-popup__name {
+  margin-bottom: 19px;
+  display: inline-block;
+}
+
+.plan-popup__wrapper {
+  background: white;
+  max-width: 900px;
+  padding: 25px 30px 20px;
+  overflow: scroll;
+  padding-bottom: 60px;
+
+  @media only screen and (max-width : 1024px) {
+    width: 100%;
+  }
+}
+
+.plan-popup__save-btn-desktop-wrapper {
+  .ant-btn-primary {
+    background-color: #48808d;
+    border-color: #48808d;
+    border: 1px solid #396d79;
+
+    &:hover, &:active {
+      background-color: #396d79;
+      border-color: #396d79;
+    }
+  }
+  @media only screen and (max-width : 1024px) {
+    display: none!important;
+  }
+}
+
+.plan-popup__save-btn-wrapper {
+  display: none;
+
+  @media only screen and (max-width : 1024px) {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 11;
+    padding: 16px 30px;
+    border-top: 1px solid #666;
+    background: #ebedf7;
+  }
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.calendar__custom {
+  .line::before {
+    width: 100%
+  }
+
+  .vuecal__cell, .vuecal__heading {
+    width: 250px!important;
+  }
+
+  .vuecal__cell {
+    display: block;
+  }
+
+  .vuecal__flex {
+    display: inline-flex;
+  }
+
+  .vuecal__flex[wrap] {
+    flex-wrap: initial;
+  }
+}
+
+.vuecal__header {
+  z-index: 8;
+  background: white;
+
+  .vuecal__heading {
+    border: 1px solid #ddd;
+    border-right: none;
+  }
+}
+
+.vuecal__weekdays-headings {
+  border: white!important;
+  border-right: 1px solid #ddd!important;
+  background: white!important;
+
+  .vuecal__heading {
+    border-left-color: white;
+  }
+}
+
+.share-popup__read, .share-popup__edit, .share-popup__clone {
+  position: relative;
+  .anticon {
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    cursor: pointer;
+  }
+
+  .anticon-copy {
+    opacity: .8;
+
+    &:hover {
+      opacity: 1
+    }
+  }
+
+  .anticon-check {
+    color: #27da27;
+  }
+}
+
+.ant-calendar-picker-container {
+  z-index: 10001!important;
+}
+
+.vuecal__body {
+  overflow-y: scroll;
+}
+
+.vuecal__header {
+  position: sticky;
+  top: 0;
+
+  &::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+}
+
+.vuecal__cells  {
+  position: relative;
+  overflow: visible;
+  overflow-x: scroll;
+}
+
+.vuecal__bg {
+  overflow: visible!important;
+  -webkit-overflow-scrolling: auto;
+  background-color: #cccccc;
+}
+
+.vuecal__body {
+  overflow: visible!important;
+}
+
+.vuecal__time-column {
+  width: 3em;
+  height: 100%;
+  flex-shrink: 0;
+  margin: 0;
+  float: left;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+
+  .line:before {
+    width: 100vw;
+  }
+}
+
+.calendar.d-1 .vuecal__time-cell {
+  .line:before {
+    width: 292px;
+  }
+}
+
+.calendar.d-2 .vuecal__time-cell {
+  .line:before {
+    width: 542px;
+  }
+}
+
+.calendar.d-3 .vuecal__time-cell {
+  .line:before {
+    width: 792px;
+  }
+}
+
+.calendar.d-4 .vuecal__time-cell {
+  .line:before {
+    width: 1042px;
+  }
+}
+
+.calendar.d-5 .vuecal__time-cell {
+  .line:before {
+    width: 1292px;
+  }
+}
+
+.calendar.d-6 .vuecal__time-cell {
+  .line:before {
+    width: 1542px;
+  }
+}
+
+.calendar.d-7 .vuecal__time-cell {
+  .line:before {
+    width: 1792px;
+  }
+}
+
+.calendar.8 .vuecal__time-cell {
+  .line:before {
+    width: 2042px;
+  }
+}
+
+.calendar.d-9 .vuecal__time-cell {
+  .line:before {
+    width: 2292px;
+  }
+}
+
+.calendar.d-10 .vuecal__time-cell {
+  .line:before {
+    width: 2542px;
+  }
+}
+
+.calendar__content {
+  height: 960px;
+  background: white;
+  border-right: 1px solid;
+}
+
+.heading-last {
+  align-items: center;
+  cursor: pointer;
+
+  i {
+    margin-right: 3px;
+    font-size: 12px;
+  }
+}
+
+.calendar__viewport {
+  width: 100vw;
+  height: calc(100vh - 56px);
+  height: calc(var(--vh, 1vh) * 100 - 56px);
+  overflow: scroll;
+
+  .week-view {
+    overflow: hidden;
+  }
+
+  .vuecal__time-column .vuecal__time-cell {
+    background: white;
+    margin-right: -1px;
+  }
+}
+
+.ant-select-dropdown {
+  z-index: 11111!important;
+}
+
+.ant-select-dropdown-menu-item {
+  &.grey {
+    background-color: #f8f8f8;
+    padding: 15px;
+    opacity: .9;
+
+    &:hover {
+      background-color: #f8f8f8;
+      opacity: 1;
+    }
+  }
+  &.red {
+    background-color: #ffb6b6;
+    padding: 15px;
+    opacity: .9;
+
+    &:hover {
+      background-color: #ffb6b6;
+      opacity: 1;
+    }
+  }
+  &.blue {
+    background-color: #b6d2e4;
+    padding: 15px;
+    opacity: .9;
+
+    &:hover {
+      background-color: #b6d2e4;
+      opacity: 1;
+    }
+  }
+  &.green {
+    background-color: #bfedc3;
+    padding: 15px;
+    opacity: .9;
+
+    &:hover {
+      background-color: #bfedc3;
+      opacity: 1;
+    }
+  }
+  &.yellow {
+    background-color: #ffea71;
+    padding: 15px;
+    opacity: .9;
+
+    &:hover {
+      background-color: #ffea71;
+      opacity: 1;
+    }
+  }
+  &.purple {
+    background-color: #d8b8e6;
+    padding: 15px;
+    opacity: .9;
+
+    &:hover {
+      background-color: #d8b8e6;
+      opacity: 1;
+    }
+  }
+}
+
+.color-dropdown {
+  margin: 0!important;
+
+  .custom-input {
+    position: absolute;
+    left: -12px;
+    right: -12px;
+    top: -2px;
+    bottom: 0;
+    border-radius: 4px;
+
+    &.grey {
+      background-color: #f8f8f8;
+    }
+
+    &.purple {
+      background-color: #d8b8e6;
+    }
+
+    &.green {
+      background-color: #bfedc3;
+    }
+
+    &.yellow {
+      background-color: #ffea71;
+    }
+
+    &.blue {
+      background-color: #b6d2e4;
+    }
+
+    &.red {
+      background-color: #ffb6b6;
+    }
+  }
+
+  .ant-form-item-control-wrapper {
+      width: 34px!important;
+  }
+}
+
+.new-event-button {
+  width: 239px;
+}
+
+.vuecal__event {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 239px;
+
+  &.grey {
+    background-color: #f8f8f8;
+  }
+
+  &.purple {
+    background-color: #d8b8e6;
+  }
+
+  &.green {
+    background-color: #bfedc3;
+  }
+
+  &.yellow {
+    background-color: #ffea71;
+  }
+
+  &.blue {
+    background-color: #b6d2e4;
+  }
+
+  &.red {
+    background-color: #ffb6b6;
+  }
+}
+
+.date-clone {
+  display: flex;
+
+  .ant-form-item-control-wrapper {
+    width: auto;
+  }
+
+  .ant-row:nth-child(2) {
+    margin-right: 0;
+  }
+}
+
+.date-label.clone {
+  .date-label__end {
+    margin-left: 101px;
+  }
+}
+
+.recaptcha {
+  margin: 12px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar-header__timezone-name {
+  position: absolute;
+  top: 56px;
+  left: -1px;
+  z-index: 9;
+  color: #999;
+  width: 43px;
+  text-align: center;
+  font-size: 10px;
+  background: white;
+  height: 39px;
+  padding-top: 3px;
+}
+
+#top-hours {
+  position: absolute;
+  top: 0;
+}
+
+.arrow-up {
+  position: fixed;
+  top: 73px;
+  background: white;
+  width: 42px;
+  text-align: center;
+  z-index: 9;
+  display: block;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.arrow-down {
+  position: absolute;
+  bottom: 0px;
+  width: 42px;
+  z-index: 9999999999999;
+  transform: rotate(180deg);
+  text-align: center;
+  background: white;
+  cursor: pointer;
+  z-index: 9;
+}
+
+.arrow-right {
+  position: fixed;
+  top: 64px;
+  background: white;
+  width: 28px;
+  text-align: center;
+  z-index: 9;
+  display: block;
+  font-size: 15px;
+  cursor: pointer;
+  right: -3px;
+  transform: rotate(90deg);
+}
+
+.vuecal__time-column .vuecal__time-cell {
+  border-top: none;
+  line-height: 0px;
+
+  &:first-child {
+    .line {
+      display: none;
+    }
+  }
+}
+
+.vuecal__event-title--wrapper {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 38px;
+}
+
+.vuecal__event-title--wrapper.small {
+  -webkit-line-clamp: 1;
+  height: 30px;
+
+  .vuecal__event-title {
+    padding: 0 10px;
+  }
+}
+
+.vuecal__event-title {
+  white-space: normal;
+  padding: 6px 10px;
+  line-height: 16px;
+}
+
+.custom-medium, .custom-small {
+  display: none;
+}
+
+.custom-full {
+  display: inline;
+}
+
+.landing__start-btn {
+  background-color: #48808d!important;
+  border-color: #48808d!important;
+  border: 1px solid #396d79!important;
+
+  &:hover, &:active, &:focus {
+    background-color: #396d79!important;
+    border-color: #396d79!important;
+  }
+}
+
+.landing__comment {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.landing-how-it-works {
+  width: 100%;
+  text-align: center;
+  background: #afafaf3b;
+  padding: 20px;
+
+  ul {
+    padding: 0;
+    width: 269px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 44px;
+
+    li {
+      line-height: 20px;
+      margin-bottom: 20px;
+      list-style: none;
+
+      i {
+        position: absolute;
+        font-size: 38px;
+        margin-left: -50px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1439px) {
+  .calendar-header__details {
+    h1 {
+      max-width: 700px;
+    }
+  }
+}
+
+@media (max-width: 1282px) {
+  .calendar__custom .vuecal__cell, .calendar__custom .vuecal__heading {
+    width: calc((100vw - 3em)/5)!important;
+  }
+
+  .vuecal__event {
+    width: 95%;
+  }
+
+  .new-event-button {
+    width: 95%;
+  }
+
+  .calendar-header__details {
+    h1 {
+      max-width: 500px;
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .custom-full {
+    display: none;
+  }
+
+  .custom-medium {
+    display: inline;
+  }
+
+  .calendar-header__details {
+    h1 {
+      max-width: 400px;
+    }
+  }
+}
+
+@media (max-width: 812px) {
+  .calendar-header__buttons:not(.calendar-header__buttons--clone) {
+    button {
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .new-event-button {
+    display: block;
+    opacity: 0;
+  }
+
+  .calendar-header__destination {
+    display: none;
+  }
+
+  .calendar.d-1, .calendar.d-2 {
+    .vuecal__cell, .vuecal__heading {
+      width: calc((100vw - 3em)/2)!important;
+    }
+  }
+}
+
+@media (max-width: 811px) {
+  .calendar {
+    .vuecal__cell, .vuecal__heading {
+      width: calc((100vw - 3em)/5)!important;
+    }
+  }
+
+  .calendar.d-1, .calendar.d-2 {
+    .vuecal__cell, .vuecal__heading {
+      width: calc((100vw - 3em)/2)!important;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar-header__details {
+    h1 {
+      max-width: 300px;
+    }
+  }
+
+  .discuss-open {
+   .calendar__viewport {
+     width: calc(100vw)
+   }
+  }
+
+  .event-open {
+   .calendar__viewport {
+     width: calc(100vw)
+   }
+  }
+}
+
+@media (max-width: 575px) {
+  .color-dropdown {
+    min-width: 84px;
+    align-items: center;
+
+    .ant-form-item-label {
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  .calendar__custom .vuecal__cell, .calendar__custom .vuecal__heading {
+    width: calc((100vw - 3em)/3)!important;
+  }
+
+  .calendar.d-1, .calendar.d-2 {
+    .vuecal__cell, .vuecal__heading {
+      width: calc((100vw - 3em)/2)!important;
+    }
+  }
+}
+
+
+@media (max-width: 420px) {
+  .landing h1 {
+    width: 90%;
+  }
+}
+
+@media (max-width: 414px) {
+  .vuecal.event-open .calendar__viewport {
+    height: calc(100vh - 361px);
+    height: calc(var(--vh, 1vh) * 100 - 361px);
+  }
+
+  .viewer {
+    .add-new-event {
+      height: 165px;
+    }
+
+    .vuecal.event-open .calendar__viewport {
+      height: calc(100vh - 165px);
+      height: calc(var(--vh, 1vh) * 100 - 165px);
+    }
+  }
+
+  .add-new-event {
+    top: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  select,
+  textarea,
+  input {
+    font-size: 16px!important;
+  }
+
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px!important;
+  }
+
+  .calendar-header__details {
+    h1 {
+      max-width: 180px;
+    }
+  }
+}
+
+@media (max-height: 414px) {
+  .add-new-event {
+    top: 56px;
+  }
+
+  select,
+  textarea,
+  input {
+    font-size: 16px!important;
+  }
+
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px!important;
+  }
+}
+
+@media (max-height: 375px) {
+  .landing-how-it-works {
+    display: none;
+  }
+
+  .landing footer {
+    display: none;
+  }
+
+  .calendar-header__details {
+    h1 {
+      max-width: 130px;
+    }
+  }
+}
+
+.plan-popup__save-btn-wrapper {
+  button.ant-btn.ant-btn-primary {
+    background-color: #48808d;
+    border-color: #48808d;
+    border: 1px solid #396d79;
+
+    &:hover, &:active, &:focus {
+      background-color: #396d79;
+      border-color: #396d79;
+    }
+  }
+}
+
+.vuecal__event--overlapping.vuecal__event--split2 {
+  left: 0;
+}
+
+// TODO: remove this shit;
+.ant-input {
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  padding-left: 0!important;
+
+  &:focus,
+  &:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #48808d !important;
+  }
+}
+
+.ant-select-selection {
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
+  border-radius: 0 !important;
+
+  &:focus,
+  &:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #48808d !important;
+    border-right-width: 0 !important;
+  }
+}

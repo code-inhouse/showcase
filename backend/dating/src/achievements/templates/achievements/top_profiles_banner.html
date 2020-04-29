@@ -1,0 +1,66 @@
+{% load top_profiles %}
+{% load i18n %}
+
+<div class="match-premium nice-banner top-profiles" id="top-profiles-plugin" hidden>
+  <div class="nice-banner__top">
+    <div class="nice-banner__top-gradient">
+      <h1 class="banner-header">{% trans "ТОП-пользователи" %}</h1>
+      <div class="profile profile-1">
+        <div class="col-md-6"><a href=""><img src="" alt="" class="profile__avatar"></a></div>
+        <div class="col-md-6">
+          <p class="profile__name"><a class="profile__name-link" href=""></a></p>
+          <p class="profile__rating-info">{% trans "Рейтинг" %}:</p>
+          <p class="profile__rating"></p>
+          <p class="profile__rank"></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="profile profile-2">
+        <div class="col-md-6"><a href=""><img src="" alt="" class="profile__avatar"></a></div>
+        <div class="col-md-6">
+          <p class="profile__name"><a class="profile__name-link" href=""></a></p>
+          <p class="profile__rating-info">{% trans "Рейтинг" %}:</p>
+          <p class="profile__rating"></p>
+          <p class="profile__rank"></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="profile profile-3">
+        <div class="col-md-6"><a href=""><img src="" alt="" class="profile__avatar"></a></div>
+        <div class="col-md-6">
+          <p class="profile__name"><a class="profile__name-link" href=""></a></p>
+          <p class="profile__rating-info">{% trans "Рейтинг" %}</p>
+          <p class="profile__rating"></p>
+          <p class="profile__rank"></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="nice-banner__bottom">
+    <button class="btn btn-primary btn-lg">{% trans "Как попасть сюда?" %}</butotn>
+  </div>
+</div>
+
+<script>
+  {% top_profiles as top_profiles%}
+  (function initTopProfiles(topProfiles) {
+    banner = document.getElementById('top-profiles-plugin')
+    for (var i = 0; i < topProfiles.length; i++) {
+      var profile = topProfiles[i]
+      var url = '/profile/'+profile.id
+      var node = banner.querySelector('.profile-' + (i+1))
+      var ava = node.querySelector('.profile__avatar')
+      ava.setAttribute('src', profile.thumbnailUrl || DEFAULT_AVATAR)
+      ava.parentElement
+        .setAttribute('href', url)
+      var name = node.querySelector('.profile__name a')
+      name.textContent = profile.name
+      name.setAttribute('href', url)
+      node.querySelector('.profile__rating')
+        .textContent = profile.rating + '%'
+      node.querySelector('.profile__rank')
+        .textContent = profile.rank
+    }
+  })(JSON.parse('{{ top_profiles|safe }}'));
+</script>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отписка от почтовой рассылки</title>
+</head>
+<body>
+    <p>Секундочку...</p>
+    <form action="{% url 'dateprofile:email_unsubscribe' %}" method="POST" hidden>
+        {% csrf_token %}
+    </form>
+    <script>
+        document.querySelector('form').submit();
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "dating",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Yevhen Yevsyuhov <yevhen.yevsyuhov@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Yevs/dating",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/static/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cropperjs": "0.8.1",
+    "emojionearea": "^3.0.0",
+    "exif-js": "^2.1.1"
+  }
+}

@@ -1,0 +1,6 @@
+#!include:.gitignore
+
+!webpack-stats.json
+!assets/
+!assets/dist/
+!staticfiles.json

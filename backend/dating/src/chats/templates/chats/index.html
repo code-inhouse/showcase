@@ -1,0 +1,75 @@
+{% extends 'dating/base.html' %}
+{% load rules %}
+{% load static from dating %}
+
+{% block title %}
+  Сообщения
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lib/bower/emojionearea/dist/emojionearea.min.css' %}">
+    <link rel="stylesheet" href="{% static "lib/css/emojione.css" %}"/>
+    <style>
+      [contenteditable=true]:empty:before{
+        content: attr(placeholder);
+        display: block; /* For Firefox */
+      }
+
+      .chat-message-form--fieldset::after {
+        background-image: url({% if profile.avatar.thumbnail_url %}{{profile.avatar.thumbnail_url}}{% else %}{% static "images/default_avatar.png" %}{%endif%}) !important;
+      }
+
+      .message-date {
+        float: none !important;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      .message .emojione {
+        width: 1em;
+        height: 1em;
+        background-image: none;
+      }
+
+      .chat-user.unread {
+        background-color: #d6e1f3;
+      }
+
+      .premium-link {
+        float: right;
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+    </style>
+{% endblock head %}
+
+{% block content %}
+    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-9" id="root"></div>
+        <div class="col-lg-3" id="banner"></div>
+    </div>
+    </div>
+    {% include "dateprofile/banners.html" %}
+    <script>
+        var SELECTED_CHAT = {{selected}};
+        var USER_ID = {{request.user.profile.pk}};
+        var USER_SEX = '{{request.user.profile.sex}}';
+        var USER_STATUS = '{{request.user.profile.status}}';
+        var LAST_MSG_DATETIME = {% if last_msg_datetime %}new Date('{{last_msg_datetime|date:"c"}}'){% else %}null{% endif %};
+        var TOKEN = '{{profile.chat_token}}';
+        var SELF_AVATAR = '{{user.profile.avatar.thumbnail_url|default_if_none:""}}'
+        var DEFAULT_AVATAR = '{% static "images/default_avatar.png" %}'
+        var SELF_NAME = '{{profile.name|escapejs}}'
+        {% has_perm 'send_message' user as can_send_msg %}
+        var CAN_SEND_MESSAGES = {% if can_send_msg %}true{% else %}false{% endif %};
+        cycleBanners(document.getElementById('banner'));
+    </script>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'lib/bower/emojionearea/dist/emojionearea.min.js' %}"></script>
+    <script src="{% static "compiled/js/commonChunk.js" %}?v=4"></script>
+    <script src="{% static 'compiled/js/chat.js' %}?v=9" defer></script>
+    <script src="{% static "lib/js/emojione.js" %}"></script>
+{% endblock scripts %}

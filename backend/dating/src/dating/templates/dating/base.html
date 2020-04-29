@@ -1,0 +1,419 @@
+{% load static from dating %}
+{% load widget_tweaks %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    window.yaCounter42711874 = {
+            reachGoal: function() {}
+        };
+    </script>
+    <script>
+        {% get_current_language as LANGUAGE_CODE%}
+        window.LOCALE = '{{LANGUAGE_CODE}}';
+    </script>
+    {% include 'dateprofile/vk_pixel.html' %}
+
+    <title>{% block title%} {% trans "Найди себе пару!" %}{% endblock %}</title>
+
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'compiled/css/common.css' %}?4" rel="stylesheet">
+    <style>
+        .profile-element .img-circle {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        .logout-form button {
+            all: unset;
+            cursor: pointer;
+        }
+
+        .question-block {
+            cursor: pointer;
+        }
+
+        .question-block img {
+            width: 23px;
+            vertical-align: bottom;
+        }
+
+        .question-block span {
+            color: #ed5565;
+            font-weight: 600;
+        }
+    </style>
+        <script>
+        window.DID_COMPLETE_TASK = {% if completed_task %}true{%else%}false{% endif %};
+        {% if request.user.profile.task %}
+            window.TASK = {
+                id: {{request.user.profile.task.pk}},
+                award: {{request.user.profile.task.award}},
+                longDescription: "{{request.user.profile.task.long_description}}",
+                description: "{{request.user.profile.task.description}}",
+                name: "{{request.user.profile.task.name}}",
+                userRating: {{request.user.profile.rating}},
+                userRank: "{{request.user.profile.rank}}"
+            };
+        {% else %}
+            window.TASK = {
+                userRank: "{{request.user.profile.rank}}",
+                userRating: {{request.user.profile.rating}}
+            };
+        {% endif %}
+    </script>
+    {% block head %}
+    {% endblock head %}
+</head>
+
+<body>
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            {% if not user.profile.avatar.small_thumbnail_url %}
+                              <a href="{% url 'dateprofile:profile' %}" class="small-status-sign small-status-sign__{{request.user.profile.status}}"><img alt="image" class="img-circle " src="{% static 'images/default_avatar.png' %}"></a>
+                            {% else %}
+                              <a href="{% url 'dateprofile:profile' %}" class="small-status-sign small-status-sign__{{request.user.profile.status}}"><img src="{{user.profile.avatar.small_thumbnail_url}}" alt="Avatar" class="img-circle"></a>
+                            {% endif %}
+                             </span>
+                        <div class="rating-block pull-right" id="current-user-rating">
+                            <p class="rating-block__title">{% trans "Рейтинг" %}:</p>
+                            <p class="rating-block__rating rating">{{user.profile.rating}}%</p>
+                            <p class="rating-block__rank rank">{{user.profile.rank}}</p>
+                        </div>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ user.profile.name }}</strong></span></span>
+                        </a>
+                    </div>
+                </li>
+                {% if request.user.profile.status != 'vip' %}
+                    <li class="menu-item {% if active == 'purchase' %}active{% endif %} {% if request.user.profile.status == 'ordinary' %}menu-item__premium{%else%}menu-item__vip{% endif %}">
+                        {% if request.user.profile.status == 'premium' %}
+                            <a href="{% url 'payments:click' %}?button=vip&source=navbar&page_url={{request.path}}" class="purchase-link">
+                        {% else %}
+                            <a href="{% url 'payments:click' %}?button=premium&source=navbar&page_url={{request.path}}" class="purchase-link">
+                        {% endif %}
+                        <i class="fa fa-star-o"></i> <span class="nav-label">{% if request.user.profile.status == 'ordinary' %}
+                            {% trans "Стать Премиум" %}
+                        {% else %}
+                            {% trans "Стать ВИП" %}
+                        {% endif %}</span>
+                        <span class="label label-primary"></span></a>
+                    </li>
+                {% endif %}
+                <li class="menu-item {% if active == 'my_profile' %}active{% endif %}">
+                    <a href="{% url 'dateprofile:profile' %}"><i class="fa fa-home"></i> <span class="nav-label">{% trans "Моя страница"%}</span></a>
+                </li>
+                <li class="menu-item {% if active == 'like_game' %}active{% endif %}">
+                    <a href="{% url 'likes:game' %}"><i class="fa fa-heart-o"></i> <span class="nav-label">{% trans "Найти пару" %}
+                    </span><span class="label label-primary" id="nav-mutual-notifications"></a>
+                </li>
+                <li class="menu-item {% if active == 'chat' %}active{% endif %}">
+                    <a href="{% url 'chats:index' %}"><i class="fa fa-comment-o"></i> <span class="nav-label">{% trans "Сообщения" %}</span><span class="label label-primary" id="nav-messages-notifications"></span></a>
+                </li>
+                <li class="menu-item {% if active == 'sympathies' %}active{% endif %}">
+                    <a href="{% url 'likes:info' %}"><i class="fa fa-venus-mars"></i> <span class="nav-label">{% trans "Симпатии" %}</span>
+                    <span class="label label-primary" id="nav-likes-visits-notification"></span></a>
+                </li>
+                <li class="menu-item {% if active == 'settings' %}active{% endif %}">
+                    <a href="{% url 'dateprofile:settings_page' %}"><i class="fa fa-gear"></i> <span class="nav-label">{% trans "Настройки" %}</span>
+                    <span class="label label-primary" id="nav-likes-visits-notification"></span></a>
+                </li>
+            </ul>
+            <ul class="nav bottom-list">
+              <li class="little-link double-word"><a href="{% url 'dateprofile:about' %}" target="_blank">{% trans "О сайте" %}</a></li>
+              <li class="little-link double-word"><a href="{% url 'dateprofile:contacts' %}" target="_blank">{% trans "Контакты" %}</a></li>
+              <li class="little-link double-word"><a href="{% url 'dateprofile:terms' %}" target="_blank">{% trans "Пользовательское соглашение" %}</a></li>
+              <li class="little-link double-word"><a href="{% url 'dateprofile:conf_policy' %}" target="_blank">{% trans "Политика конфиденциальности" %}</a></li>
+              <li><a onclick="onLogout();"><i class="fa fa-sign-out"></i> <span class="nav-label">{% trans "Выйти" %}</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    {% block preloader %}
+        <div id="base-preloader" class="base-preloader">
+          <div class="cp-spinner cp-heart"></div>
+        </div>
+        <script>
+            window.onload = function() {
+                var el = document.getElementById('base-preloader');
+                el.parentElement.removeChild(el);
+            }
+        </script>
+    {% endblock preloader %}
+    <div id="page-wrapper" class="gray-bg clearfix">
+        <div class="row border-bottom">
+        {% block nav_top %}
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <h1 class="navbar__header pull-left">{{ title }}</h1>
+                {% if user.profile.task %}
+                    <div class="navbar-task">
+                      <p class="navbar-task__target">{% trans "Увеличь свой рейтинг до" %} <span id="next-rating-info">{{user.profile.rating|add:user.profile.task.award}}</span>%:</p>
+                      <p class="navbar-task__desc" id="current-task-info">{{user.profile.task.description}}</p>
+                    </div>
+                {% endif %}
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li class="hidden">
+                                <div class="dropdown-messages-box">
+                                    <a href="" class="pull-left">
+                                        {% if not profile.avatar %}
+                                          <img alt="image" class="img-circle " src="{% static 'lib/img/ava.jpg' %}">
+                                        {% else %}
+                                            <img src="{{profile.avatar.thumbnail_url}}" alt="Avatar" class="img-circle">
+                                        {% endif %}
+                                    </a>
+                                    <div class="media-body">
+                                        <p class=""></p>
+                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider hidden"></li>
+                            <li class="hidden">
+                                <div class="dropdown-messages-box">
+                                    <a href="profile.html" class="pull-left">
+                                        <img alt="image" class="img-circle" src="{% static 'lib/img/a4.jpg' %}">
+                                    </a>
+                                    <div class="media-body ">
+                                        <p class=""></p>
+                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider hidden"></li>
+                            <li class="hidden">
+                                <div class="dropdown-messages-box">
+                                    <a href="profile.html" class="pull-left">
+                                        <img alt="image" class="img-circle" src="{% static 'lib/img/profile.jpg' %}">
+                                    </a>
+                                    <div class="media-body ">
+                                        <p class=""></p>
+                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider hidden"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="{% url 'chats:index' %}">
+                                        <i class="fa fa-envelope"></i> <strong>{% trans "Открыть все сообщения" %}</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell-o"></i>  <span class="label label-primary" id="notification-label"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="{% url 'chats:index' %}">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i>
+                                        <span id="notification-messages"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{% url 'likes:info' %}">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i>
+                                        <span id="notification-likes"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{% url 'likes:info' %}">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i>
+                                        <span id="notification-visits"></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% if LANGUAGE_CODE != 'ru' %}
+                        <li class="" id="set-russian-language"><a></a></li>
+                    {% else %}
+                        <li class="" id="set-english-language"><a></a></li>
+                    {% endif %}
+                    <li class="question-block" data-toggle="modal" data-target="#bug-report-modal">
+                        <!-- <img src="{% static "images/question-sign.png" %}" alt=""> -->
+                        <span>{% trans "Помощь" %}</span>
+                    </li>
+                </ul>
+            </nav>
+        {% endblock nav_top %}
+        </div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+    </div>
+    <div class="modal fade" id="bug-report-modal">
+      <div class="modal-dialog modal-messages" role="document">
+        <div class="modal-content">
+          <form action="{% url 'feedbacks:send_feedback' %}" method="POST" id="feedback-form">
+              {% csrf_token %}
+              <input type="hidden" value="{{request.get_full_path}}" name="url">
+              <div class="modal-messages__top">
+                <span class="modal-messages__title">{% trans "Опишите ваш вопрос или предложение." %} </span>
+                <i class="fa fa-times" data-dismiss="modal"></i>
+              </div>
+              <div class="modal-body">
+                <div class="send-msg-container">
+                    <textarea id="send-msg-input" cols="30" rows="10" placeholder="{% trans 'Мы обязательно свяжемся с вами, спасибо!' %}" style="overflow:auto" name="text"></textarea>
+                    <p class="error-message">{% trans "Введите текст сообщения" %}</p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="submit-feedback-form" class="btn btn-outline btn-success" id="send-msg-btn" data-dismiss="modal">{% trans "Отправить сообщение" %}</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% block afterwrap %}
+    {% endblock afterwrap %}
+
+    <!-- Mainly scripts -->
+
+    <script src="{% static 'compiled/js/main.js' %}" defer></script>
+    <script src="{% static 'lib/js/jquery-2.1.1.js' %}"></script>
+    <script src="{% static 'lib/js/bootstrap.js' %}"></script>
+    <script src="{% static 'lib/js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'lib/js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'lib/js/inspinia.js' %}"></script>
+    <script src="{% static 'lib/js/plugins/pace/pace.min.js' %}"></script>
+    <script src="{% static 'compiled/js/pinger.js' %}" defer></script>
+    <audio src="{% static 'notification.wav' %}"></audio>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        {% if USE_ANALYTICS %}
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter42711874 = new Ya.Metrika({
+                        id:42711874,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+        {% else %}
+        window.yaCounter42711874 = {
+            reachGoal: function() {}
+        };
+        {% endif %}
+      </script>
+      <noscript><div><img src="https://mc.yandex.ru/watch/42711874" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+      <!-- /Yandex.Metrika counter -->
+      <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function csrfSafeMethod(method) {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                }
+            }
+        });
+
+        function onLogout() {
+            $.post('{% url "account_logout" %}', function (data) {
+                window.location.href = '{% url "account_login" %}'
+            })
+        }
+    </script>
+    <script>
+        (function() {
+            var form = $('#feedback-form')
+            function sendFeedback() {
+                console.log('submitting')
+                $.post(form.attr('action'), form.serialize())
+            }
+            form.on('submit', function(e){
+                console.log('submitting')
+                e.preventDefault()
+            })
+            $('#feedback-form input[name=url]').val(window.location.href)
+            $('#submit-feedback-form').click(sendFeedback)
+        })();
+
+        (function() {
+            [{
+                id: '#set-russian-language',
+                lang: 'ru'
+            }, {
+                id: '#set-english-language',
+                lang: 'en'
+            }].forEach(function (pair) {
+                var id = pair.id,
+                    lang = pair.lang
+                $(id).click(function() {
+                    $.post("{% url 'set_language' %}", {
+                        next: window.location.href,
+                        language: lang
+                    }).done(function (res) {
+                        window.location.href = window.location.href
+                    })
+                })
+            })
+        })()
+    </script>
+    <script src="{% static "compiled/js/polyfill.js" %}"></script>
+    {% block scripts %}
+
+    {% endblock scripts %}
+    {% include "achievements/modals.html" %}
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  api:
+    environment:
+      - APP_MODE=stage
+    build:
+      context: .
+    restart: unless-stopped
+    command: gunicorn -w 5 -b 0.0.0.0:8001 --access-logfile - --error-logfile - --log-file - --log-level info --timeout 90 core.wsgi:application
+    ports:
+    - 8001:8001
+    volumes:
+    - /var/www/calendar/assets:/project/assets
+
+  db:
+    image: geelweb/postgis:latest
+    restart: unless-stopped
+    ports:
+    - 5432:5433

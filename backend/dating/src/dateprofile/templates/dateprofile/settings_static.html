@@ -1,0 +1,116 @@
+<div class="col-lg-9" >
+  <div class="settings">
+    <div class="settings__menu">
+      <ul>
+        <li id="menu-item-info" class="settings__menu-item ">Информация о вас</li>
+        <li id="menu-item-old" class="settings__menu-item">Возраст поиска</li>
+        <li id="menu-item-akk" class="settings__menu-item">Аккаунт</li>
+        <li id="menu-item-mails" class="settings__menu-item">Рассылка</li>
+        <li id="menu-item-money" class="settings__menu-item active">Подписки</li>
+      </ul>
+    </div>
+    <div class="settings__body">
+      <div class="settings__block settings__info">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" class="form-control" value="Miki Olala">
+        </div>
+        <div class="form-group" id="bday">
+            <p class="error-message"></p>
+            <label for="bday-input">День рождения</label>
+            <div class="form-inline date-input birthday">
+                <div class="errors">
+                    <p class="error-message-color date-error" hidden>Вы должны быть старше 18 лет,чтобы зарегистрироваться</p>
+                    <p class="error-message-color day-error"hidden>  Введите настоящий день</p>
+                    <p class="error-message-color month-error"hidden> Введите настоящий месяц </p>
+                    <p class="error-message-color year-error" hidden> Введите настоящий год</p>
+                </div>
+                <input type="number" min="1" max="31" class="form-control day" id="bdate-day-input" placeholder="День">
+                <input type="number" min="1" max="12" class="form-control month" placeholder="Месяц" id="bdate-month-input">
+                <input type="number" min="1930" max="2016" class="form-control year"
+                placeholder="Год" id="bdate-year-input">
+            </div>
+        </div>
+        <div class="form-group" id="body-type-control">
+            <label for="body-type-input">Телосоложение</label>
+            <p class="error-message">Выберите одну из опций</p>
+            <select id="body-type-input" class="form-control">
+                <option value="thin">Худощавое</option>
+                <option value="average">Среднее</option>
+                <option value="sport">Спортивное</option>
+                <option value="fat">Полноватое</option>
+            </select>
+        </div>
+        <div class="form-group" id="smoking-control">
+            <label for="smoking-input">Отношение к курению</label>
+            <select id="smoking-input" class="form-control">
+                <option value="negative">Негативно</option>
+                <option value="rarely">Курю редко</option>
+                <option value="often">Курю часто</option>
+            </select>
+        </div>
+        <div class="form-group" id="alcohol-control">
+            <label for="alcohol-input">Отношение к алкоголю</label>
+            <select id="alcohol-input" class="form-control">
+                <option value="no_drink">Не употребляю</option>
+                <option value="company">Только в компании</option>
+                <option value="rarely">Изредка пью</option>
+                <option value="often">Пью часто</option>
+            </select>
+        </div>
+        <button class="btn btn-outline btn-primary settings__save">Сохранить</button>
+      </div>
+      <div class="settings__block settings__old">
+        <div class="form-group">
+            <label for="age-search-input">Ищу человека возрастом</label>
+            <div id="age-search-input"></div>
+        </div>
+        <button class="btn btn-outline btn-primary settings__save">Сохранить</button>
+      </div>
+      <div class="settings__block settings__akk">
+        <label for="bday-input">Смена пароля:</label>
+        <div class="form-group" id="password-control-s">
+          <div>
+            <p id="password-err-message-s" class="error-message"></p>
+            <input type="password" class="form-control" placeholder="Введите текущий пароль" required="" id="password-input-s">
+          </div>
+        </div>
+        <div class="form-group" id="password-control">
+          <div>
+            <p id="password-err-message" class="error-message"></p>
+            <input type="password" class="form-control" placeholder="Пароль" required="" id="password-input">
+          </div>
+        </div>
+        <div class="form-group" id="password-rep-control">
+            <div>
+              <p id="password-rep-err-message" class="error-message"></p>
+              <input type="password" class="form-control" placeholder="Еще раз пароль" required="" id="password-rep-input">
+            </div>
+        </div>
+        <button class="btn btn-outline btn-primary settings__save">Сохранить</button>
+      </div>
+      <div class="settings__block settings__mails">
+        <div>
+          <span>Получать оповещения на свой email</span>
+          <div class="btn-group">
+              <button class="btn btn-primary btn-outline active" type="button">Да</button>
+              <button class="btn btn-default btn-outline " type="button">Нет</button>
+          </div>
+        </div>
+        <button class="btn btn-outline btn-primary settings__save">Сохранить</button>
+      </div>
+      <div class="settings__block settings__money active">
+        <div class="settings__premium">
+          <i></i>
+          <p>У вас нет Премиум <br>статуса</p>
+          <button class="btn btn-success">Стать Премиум</button>
+        </div>
+        <div class="settings__vip">
+          <i></i>
+          <p>У вас нет VIP <br>статуса</p>
+          <button class="btn btn-vip">Стань VIP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

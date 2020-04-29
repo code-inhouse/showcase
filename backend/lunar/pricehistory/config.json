@@ -1,0 +1,11 @@
+{
+	"port": 3000,
+	"delay": 250,
+	"pair": "BTCUSD",
+	"origin": ".*",
+	"maxFetchUsage": 259200000,
+	"fetchUsageResetInterval": 600000,
+	"websocket": true,
+	"storage": "files",
+	"backupInterval": 60000
+}
