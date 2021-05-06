@@ -9,7 +9,7 @@
     "css-loader": "^3.0.0",
     "eventemitter3": "^4.0.0",
     "file-loader": "^4.0.0",
-    "highcharts": "^7.1.2",
+    "highcharts": "^9.0.0",
     "js-sha256": "^0.9.0",
     "node-sass": "^4.12.0",
     "pako": "^1.0.10",
